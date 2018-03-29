@@ -38,7 +38,7 @@ def main(args):
                 for line in input_file:
                     if line[0] == '>':
                         count += 1
-                        line = '>' + indiv_id + '_' + count
+                        line = '>' + indiv_id + '_' + str(count)
                     output_file.write(line)
         os.remove(args['<output_dir>'] + indiv_id + '.tmp')
 
