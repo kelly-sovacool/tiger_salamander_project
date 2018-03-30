@@ -10,3 +10,4 @@ for fn in filenames:
             os.remove(fn)
         else:
             subprocess.call(['fastx_renamer', '-n', 'COUNT', '-i', fn, '-o', fn.replace('.fasta', '.fna')])
+            os.remove(fn)
