@@ -10,10 +10,9 @@ Usage:
 Options:
     -h --help   display this super helpful message
 """
-import Bio.SeqIO
-import collections
 import docopt
 import os
+import subprocess
 
 
 def main(args):
@@ -32,14 +31,7 @@ def main(args):
                             for line in input_file:
                                 output_file.write(line)
     for indiv_id in individual_ids:
-        with open(args['<output_dir>'] + indiv_id + '.tmp', 'r') as input_file:
-            with open(args['<output_dir>'] + indiv_id + '.fna', 'w') as output_file:
-                count = 0
-                for line in input_file:
-                    if line[0] == '>':
-                        count += 1
-                        line = '>' + indiv_id + '_' + str(count)
-                    output_file.write(line)
+        subprocess.call(['fastx_renamer', '-n', 'COUNT', '-i', args['<output_dir>'] + indiv_id + '.tmp', '-o', args['<output_dir>'] + indiv_id + '.fna'])
         os.remove(args['<output_dir>'] + indiv_id + '.tmp')
 
 
