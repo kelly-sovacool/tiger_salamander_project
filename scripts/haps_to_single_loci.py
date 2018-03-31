@@ -35,7 +35,7 @@ def main():
     for locus_id in loci:
         sequences = [loci[locus_id][seq_id] for seq_id in sorted(loci[locus_id].keys())]
         sequences.insert(0, reference_sequences[locus_id])
-        with open(output_dir + locus_id + '.haps.ref.fna', 'w') as file:
+        with open(output_dir + locus_id + '.haps.fna', 'w') as file:
             Bio.SeqIO.write(sequences, file, 'fasta')
 
 main()
