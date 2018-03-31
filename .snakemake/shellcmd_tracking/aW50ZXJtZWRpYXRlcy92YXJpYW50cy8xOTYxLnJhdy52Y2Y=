@@ -1,0 +1,1 @@
+freebayes --min-mapping-quality 1 -f reference/ambystoma_reference.fna intermediates/alignments/1961.sorted.bam > intermediates/variants/1961.raw.vcf

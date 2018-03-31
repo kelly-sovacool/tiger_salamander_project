@@ -1,0 +1,6 @@
+reference: reference/ambystoma_reference.fna
+fastq_dir: testdata
+haps_dir: haplotypes
+matrix_filename: "matrix_testdata.tsv"
+trimmomatic_jar: /usr/local/bin/Trimmomatic-0.36/trimmomatic-0.36.jar
+trimmomatic_adapter: /usr/local/bin/Trimmomatic-0.36/adapters/TruSeq3-PE.fa

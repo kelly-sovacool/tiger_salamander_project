@@ -1,0 +1,1 @@
+bcftools filter -e 'QUAL < 20' intermediates/variants/1536.raw.vcf | bcftools filter -e 'DP < 5' -o intermediates/variants/1536.filtered.vcf
