@@ -13,7 +13,7 @@ import os
 import re
 import shutil
 
-configfile: "config.yaml"
+configfile: "config_testdata.yaml"
 
 fastq_dir = config["fastq_dir"]
 #seq_runs = config["seq_runs"]
@@ -61,7 +61,7 @@ samples = set(wildcards.sample)
 
 rule all:
     input:
-        "matrix.tsv"
+        config["matrix_filename"]
 
 rule fastq_merge:
     input:
@@ -243,7 +243,7 @@ rule build_matrix:
     input:
         expand("{haps_dir}/{locus}.fna", locus=loci, haps_dir=haps_dir)
     output:
-        "matrix.tsv"
+        config["matrix_filename"]
     run:
         matrix = "individual_id"
         loci = list(filename.split('/')[-1].split('.fna')[0] for filename in sorted(input))
