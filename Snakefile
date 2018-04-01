@@ -11,10 +11,12 @@ import Bio.SeqIO
 import collections
 import os
 import re
+import shutil
 
 configfile: "config.yaml"
 
 fastq_dir = config["fastq_dir"]
+#seq_runs = config["seq_runs"]
 haps_dir=config["haps_dir"]
 reference_file = config["reference"]
 reference_sequences = {seq_record.id: seq_record for seq_record in Bio.SeqIO.parse(reference_file, 'fasta')}
@@ -23,46 +25,67 @@ jar_file = config["trimmomatic_jar"]
 adapter_file = config['trimmomatic_adapter']
 pair1, pair2 = "R1", "R2" # set of paired end specifiers
 
-def rename_input_files(input_dir, r1, r2):
+def get_sample_ids(input_dir, r1, r2):
+    samples_to_seq_runs = collections.defaultdict(dict)
     sample_regex = re.compile('[0-9A-Za-z]*')
     leading_D_regex = re.compile('^D[0-9]')
     extension_regex = re.compile('\..*')
-    r1 = "_" + r1
-    r2 = "_" + r2
-    for filename in [os.path.join(working_dir, filename) for working_dir, subdir, files in os.walk(os.path.expanduser(input_dir)) for filename in files]:
-        sample = re.search(sample_regex, filename).group(0)
-        if re.search(leading_D_regex, sample):
-            sample = sample[1:]  # remove leading D
-        extension = re.search(extension_regex, filename).group(0)
-        if r1 in filename:
-            pair = r1
-        elif r2 in filename:
-            pair = r2
-        else:
-            raise ValueError("neither {} nor {} in {}".format(r1, r2, filename))
-        new_fn = sample + pair + extension
-        if filename != new_fn:
-            print('renaming {} to {}'.format(filename, new_fn))
-            os.rename(os.path.join(input_dir, filename), os.path.join(input_dir, new_fn))
+    for working_dir, subdir, files in os.walk(os.path.expanduser(input_dir)):
+        for filename in files:
+            if filename[0] != '.':  # don't work on hidden files
+                sample = re.search(sample_regex, filename).group(0)
+                if re.search(leading_D_regex, sample):
+                    sample = sample[1:]  # remove leading D
+                extension = re.search(extension_regex, filename).group(0)
+                if "_" + r1 in filename:
+                    pair = r1
+                elif "_" + r2 in filename:
+                    pair = r2
+                else:
+                    raise ValueError("neither {} nor {} in {}".format(r1, r2, filename))
+                old_filepath = os.path.join(working_dir, filename)
+                new_filepath =  os.path.join(working_dir, sample + "_" + pair + extension)
+                if old_filepath != new_filepath:
+                    os.rename(old_filepath, new_filepath)
+                    current_filepath = new_filepath
+                else:
+                    current_filepath = old_filepath
+                if pair not in samples_to_seq_runs[sample]:
+                    samples_to_seq_runs[sample][pair] = list()
+                samples_to_seq_runs[sample][pair].append(current_filepath)
+    return samples_to_seq_runs
 
-rename_input_files(fastq_dir, pair1, pair2)
-
-wildcards = glob_wildcards(os.path.join(fastq_dir, "{sample}_{pair}.fastq.gz"))
-samples = set(wildcards.sample) # unique sample names
+samples_to_filepaths = get_sample_ids(fastq_dir, pair1, pair2)  # sample_id: {seq_run1/id.fastq.gz, seq_run2/id.fastq.gz, ...}
+wildcards = glob_wildcards(os.path.join(fastq_dir, "{seq_run}/{sample}_{pair}.fastq.gz"))
+samples = set(wildcards.sample)
 
 rule all:
     input:
         "matrix.tsv"
 
+rule fastq_merge:
+    input:
+        lambda wildcards: samples_to_filepaths[wildcards.sample][wildcards.pair]
+    output:
+        "intermediates/merged_fastq/{sample}_{pair}.fastq.gz"
+    run:
+        if len(input) == 1:
+            shutil.copy2(input[0], output[0])
+        else:
+            with open(output[0], 'wb') as out_file:
+                for filename in input:
+                    with open(filename, 'rb') as in_file:
+                        shutil.copyfileobj(in_file, out_file)
+
 rule fastq_filter:
     input:
-        R1="{fastq_dir}/{{sample}}_{pair}.fastq.gz".format(fastq_dir=fastq_dir, pair=pair1),
-        R2="{fastq_dir}/{{sample}}_{pair}.fastq.gz".format(fastq_dir=fastq_dir, pair=pair2)
+        R1="intermediates/merged_fastq/{{sample}}_{pair}.fastq.gz".format(pair=pair1),
+        R2="intermediates/merged_fastq/{{sample}}_{pair}.fastq.gz".format(pair=pair2)
     output:
-        R1_paired="filtered_fq/{{sample}}_{pair}.fastq.gz".format(pair=pair1),
-        R1_single="filtered_fq/{{sample}}_{pair}_single.fastq.gz".format(pair=pair1),
-        R2_paired="filtered_fq/{{sample}}_{pair}.fastq.gz".format(pair=pair2),
-        R2_single="filtered_fq/{{sample}}_{pair}_single.fastq.gz".format(pair=pair2)
+        R1_paired="intermediates/filtered_fq/{{sample}}_{pair}.fastq.gz".format(pair=pair1),
+        R1_single="intermediates/filtered_fq/{{sample}}_{pair}_single.fastq.gz".format(pair=pair1),
+        R2_paired="intermediates/filtered_fq/{{sample}}_{pair}.fastq.gz".format(pair=pair2),
+        R2_single="intermediates/filtered_fq/{{sample}}_{pair}_single.fastq.gz".format(pair=pair2)
     shell:
         "java -jar {jar_file} PE -phred33 {input.R1} {input.R2} {output.R1_paired} {output.R1_single} {output.R2_paired} {output.R2_single} "
         "ILLUMINACLIP:{adapter_file}:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36"
@@ -77,8 +100,8 @@ rule bwa_index:
 
 rule bwa_map:
     input:
-        R1="filtered_fq/{{sample}}_{pair}.fastq.gz".format(pair=pair1),
-        R2="filtered_fq/{{sample}}_{pair}.fastq.gz".format(pair=pair2),
+        R1="intermediates/filtered_fq/{{sample}}_{pair}.fastq.gz".format(pair=pair1),
+        R2="intermediates/filtered_fq/{{sample}}_{pair}.fastq.gz".format(pair=pair2),
         ref=reference_file + '.bwt'
     output:
         "intermediates/alignments/{sample}.mapped.bam"
