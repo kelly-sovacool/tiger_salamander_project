@@ -2,8 +2,7 @@
 Author: Kelly Sovacool
 Date: 30 Mar. 2018
 """
-# TODO: use benchmarking
-
+# TODO: collapse consensus1 & consensus2 into single consensus rule
 import Bio.SeqIO
 import collections
 import os
@@ -212,7 +211,7 @@ rule tabix:
     shell:
         "tabix {input}"
 
-rule consensus1:  # TODO: collapse consensus 1 & 2 into single consensus rule
+rule consensus1:
     input:
         vcf="intermediates/variants/phased.vcf.gz",
         tbi="intermediates/variants/phased.vcf.gz.tbi",
