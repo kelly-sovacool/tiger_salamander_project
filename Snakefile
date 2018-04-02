@@ -1,4 +1,4 @@
-""" Pipeline for processing amplicon sequence data and calling haplotypes.
+""" Pipeline for processing amplicon sequence data and calling SNP haplotypes.
 Author: Kelly Sovacool
 Email: kellysovacool@gmail.com
 Date: 30 Mar. 2018
@@ -102,8 +102,10 @@ rule bwa_index:
         reference_file
     output:
         reference_file + '.bwt'
+    log:
+        "logs/bwa_index_{ref}.log".format(ref=reference_file)
     shell:
-        "bwa index {input}"
+        "bwa index {input} &> {log}"
 
 rule bwa_map:
     input:
@@ -136,6 +138,14 @@ rule samtools_merge:
     shell:
         "samtools merge {output} {input}"
 
+rule samtools_index:
+    input:
+        "intermediates/alignments/merged.bam"
+    output:
+        "intermediates/alignments/merged.bam.bai"
+    shell:
+        "samtools index {input}"
+
 rule samtools_faidx:
     input:
         reference_file
@@ -167,14 +177,15 @@ rule filter_variants:
 
 rule phase_variants:
     input:
+        vcf="intermediates/variants/filtered.vcf",
         bam="intermediates/alignments/merged.bam",
-        vcf="intermediates/variants/filtered.vcf"
+        bai="intermediates/alignments/merged.bam.bai"
     output:
         "intermediates/variants/phased.vcf"
     log:
         "logs/variants/phase.log"
     shell:
-        "whatshap phase --reference {reference_file} -o {output} {input.vcf} {input.bam} 2> {log}"
+        "whatshap phase --reference {reference_file} -o {output} {input.vcf} {input.bam} &> {log}"
 
 rule bgzip:
     input:
@@ -192,7 +203,7 @@ rule tabix:
     shell:
         "tabix {input}"
 
-rule consensus1:
+rule consensus1:  # TODO: collapse consensus 1 & 2 into single consensus rule
     input:
         vcf="intermediates/variants/phased.vcf.gz",
         tbi="intermediates/variants/phased.vcf.gz.tbi",
@@ -287,7 +298,8 @@ rule build_matrix:
         config["matrix_filename"]
     run:
         matrix = "individual_id"
-        loci = list(filename.split('/')[-1].split('.fna')[0] for filename in sorted(input))
+        input = sorted(input)
+        loci = [filename.split('/')[-1].split('.fna')[0] for filename in input]
         individuals_to_loci = collections.defaultdict(set)
         for locus_filename in input:
             locus_id = locus_filename.split('/')[-1].split('.fna')[0]
