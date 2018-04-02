@@ -1,4 +1,4 @@
-""" Pipeline for processing data from amplicon sequencing and calling haplotypes.
+""" Pipeline for processing amplicon sequence data and calling haplotypes.
 Author: Kelly Sovacool
 Email: kellysovacool@gmail.com
 Date: 30 Mar. 2018
@@ -61,17 +61,22 @@ samples = set(wildcards.sample)
 
 rule all:
     input:
-        config["matrix_filename"]
+        config["matrix_filename"],
+        expand("snp_sites/{locus}.fna", locus=loci)
 
 rule fastq_merge:
     input:
         lambda wildcards: samples_to_filepaths[wildcards.sample][wildcards.pair]
     output:
         "intermediates/merged_fastq/{sample}_{pair}.fastq.gz"
+    log:
+        "logs/fastq_merge/{sample}_{pair}.log"
     run:
         if len(input) == 1:
             shutil.copy2(input[0], output[0])
         else:
+            with open(log, 'w') as logfile:
+                file.write("Merging {}".format(str(input)))
             with open(output[0], 'wb') as out_file:
                 for filename in input:
                     with open(filename, 'rb') as in_file:
@@ -86,9 +91,11 @@ rule fastq_filter:
         R1_single="intermediates/filtered_fq/{{sample}}_{pair}_single.fastq.gz".format(pair=pair1),
         R2_paired="intermediates/filtered_fq/{{sample}}_{pair}.fastq.gz".format(pair=pair2),
         R2_single="intermediates/filtered_fq/{{sample}}_{pair}_single.fastq.gz".format(pair=pair2)
+    log:
+        "logs/fastq_filter/{sample}.log"
     shell:
         "java -jar {jar_file} PE -phred33 {input.R1} {input.R2} {output.R1_paired} {output.R1_single} {output.R2_paired} {output.R2_single} "
-        "ILLUMINACLIP:{adapter_file}:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36"
+        "ILLUMINACLIP:{adapter_file}:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 &> {log}"
 
 rule bwa_index:
     input:
@@ -105,20 +112,29 @@ rule bwa_map:
         ref=reference_file + '.bwt'
     output:
         "intermediates/alignments/{sample}.mapped.bam"
+    params:
+        rg="@RG\tID:{sample}\tSM:{sample}"
     log:
         "logs/bwa_mem/{sample}.log"
     shell:
-        "bwa mem {reference_file} {input.R1} {input.R2} | "
+        "bwa mem -R '{params.rg}' {reference_file} {input.R1} {input.R2} | "
         "samtools view -Sb - > {output} 2> {log}"
 
 rule samtools_sort:
     input:
         "intermediates/alignments/{sample}.mapped.bam"
     output:
-        protected("intermediates/alignments/{sample}.sorted.bam")
+        "intermediates/alignments/{sample}.sorted.bam"
     shell:
-        "samtools sort -T intermediates/alignments/{wildcards.sample} "
-        "-O bam {input} > {output}"
+        "samtools sort -T intermediates/alignments/{wildcards.sample} -O bam {input} > {output}"
+
+rule samtools_merge:
+    input:
+        expand("intermediates/alignments/{sample}.sorted.bam", sample=samples)
+    output:
+        protected("intermediates/alignments/merged.bam")
+    shell:
+        "samtools merge {output} {input}"
 
 rule samtools_faidx:
     input:
@@ -128,71 +144,83 @@ rule samtools_faidx:
     shell:
         "samtools faidx {input}"
 
-rule freebayes:
+rule call_variants:
     input:
-        bam="intermediates/alignments/{sample}.sorted.bam",
-        ref=reference_file + '.fai'
+        bam="intermediates/alignments/merged.bam",
+        fai=reference_file + '.fai'
     output:
-        "intermediates/variants/{sample}.raw.vcf"
+        "intermediates/variants/raw_calls.vcf"
+    log:
+        "logs/variants/call.log"
     shell:
-        "freebayes --min-mapping-quality 1 -f {reference_file} {input.bam} > {output}"
+        "freebayes --min-mapping-quality 1 -f {reference_file} {input.bam} > {output} 2> {log}"
 
-rule bcftools_filter:
+rule filter_variants:
     input:
-        "intermediates/variants/{sample}.raw.vcf"
+        "intermediates/variants/raw_calls.vcf"
     output:
-        "intermediates/variants/{sample}.filtered.vcf"
+        "intermediates/variants/filtered.vcf"
+    log:
+        "logs/variants/filter.log"
     shell:
-        "bcftools filter -e 'QUAL < 20' {input} | bcftools filter -e 'DP < 5' -o {output}"
+        "vcftools --remove-indels --vcf {input} --max-missing 0.5 --minQ 20 --minDP 3 --recode --recode-INFO-all -c > {output} 2> {log}"
 
-rule whatshap:
+rule phase_variants:
     input:
-        vcf="intermediates/variants/{sample}.filtered.vcf",
-        bam="intermediates/alignments/{sample}.sorted.bam"
+        bam="intermediates/alignments/merged.bam",
+        vcf="intermediates/variants/filtered.vcf"
     output:
-        "intermediates/variants/{sample}.phased.vcf"
+        "intermediates/variants/phased.vcf"
+    log:
+        "logs/variants/phase.log"
     shell:
-        "whatshap phase --ignore-read-groups --reference {reference_file} -o {output} {input.vcf} {input.bam}"
+        "whatshap phase --reference {reference_file} -o {output} {input.vcf} {input.bam} 2> {log}"
 
 rule bgzip:
     input:
-        "intermediates/variants/{sample}.phased.vcf"
+        "intermediates/variants/phased.vcf"
     output:
-        "intermediates/variants/{sample}.phased.vcf.gz"
+        "intermediates/variants/phased.vcf.gz"
     shell:
         "bgzip {input}"
 
 rule tabix:
     input:
-        "intermediates/variants/{sample}.phased.vcf.gz"
+        "intermediates/variants/phased.vcf.gz"
     output:
-        "intermediates/variants/{sample}.phased.vcf.gz.tbi"
+        "intermediates/variants/phased.vcf.gz.tbi"
     shell:
         "tabix {input}"
 
 rule consensus1:
     input:
-        vcf="intermediates/variants/{sample}.phased.vcf.gz",
-        tbi="intermediates/variants/{sample}.phased.vcf.gz.tbi"
+        vcf="intermediates/variants/phased.vcf.gz",
+        tbi="intermediates/variants/phased.vcf.gz.tbi",
+        bam="intermediates/alignments/{sample}.sorted.bam"
     output:
         "intermediates/individual_haps/{sample}.hap1.fna"
+    params:
+        sample="{sample}"
     shell:
-        "bcftools consensus -H 1 -f {reference_file} {input.vcf} > {output}"
+        "bcftools consensus -i -s {params.sample} -H 1 -f {reference_file} {input.vcf} > {output}"
 
 rule consensus2:
     input:
-        vcf="intermediates/variants/{sample}.phased.vcf.gz",
-        tbi="intermediates/variants/{sample}.phased.vcf.gz.tbi"
+        vcf="intermediates/variants/phased.vcf.gz",
+        tbi="intermediates/variants/phased.vcf.gz.tbi",
+        bam="intermediates/alignments/{sample}.sorted.bam"
     output:
         "intermediates/individual_haps/{sample}.hap2.fna"
+    params:
+        sample="{sample}"
     shell:
-        "bcftools consensus -H 2 -f {reference_file} {input.vcf} > {output}"
+        "bcftools consensus -i -s {params.sample} -H 2 -f {reference_file} {input.vcf} > {output}"
 
 rule combine_haps:
     input:
         expand("intermediates/individual_haps/{sample}.hap{h}.fna", sample=samples, h={1,2})
     output:
-        expand("intermediates/combined_haps_with_refs/{locus}.haps.fna", locus=loci)
+        expand("intermediates/combined_haps_with_refs/{locus}.fna", locus=loci)
     run:
         haps_in_loci=collections.defaultdict(dict)
         for sample in samples:
@@ -204,26 +232,28 @@ rule combine_haps:
         for locus_id in haps_in_loci:
             sequences = [haps_in_loci[locus_id][seq_id] for seq_id in sorted(haps_in_loci[locus_id].keys())]
             sequences.insert(0, reference_sequences[locus_id])
-            with open("intermediates/combined_haps_with_refs/" + locus_id + '.haps.fna', 'w') as file:
+            with open("intermediates/combined_haps_with_refs/" + locus_id + '.fna', 'w') as file:
                 Bio.SeqIO.write(sequences, file, 'fasta')
 
 rule align_haps:
     input:
-        "intermediates/combined_haps_with_refs/{locus}.haps.fna"
+        "intermediates/combined_haps_with_refs/{locus}.fna"
     output:
-        "intermediates/aligned_hap_with_refs/{locus}.haps.fna"
+        "intermediates/aligned_haps_with_refs/{locus}.fna"
     wildcard_constraints:
         locus="\w+"
     shell:
-        "mafft --retree 1 --maxiterate 0 --quiet {input} > {output}"
+        "mafft --auto --quiet {input} > {output}"
 
-rule output_haps:
+rule filter_haps:
     input:
-        "intermediates/aligned_hap_with_refs/{locus}.haps.fna"
+        "intermediates/aligned_haps_with_refs/{locus}.fna"
     output:
-        "{haps_dir}/{locus}.fna"
+        "{haps_dir}/{{locus}}.fna".format(haps_dir=haps_dir)
     wildcard_constraints:
         locus="\w+"
+    log:
+        "logs/output_haps/{locus}.log"
     run:
         nucleotides = "agtcAGTC"
         sequences = list()
@@ -236,8 +266,19 @@ rule output_haps:
                     seq_record.seq = Bio.Seq.Seq(new_seq)
                     sequences.append(seq_record)
                 else:
-                    print("{} from {} has no nucleotides".format(new_seq.id, input[0]))
+                    with open(log, 'w') as logfile:
+                        file.write("{} from {} has no nucleotides".format(new_seq.id, input[0]))
         Bio.SeqIO.write(sequences, output[0], 'fasta')
+
+rule snp_sites:
+    input:
+        "{haps_dir}/{{locus}}.fna".format(haps_dir=haps_dir)
+    output:
+        "snp_sites/{locus}.fna"
+    log:
+        "logs/snp_sites/{locus}.log"
+    shell:
+        "snp-sites -o {output} {input} 2> {log}"
 
 rule build_matrix:
     input:
