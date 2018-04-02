@@ -1,5 +1,5 @@
 reference: reference/ambystoma_reference.fna
 fastq_dir: testdata
 haps_dir: haplotypes
-matrix_filename: matrix_testdata.tsv
+matrix_filename: matrix_illumina_data.tsv
 trimmomatic_adapter: adapters/TruSeq3-PE.fa

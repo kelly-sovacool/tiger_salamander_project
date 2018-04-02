@@ -16,7 +16,6 @@ haps_dir=config["haps_dir"]
 reference_file = config["reference"]
 reference_sequences = {seq_record.id: seq_record for seq_record in Bio.SeqIO.parse(reference_file, 'fasta')}
 loci=set(reference_sequences.keys())
-jar_file = config["trimmomatic_jar"]
 adapter_file = config['trimmomatic_adapter']
 pair1, pair2 = "R1", "R2"
 
@@ -89,7 +88,7 @@ rule fastq_filter:
     log:
         "logs/fastq_filter/{sample}.log"
     shell:
-        "java -jar {jar_file} PE -phred33 {input.R1} {input.R2} {output.R1_paired} {output.R1_single} {output.R2_paired} {output.R2_single} "
+        "trimmomatic PE -phred33 {input.R1} {input.R2} {output.R1_paired} {output.R1_single} {output.R2_paired} {output.R2_single} "
         "ILLUMINACLIP:{adapter_file}:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 &> {log}"
 
 rule bwa_index:
