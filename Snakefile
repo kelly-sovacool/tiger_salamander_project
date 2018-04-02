@@ -1,10 +1,7 @@
 """ Pipeline for processing amplicon sequence data and calling SNP haplotypes.
 Author: Kelly Sovacool
-Email: kellysovacool@gmail.com
 Date: 30 Mar. 2018
 """
-# TODO: support for multiple sequencing runs, but optional. use samtools merge
-# TODO: use log files
 # TODO: use benchmarking
 
 import Bio.SeqIO
@@ -117,7 +114,9 @@ rule bwa_map:
     params:
         rg="@RG\tID:{sample}\tSM:{sample}"
     log:
-        "logs/bwa_mem/{sample}.log"
+        "logs/bwa_map/{sample}.log"
+    benchmark:
+        "benchmarks/bwa_map/{sample}.txt"
     shell:
         "bwa mem -R '{params.rg}' {reference_file} {input.R1} {input.R2} | "
         "samtools view -Sb - > {output} 2> {log}"
@@ -127,6 +126,8 @@ rule samtools_sort:
         "intermediates/alignments/{sample}.mapped.bam"
     output:
         "intermediates/alignments/{sample}.sorted.bam"
+    benchmark:
+        "benchmarks/samtools_sort/{sample}.txt"
     shell:
         "samtools sort -T intermediates/alignments/{wildcards.sample} -O bam {input} > {output}"
 
@@ -135,6 +136,8 @@ rule samtools_merge:
         expand("intermediates/alignments/{sample}.sorted.bam", sample=samples)
     output:
         protected("intermediates/alignments/merged.bam")
+    benchmark:
+        "benchmarks/samtools_merge.txt"
     shell:
         "samtools merge {output} {input}"
 
@@ -162,6 +165,8 @@ rule call_variants:
         "intermediates/variants/raw_calls.vcf"
     log:
         "logs/variants/call.log"
+    benchmark:
+        "benchmarks/call_variants.txt"
     shell:
         "freebayes --min-mapping-quality 1 -f {reference_file} {input.bam} > {output} 2> {log}"
 
@@ -172,6 +177,8 @@ rule filter_variants:
         "intermediates/variants/filtered.vcf"
     log:
         "logs/variants/filter.log"
+    benchmark:
+        "benchmarks/filter_variants.txt"
     shell:
         "vcftools --remove-indels --vcf {input} --max-missing 0.5 --minQ 20 --minDP 3 --recode --recode-INFO-all -c > {output} 2> {log}"
 
@@ -184,6 +191,8 @@ rule phase_variants:
         "intermediates/variants/phased.vcf"
     log:
         "logs/variants/phase.log"
+    benchmark:
+        "benchmarks/phase_variants.txt"
     shell:
         "whatshap phase --reference {reference_file} -o {output} {input.vcf} {input.bam} &> {log}"
 
@@ -232,6 +241,8 @@ rule combine_haps:
         expand("intermediates/individual_haps/{sample}.hap{h}.fna", sample=samples, h={1,2})
     output:
         expand("intermediates/combined_haps_with_refs/{locus}.fna", locus=loci)
+    benchmark:
+        "benchmarks/combine_haps.txt"
     run:
         haps_in_loci=collections.defaultdict(dict)
         for sample in samples:
@@ -253,6 +264,8 @@ rule align_haps:
         "intermediates/aligned_haps_with_refs/{locus}.fna"
     wildcard_constraints:
         locus="\w+"
+    benchmark:
+        "benchmarks/align_haps/{locus}.txt"
     shell:
         "mafft --auto --quiet {input} > {output}"
 
@@ -265,6 +278,8 @@ rule filter_haps:
         locus="\w+"
     log:
         "logs/output_haps/{locus}.log"
+    benchmark:
+        "benchmarks/filter_haps/{locus}.txt"
     run:
         nucleotides = "agtcAGTC"
         sequences = list()
@@ -288,6 +303,8 @@ rule snp_sites:
         "snp_sites/{locus}.fna"
     log:
         "logs/snp_sites/{locus}.log"
+    benchmark:
+        "benchmarks/snp_sites/{locus}.txt"
     shell:
         "snp-sites -o {output} {input} 2> {log}"
 
@@ -296,6 +313,8 @@ rule build_matrix:
         expand("{haps_dir}/{locus}.fna", locus=loci, haps_dir=haps_dir)
     output:
         config["matrix_filename"]
+    benchmark:
+        "benchmarks/build_matrix.txt"
     run:
         matrix = "individual_id"
         input = sorted(input)
