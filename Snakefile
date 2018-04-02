@@ -12,14 +12,13 @@ import shutil
 configfile: "config_testdata.yaml"
 
 fastq_dir = config["fastq_dir"]
-#seq_runs = config["seq_runs"]
 haps_dir=config["haps_dir"]
 reference_file = config["reference"]
 reference_sequences = {seq_record.id: seq_record for seq_record in Bio.SeqIO.parse(reference_file, 'fasta')}
 loci=set(reference_sequences.keys())
 jar_file = config["trimmomatic_jar"]
 adapter_file = config['trimmomatic_adapter']
-pair1, pair2 = "R1", "R2" # set of paired end specifiers
+pair1, pair2 = "R1", "R2"
 
 def get_sample_ids(input_dir, r1, r2):
     samples_to_seq_runs = collections.defaultdict(dict)
@@ -51,7 +50,7 @@ def get_sample_ids(input_dir, r1, r2):
                 samples_to_seq_runs[sample][pair].append(current_filepath)
     return samples_to_seq_runs
 
-samples_to_filepaths = get_sample_ids(fastq_dir, pair1, pair2)  # sample_id: {seq_run1/id.fastq.gz, seq_run2/id.fastq.gz, ...}
+samples_to_filepaths = get_sample_ids(fastq_dir, pair1, pair2)  # sample_id: [seq_run1/id.fastq.gz, seq_run2/id.fastq.gz, ...]
 wildcards = glob_wildcards(os.path.join(fastq_dir, "{seq_run}/{sample}_{pair}.fastq.gz"))
 samples = set(wildcards.sample)
 
