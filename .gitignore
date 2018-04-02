@@ -1,7 +1,8 @@
-.snakemake/*
-.idea/*
+.snakemake/
+.idea/
 *.DS_Store
 Icon*
-intermediates/*
+intermediates/
 logs/
-benchmarks/*
+benchmarks/
+illumina_data/
