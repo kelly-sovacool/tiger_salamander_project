@@ -2,7 +2,7 @@
 Author: Kelly Sovacool
 Date: 30 Mar. 2018
 """
-# TODO: collapse consensus1 & consensus2 into single consensus rule
+# TODO: align 454 data with illumina data
 import Bio.SeqIO
 import collections
 import os
@@ -18,6 +18,7 @@ reference_sequences = {seq_record.id: seq_record for seq_record in Bio.SeqIO.par
 loci=set(reference_sequences.keys())
 adapter_file = config['trimmomatic_adapter']
 pair1, pair2 = "R1", "R2"
+hap_numbers = ["1", "2"]
 
 def get_sample_ids(input_dir, r1, r2):
     samples_to_seq_runs = collections.defaultdict(dict)
@@ -56,6 +57,7 @@ samples = set(wildcards.sample)
 rule all:
     input:
         config["matrix_filename"],
+        expand("intermediates/individual_haps/{sample}.hap{h}.fna", sample=samples, h=hap_numbers),
         expand("snp_sites/{locus}.fna", locus=loci)
 
 rule fastq_merge:
@@ -209,33 +211,22 @@ rule tabix:
     shell:
         "tabix {input}"
 
-rule consensus1:
+rule consensus:
     input:
         vcf="intermediates/variants/phased.vcf.gz",
         tbi="intermediates/variants/phased.vcf.gz.tbi",
         bam="intermediates/alignments/{sample}.sorted.bam"
     output:
-        "intermediates/individual_haps/{sample}.hap1.fna"
+        "intermediates/individual_haps/{sample}.hap{h}.fna"
     params:
-        sample="{sample}"
+        sample="{sample}",
+        hap_number="{h}"
     shell:
-        "bcftools consensus -i -s {params.sample} -H 1 -f {reference_file} {input.vcf} > {output}"
-
-rule consensus2:
-    input:
-        vcf="intermediates/variants/phased.vcf.gz",
-        tbi="intermediates/variants/phased.vcf.gz.tbi",
-        bam="intermediates/alignments/{sample}.sorted.bam"
-    output:
-        "intermediates/individual_haps/{sample}.hap2.fna"
-    params:
-        sample="{sample}"
-    shell:
-        "bcftools consensus -i -s {params.sample} -H 2 -f {reference_file} {input.vcf} > {output}"
+        "bcftools consensus -i -s {params.sample} -H {params.hap_number} -f {reference_file} {input.vcf} > {output}"
 
 rule combine_haps:
     input:
-        expand("intermediates/individual_haps/{sample}.hap{h}.fna", sample=samples, h={1,2})
+        expand("intermediates/individual_haps/{sample}.hap{h}.fna", sample=samples, h=hap_numbers)
     output:
         expand("intermediates/combined_haps_with_refs/{locus}.fna", locus=loci)
     benchmark:
