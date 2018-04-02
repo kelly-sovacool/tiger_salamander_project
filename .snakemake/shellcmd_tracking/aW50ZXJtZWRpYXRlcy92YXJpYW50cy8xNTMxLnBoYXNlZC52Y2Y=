@@ -1,1 +1,0 @@
-whatshap phase --ignore-read-groups --reference reference/ambystoma_reference.fna -o intermediates/variants/1531.phased.vcf intermediates/variants/1531.filtered.vcf intermediates/alignments/1531.sorted.bam

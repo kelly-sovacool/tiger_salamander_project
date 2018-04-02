@@ -1,1 +1,0 @@
-samtools sort -T intermediates/alignments/2820 -O bam intermediates/alignments/2820.mapped.bam > intermediates/alignments/2820.sorted.bam

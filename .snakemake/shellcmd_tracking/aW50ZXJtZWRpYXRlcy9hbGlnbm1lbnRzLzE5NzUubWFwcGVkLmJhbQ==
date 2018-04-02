@@ -1,1 +1,0 @@
-bwa mem reference/ambystoma_reference.fna intermediates/filtered_fq/1975_R1.fastq.gz intermediates/filtered_fq/1975_R2.fastq.gz | samtools view -Sb - > intermediates/alignments/1975.mapped.bam 2> logs/bwa_mem/1975.log

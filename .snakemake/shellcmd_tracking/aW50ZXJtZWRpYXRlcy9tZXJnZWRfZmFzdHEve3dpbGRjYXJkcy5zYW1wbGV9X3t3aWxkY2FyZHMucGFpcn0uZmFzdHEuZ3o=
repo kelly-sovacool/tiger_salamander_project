@@ -1,1 +1,0 @@
-echo  ; touch matrix.tsv intermediates/merged_fastq/{wildcards.sample}_{wildcards.pair}.fastq.gz

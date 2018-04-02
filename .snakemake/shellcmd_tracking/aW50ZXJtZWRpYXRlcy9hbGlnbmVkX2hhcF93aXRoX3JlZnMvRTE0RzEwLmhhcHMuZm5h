@@ -1,1 +1,0 @@
-mafft --retree 1 --maxiterate 0 --quiet intermediates/combined_haps_with_refs/E14G10.haps.fna > intermediates/aligned_hap_with_refs/E14G10.haps.fna

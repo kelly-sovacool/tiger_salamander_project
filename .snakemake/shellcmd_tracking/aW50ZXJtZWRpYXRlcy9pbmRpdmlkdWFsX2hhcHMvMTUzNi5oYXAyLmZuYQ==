@@ -1,1 +1,0 @@
-bcftools consensus -H 2 -f reference/ambystoma_reference.fna intermediates/variants/1536.phased.vcf.gz > intermediates/individual_haps/1536.hap2.fna
