@@ -2,8 +2,8 @@
 Author: Kelly Sovacool
 Date: 30 Mar. 2018
 """
-# TODO: provide list of bad loci to ignore in config file
-# TODO: align 454 data with illumina data
+# TODO: remove bad locus
+
 import Bio.SeqIO
 import collections
 import os
