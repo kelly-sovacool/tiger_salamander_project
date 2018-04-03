@@ -65,7 +65,6 @@ rule build_matrix:
                 if filename[:4] != "Icon":
                     indiv_id = filename.split('_')[0]
                     base, subdir = os.path.split(working_dir)
-                    print(subdir)
                     individuals_to_seq_runs[indiv_id].add(subdir)
         for filename in os.listdir(config["454_haplotypes_dir"]):
             with open(os.path.join(config["454_haplotypes_dir"], filename), 'r') as infile:
