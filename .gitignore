@@ -2,8 +2,11 @@
 .idea/
 *.DS_Store
 Icon*
-intermediates/
+~$*
+intermediates*
 logs/
 benchmarks/
 illumina_data/
 snp_sites/
+data/
+haplotypes/
