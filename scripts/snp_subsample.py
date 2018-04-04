@@ -4,8 +4,8 @@ Author: Kelly Sovacool
 Email: kellysovacool@uky.edu
 28 Sep 2017
 
-Usage: 
-    snp_subsample.py <snp-sites-dir> <output-filename-base> [--abundance-filter=<percent-cutoff> --output-filtered-fasta-dir=<filtered_dir> --skip-filter --size=<subsample-size> --all-snps-all-loci --missing-cutoff=<percent-cutoff> --output-format=<fasta-or-strx> --ignore-indels]
+Usage:
+    snp_subsample.py <snp-sites-dir> <output-filename-base> [--abundance-filter=<percent-cutoff> --output-filtered-fasta-dir=<filtered_dir> --skip-filter --num_subsamples=<num> --all-snps-all-loci --missing-cutoff=<percent-cutoff> --output-format=<fasta-or-strx>]
     snp_subsample.py --help
 
 Options:
@@ -13,24 +13,21 @@ Options:
     --abundance-filter=<percent-cutoff>         filter out SNPs below a percent abundance cutoff [default: 0.05].
     --missing-cutoff=<percent-cutoff>           filter out SNP sites with more than <percent-cutoff> of individuals missing data [default: 0.5].
     --skip-filter                               skip the filtering step (e.g. if using already-filtered data).
-    --size=<subsample-size>                     number of subsamples [default: 1].
+    --num_subsamples=<num>                      number of subsamples [default: 1].
     --all-snps-all-loci                         output a file containing all snps from all loci.
     --output-filtered-fasta-dir=<filtered_dir>  output filtered snp-sites fastas to a directory.
     --output-format=<fasta-or-strx>             output format for subsamples [default: strx].
-    --ignore-indels                             if an indel is present at a snp site, ignore that site. default behavior is to report indels as missing data.
 """
 import Bio.Seq
 import Bio.SeqIO
 import docopt
 import os
 import random
-
-# Redesign: clean up main fcn, better OOP design
+# TODO: update for Snakemake pipeline
+# TODO: Redesign: clean up main fcn, better OOP design
 
 
 def main(args):
-    args['--ignore-indels'] = '--ignore-indels' in args
-    args['--skip-filter'] = '--skip-filter' in args
     all_individual_ids = set()
     for fasta_filename in os.listdir(args['<snp-sites-dir>']):  # build set of individual ids
         with open(args['<snp-sites-dir>'] + fasta_filename, 'r') as infile:
@@ -57,8 +54,8 @@ def main(args):
         loci.append(locus)
     output_file_extension = output_format_extension(args['--output-format'])
 
-    if args['--size']:  # take subsample(s)
-        for number in range(1, int(args['--size']) + 1):
+    if args['--num_subsamples']:  # take subsample(s)
+        for number in range(1, int(args['--num_subsamples']) + 1):
             loci.new_random_poly_sites()
             with open(args['<output-filename-base>'] + str(number) + output_file_extension, 'w') as outfile:
                 for id in sorted(all_individual_ids):
@@ -72,7 +69,7 @@ def main(args):
                     outfile.write(line)
 
     if args['--all-snps-all-loci']:
-        with open('all-snps-all-loci' + output_file_extension, 'w') as outfile:
+        with open(os.path.split(output_filename_base[0]) + 'all-snps-all-loci' + output_file_extension, 'w') as outfile:
             for id in sorted(all_individual_ids):
                 line = id + '\t' if output_file_extension != '.strx.txt' else id.split('_')[0] + '\t'
                 for locus in loci:
@@ -224,4 +221,3 @@ if __name__ == "__main__":
         if arguments[arg]:
             arguments[arg] = check_directory(arguments[arg])
     main(arguments)
-
