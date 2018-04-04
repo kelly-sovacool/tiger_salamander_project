@@ -1,7 +1,7 @@
 """ Pipeline for processing 454 haplotypes before combining with Illumina data """
+# TODO: rule for nexus to fasta conversion
+# TODO: rule for 'creating' homozygous diploids from haploids
 import Bio.SeqIO
-import collections
-import os
 
 input_dir = config["454_haplotypes_dir"]
 wildcards = glob_wildcards("{haplotypes_dir}/{{locus}}.fna".format(haplotypes_dir=input_dir))

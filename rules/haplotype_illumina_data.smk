@@ -1,7 +1,5 @@
-""" Pipeline for processing amplicon sequence data and calling SNP haplotypes.
-Author: Kelly Sovacool
-Date: 30 Mar. 2018
-"""
+""" Pipeline for processing Illumina MiSeq amplicon sequence data and calling SNP haplotypes. """
+
 import Bio.SeqIO
 import collections
 import os
@@ -14,9 +12,9 @@ loci=set(reference_sequences.keys())
 
 def get_sample_ids(input_dir, r1, r2):
     """ Renames files to strip the leading D and keep only the id & read pair.
-    Warning: do not use this if any individual was sequenced on multiple lanes.
-    Return: dict mapping sample ids to raw fastq filepaths (e.g. for individuals in multiple sequencing runs)
-    """
+    Warning: do not use this if any individual/sample was sequenced on multiple lanes.
+    Return: dict mapping sample ids to list of raw fastq filepaths (e.g. for individuals in multiple sequencing runs)
+    """  # TODO: support samples on multiple lanes
     samples_to_seq_runs = collections.defaultdict(dict)
     sample_regex = re.compile('[0-9A-Za-z]*')
     leading_D_regex = re.compile('^D[0-9]')
