@@ -1,15 +1,11 @@
-""" Pipeline for processing amplicon sequence data and calling SNP haplotypes.
-Author: Kelly Sovacool
-Date: 30 Mar. 2018
-"""
-# TODO: remove bad locus
-
+""" Pipeline for calling SNP haplotypes on Illumina sequences and combining with haplotypes from 454 data. """
+# TODO: rule for removing bad loci
+# TODO: rule "report" for summarizing matrix
 import Bio.SeqIO
 import collections
 import os
 
 configfile: "config.yaml"
-
 reference_file = config["reference"]
 reference_sequences = {seq_record.id: seq_record for seq_record in Bio.SeqIO.parse(reference_file, 'fasta')}
 
@@ -88,3 +84,48 @@ rule build_matrix:
                 matrix += '\t1' if locus_id in individuals_to_loci[indiv_id] else '\t0'
         with open(output[0], 'w') as file:
             file.write(matrix)
+
+rule snp_subsample:
+    input:
+        expand("snp_sites/{locus}.fna", locus=loci)
+    output:
+        expand("snp_subsamples/{subsample_base}{num}.{{ext}}", subsample_base=config["snp_subsample"]["output_filename_base"], num=range(config["snp_subsample"]["num_subsamples"])),
+        "snp_subsample/all-snps-all-loci.{ext}"
+    params:
+        fn_base = config["snp_subsample"]["output_filename_base"],
+        num_subsamples = config["snp_subsample"]["num_subsamples"],
+        output_format = config["snp_subsample"]["output_format"],
+        all_snps_all_loci = config["snp_subsample"]["all_snps_all_loci"]
+    shell:
+        "scripts/snp_subsample.py snp_sites/ snp_subsamples/{params.fn_base} --all-snps-all-loci "
+        "--output-format {params.output_format} --num_subsamples {params.num_subsamples}"
+
+rule write_strx_scripts:
+    input:
+        "snp_subsamples/{subsample_filename}.{ext}"
+    output:
+        expand("structure/strx_{{subsample_filename}}_{k}.sh", k=range(config["structure"]["k_min"], config["structure"]["k_max"] + 1))
+    params:
+        strx_path = config["structure"]["path"],
+        num_runs = config["structure"]["num_runs"],
+        k_min = config["structure"]["k_min"],
+        k_max = config["structure"]["k_max"],
+        email = config["structure"]["email"]
+    run:
+        N = 0  # individuals
+        L = 0  # loci
+        with open(input[0], 'r') as file:
+            is_first = True
+            for line in file:
+                N += 1
+                if is_first:
+                    is_first = False
+                    L = len(line.split()) - 1
+        N = N / 2
+        for k in range(params.k_min, params.k_max + 1):
+            script = "#!/bin/bash\n#SBATCH --mail-type=ALL\n#SBATCH --mail-user={email}\nSBATCH_NODELIST: $SBATCH_NODELIST\n\n".format(email=params.email)
+            for run in range(1, params.num_runs + 1):
+                script += "{strx_path} -i {subsample} -K {k} -L {L} -N {N} -o {{subsample_filename}}_k{k}_run{run}.out &\nsleep 10\n\n".format(strx_path=params.strx_path, subsample=input[0], k=k, L=L, N=N, run=run)
+            script += 'wait'
+            with open('structure/strx_{{subsample}}_k{k}.sh'.format(k=k), 'w') as script_file:
+                script_file.write(script)
