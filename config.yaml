@@ -7,3 +7,13 @@ bad_loci:
   - E12G1
   - E6A11
   - E7G8
+snp_subsample:
+    output_filename_base: snp_sub_
+    num_subsamples: 1
+    output_format: strx
+structure:
+    path: /home/klso224/tools/structure-2.3.4/structure
+    num_runs: 16  # number of threads available
+    k_min: 2
+    k_max: 8
+    email: kellysovacool@uky.edu
