@@ -94,8 +94,7 @@ rule snp_subsample:
     params:
         fn_base = config["snp_subsample"]["output_filename_base"],
         num_subsamples = config["snp_subsample"]["num_subsamples"],
-        output_format = config["snp_subsample"]["output_format"],
-        all_snps_all_loci = config["snp_subsample"]["all_snps_all_loci"]
+        output_format = config["snp_subsample"]["output_format"]
     shell:
         "scripts/snp_subsample.py snp_sites/ snp_subsamples/{params.fn_base} --all-snps-all-loci "
         "--output-format {params.output_format} --num_subsamples {params.num_subsamples}"
