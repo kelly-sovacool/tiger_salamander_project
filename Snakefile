@@ -3,7 +3,10 @@
 # TODO: rule "report" for summarizing matrix
 import Bio.SeqIO
 import collections
+import datetime
 import os
+import plotly
+import time
 
 configfile: "config.yaml"
 reference_file = config["reference"]
@@ -35,6 +38,21 @@ rule combine_454_and_illumina:
     shell:
         "cat {input} > {output}"
 
+rule remove_bad_loci:
+    input:
+        expand("haplotypes/{locus}.fna", locus=loci)
+    output:
+        "logs/removed_bad_loci.txt"
+    run:
+        removed_loci = list()
+        for fn in input:
+            locus = fn.split('/')[1].split('.')[0]
+            if locus in bad_loci:
+                os.remove(fn)
+                removed_loci.append(locus)
+        with open(output[0], 'w') as file:
+            file.write('\n'.join(removed_loci))
+
 rule snp_sites:
     input:
         "haplotypes/{locus}.fna"
@@ -51,7 +69,8 @@ rule build_matrix:
     input:
         expand("haplotypes/{locus}.fna", locus=loci)
     output:
-        config["matrix_filename"]
+        matrix=config["matrix_filename"],
+        histogram=config["hist_filename"]
     benchmark:
         "benchmarks/build_matrix.txt"
     run:
@@ -82,8 +101,11 @@ rule build_matrix:
             matrix += '\n' + indiv_id + '\t' + ', '.join(sorted(individuals_to_seq_runs[indiv_id]))
             for locus_id in loci:
                 matrix += '\t1' if locus_id in individuals_to_loci[indiv_id] else '\t0'
-        with open(output[0], 'w') as file:
+        with open(output.matrix, 'w') as file:
             file.write(matrix)
+        plotly.offline.plot(plotly.graph_objs.Figure(data=[plotly.graph_objs.Histogram(x=len(individuals_in_loci[indiv_id]), name=indiv_id, opacity=0.75, autobinx=True) for indiv_id in sorted(individuals_in_loci)],
+                            layout=plotly.graph_objs.Layout(barmode='overlay', title=('Individuals in Loci'), xaxis=dict(title='Number of Loci'), yaxis=dict(title='Number of Individuals'))),
+                            filename=output.histogram, auto_open=True)
 
 rule snp_subsample:
     input:
@@ -128,3 +150,27 @@ rule write_strx_scripts:
             script += 'wait'
             with open('structure/strx_{{subsample}}_k{k}.sh'.format(k=k), 'w') as script_file:
                 script_file.write(script)
+
+rule report:
+    input:  # TODO: report snps per locus histogram
+        snps=expand("snp_sites/{locus}.fna", locus=loci),
+        matrix=config["matrix_filename"],
+        hist=config["hist_filename"],
+        removed_loci_file="logs/removed_bad_loci.txt"
+    output:  # TODO: histogram showing number of individuals per locus
+        "reports/report.html"
+    run:
+        from snakemake.utils import report
+        with open(input.matrix) as file:
+            matrix = file.readlines()
+        num_individuals = len(matrix) - 1
+        num_loci = len(loci)
+        with open(input.removed_bad_loci, 'r') as file:
+            removed_loci = file.readlines()
+        report("""
+        SNP calling & haplotyping pipeline for the Tiger Salamander Project
+        ===================================
+
+        {num_individuals} individuals were haplotyped for {num_loci} loci (see Table T1_ and Graph G1_).
+        Loci removed: {removed_loci}
+        """, output[0], T1=input.matrix, G1=input.hist)

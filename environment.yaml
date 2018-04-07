@@ -12,6 +12,7 @@ dependencies:
   - graphviz=2.38.0
   - numpy=1.14.2
   - openjdk=8.0.121
+  - plotly=2.5.1
   - python=3.5.1
   - pyvcf=0.6.8
   - pyyaml=3.11
