@@ -15,7 +15,8 @@ ruleorder: snp_subsample_skip_filter > snp_subsample
 
 rule all:
     input:
-        expand("snp_sites/{locus}.fna", locus=loci)
+        expand("snp_sites/{locus}.fna", locus=loci),
+        "reports/snp_histogram.html"
 
 rule snp_sites:
     input:
@@ -90,26 +91,16 @@ rule write_strx_scripts:
 rule histogram:
     input:
         snps_raw=expand("snp_sites/{locus}.fna", locus=loci),
-        snps_filtered=expand("snp_sites_filtered/{locus}.fna")
+        snps_filtered=expand("snp_sites_filtered/{locus}.fna", locus=loci)
     output:
-        "reports/histogram.html"
+        "reports/snp_histogram.html"
+    log:
+        "logs/histogram/snps_per_locus.log"
     run:
         plotly.offline.plot(plotly.graph_objs.Figure(data=[plotly.graph_objs.Histogram(x=[len(next(Bio.SeqIO.parse(filename, 'fasta')).seq) for filename in input.snps_filtered], name="snps filtered", autobinx=True),
                                                            plotly.graph_objs.Histogram(x=[len(next(Bio.SeqIO.parse(filename, 'fasta')).seq) for filename in input.snps_raw], name="snps unfiltered", autobinx=True)],
                                                      layout=plotly.graph_objs.Layout(barmode='stack'), title=('SNP sites per locus'), xaxis=dict(title='Number of SNPs'), yaxis=dict(title='Number of loci'))),
                                                      filename=output.hist, auto_open=True)
-                                                     
-rule report:
-    input:
-        hist="reports/histogram.html",
-        snps_filtered=expand("snp_sites_filtered/{locus}.fna")
-    output:
-        report="reports/report.html"
-    run:
-        from snakemake.utils import report
-        num_loci = len(input.snps_filtered)
-        report("""
-        SNP pipeline for the Tiger Salamander Project
-        ===================================
-        SNP sites were called for {num_loci} loci (see Graph G1_).
-        """, output.report, G1=input.hist)
+        avg_snps_per_locus = sum(len(next(Bio.SeqIO.parse(filename, 'fasta')).seq) for filename in input.snps_filtered) / len(input.snps_filtered)
+        with open(log[0], 'w') as logfile:
+            logfile.write(avg_snps_per_locus)

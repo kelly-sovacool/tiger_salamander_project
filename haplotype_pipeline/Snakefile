@@ -24,7 +24,8 @@ include: "rules/align_454_haplotypes.smk"
 
 rule all:
     input:
-        "reports/report.html"
+        "reports/matrix.tsv",
+        "reports/loci_histogram.tsv"
 
 rule combine_454_and_illumina:
     input:
@@ -50,8 +51,8 @@ rule build_matrix:
     input:
         expand("haplotypes/{locus}.fna", locus=loci)
     output:
-        matrix=config["matrix_filename"],
-        histogram=config["hist_filename"]
+        matrix='reports/matrix.tsv',
+        histogram='reports/loci_histogram.html'
     benchmark:
         "benchmarks/build_matrix.txt"
     run:
@@ -87,21 +88,3 @@ rule build_matrix:
         plotly.offline.plot(plotly.graph_objs.Figure(data=[plotly.graph_objs.Histogram(x=len(individuals_in_loci[indiv_id]), name=indiv_id, opacity=0.75, autobinx=True) for indiv_id in sorted(individuals_in_loci)],
                             layout=plotly.graph_objs.Layout(barmode='overlay', title=('Individuals in Loci'), xaxis=dict(title='Number of Loci'), yaxis=dict(title='Number of Individuals'))),
                             filename=output.histogram, auto_open=True)
-rule report:  # TODO: combine this report and report from snp_pipeline to create master report.
-    input:
-        matrix=config["matrix_filename"],
-        hist=config["hist_filename"],
-    output:
-        "reports/report.html"
-    run:
-        from snakemake.utils import report
-        with open(input.matrix) as file:
-            matrix = file.readlines()
-        num_individuals = len(matrix) - 1
-        num_loci = len(loci)
-        report("""
-        Haplotyping pipeline for the Tiger Salamander Project
-        ===================================
-
-        {num_individuals} individuals were haplotyped for {num_loci} loci (see Table T1_ and Graph G1_).
-        """, output[0], T1=input.matrix, G1=input.hist)
