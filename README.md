@@ -32,14 +32,14 @@ $ snakemake -j
 The haplotype pipeline will output haplotypes as single-locus fasta files in `haplotype_pipeline/haplotypes`.
 If desired, these can be manually curated with a tool such as Geneious.
 
-Place curated haplotypes in `snp_pipeline/haplotypes_curated` and change into the `snp_pipeline` directory. Be sure to edit `snp_pipeline/config.yaml` so that it contains your email address and path to Structure on your DLX account. Run it with the same command as above.
+Place curated haplotypes in `snp_pipeline/haplotypes_curated` (or copy the files from `haplotype_pipeline/haplotypes`) and change into the `snp_pipeline` directory. Be sure to edit `snp_pipeline/config.yaml` so that it contains your email address and path to Structure on your DLX account. Run it with the same command as above.
 
 The `snp_pipeline` outputs filtered SNP sites as single-locus fasta files in `snp_pipeline/snp_sites_filtered`, subsamples of the SNP data in Structure format and scripts for running Structure on the DLX in `snp_pipeline/snp_subsamples`. The subsamples and scripts can be copied to your DLX account for running Structure with:
 ```
 $ scp -r snp_pipeline/snp_subsamples username@server:~/
 ```
 
-In the top-level directory is a Snakefile with a single rule to generate a report. This report summarizes the results of both pipelines and contains links to histograms for visualizing individuals and SNPs per locus.
+In the top-level directory is a Snakefile with a single rule to generate a report. [This report](report.html) summarizes the results of both pipelines and contains links to histograms for visualizing [individuals in loci](haplotype_pipeline/reports/loci_histogram.html) and [SNP sites per locus](snp_pipeline/reports/snp_histogram.html).
 
 
 ### Notes:
