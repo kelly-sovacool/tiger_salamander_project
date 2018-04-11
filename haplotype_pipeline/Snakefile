@@ -25,7 +25,7 @@ include: "rules/align_454_haplotypes.smk"
 rule all:
     input:
         "reports/matrix.tsv",
-        "reports/loci_histogram.tsv"
+        "reports/loci_histogram.html"
 
 rule combine_454_and_illumina:
     input:
@@ -85,6 +85,7 @@ rule build_matrix:
                 matrix += '\t1' if locus_id in individuals_to_loci[indiv_id] else '\t0'
         with open(output.matrix, 'w') as file:
             file.write(matrix)
-        plotly.offline.plot(plotly.graph_objs.Figure(data=[plotly.graph_objs.Histogram(x=len(individuals_in_loci[indiv_id]), name=indiv_id, opacity=0.75, autobinx=True) for indiv_id in sorted(individuals_in_loci)],
-                            layout=plotly.graph_objs.Layout(barmode='overlay', title=('Individuals in Loci'), xaxis=dict(title='Number of Loci'), yaxis=dict(title='Number of Individuals'))),
-                            filename=output.histogram, auto_open=True)
+        data = [plotly.graph_objs.Histogram(x=[len(individuals_to_loci[indiv_id]) for indiv_id in individuals_to_loci])]
+        layout = plotly.graph_objs.Layout(title=('Individuals in Loci'), xaxis=dict(title='Number of Loci'), yaxis=dict(title='Number of Individuals'))
+        figure = plotly.graph_objs.Figure(data=data,layout=layout)
+        plotly.offline.plot(figure, filename=output.histogram, auto_open=True)

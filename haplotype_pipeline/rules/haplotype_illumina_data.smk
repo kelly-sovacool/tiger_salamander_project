@@ -244,7 +244,7 @@ rule filter_haps:
     input:
         "intermediates_illumina/haps_aligned_with_refs/{locus}.fna"
     output:
-        protected("intermediates_illumina/haplotypes/{locus}.fna")
+        "intermediates_illumina/haplotypes/{locus}.fna"
     wildcard_constraints:
         locus="\w+"
     log:
