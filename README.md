@@ -1,5 +1,5 @@
 # Tiger Salamander Project
-SNP calling & haplotyping pipeline using [Snakemake](http://snakemake.readthedocs.io/en/stable/index.html) for amplicon sequence data.
+SNP calling, haplotype, and subsampling pipeline using [Snakemake](http://snakemake.readthedocs.io/en/stable/index.html) for amplicon sequence data.
 Written for the Tiger Salamander project in the Weisrock Lab at the University of Kentucky.
 
 ## Setup
@@ -23,15 +23,25 @@ $ source activate tiger_salamander_project
 
 ## Usage
 
-If you use the default config.yaml file, place the Illumina fastq files in `data/illumina_fastq`, with a separate subdirectory for each sequencing run. Place the 454 haplotype fasta files in `data/454_haplotypes`.
-Finally, run the pipeline using as many cores as are available with:
+If you use the default config.yaml file, place the Illumina fastq files in `haplotype_pipeline/data/illumina_fastq`, with a separate subdirectory for each sequencing run. Place the 454 haplotype fasta files in `haplotype_pipeline/data/454_haplotypes`.
+Finally, change into the `haplotype_pipeline` directory and run it using as many cores as are available with:
 ```
 $ snakemake -j
 ```
 
-The pipeline will output haplotypes and SNP sites as single-locus fasta files and a table (`reports/matrix.tsv`) showing the presence of samples in each locus.
+The haplotype pipeline will output haplotypes as single-locus fasta files in `haplotype_pipeline/haplotypes`.
+If desired, these can be manually curated with a tool such as Geneious.
+
+Place curated haplotypes in `snp_pipeline/haplotypes_curated` and change into the `snp_pipeline` directory. Be sure to edit `snp_pipeline/config.yaml` so that it contains your email address and path to Structure on your DLX account. Run it with the same command as above.
+
+The `snp_pipeline` outputs filtered SNP sites as single-locus fasta files in `snp_pipeline/snp_sites_filtered`, subsamples of the SNP data in Structure format and scripts for running Structure on the DLX in `snp_pipeline/snp_subsamples`. The subsamples and scripts can be copied to your DLX account for running Structure with:
+```
+$ scp -r snp_pipeline/snp_subsamples username@server:~/
+```
+
+In the top-level directory is a Snakefile with a single rule to generate a report. This report summarizes the results of both pipelines and contains links to histograms for visualizing individuals and SNPs per locus.
 
 
 ### Notes:
  * This pipeline was written for a SNP-only analysis. The `filter_variants` rule in `rules/haplotype_illumina_data.smk` will filter out indels. If you wish to keep indels, you can remove the `--remove-indels` flag in that rule.
- * Various scripts and small programs from before the time of Snakemake are now in scripts/ for posterity.
+ * Various scripts and small programs from before the time of Snakemake are now in `legacy_scripts/` for posterity.
