@@ -1,32 +1,30 @@
 """ Pipeline for calling haplotypes on Illumina sequences and combining with haplotypes from 454 data. """
-# TODO: rule for removing bad loci
-# TODO: rule "report" for summarizing matrix
+
 import Bio.SeqIO
 import collections
 import datetime
 import os
 import plotly
 import time
+import shutil
 
 configfile: "config.yaml"
 reference_file = config["reference"]
 reference_sequences = {seq_record.id: seq_record for seq_record in Bio.SeqIO.parse(reference_file, 'fasta')}
 
-loci_all=set(reference_sequences.keys())
+loci=set(reference_sequences.keys())
 loci_454 = {fn.strip(".fna") for fn in os.listdir(config["454_haplotypes_dir"])}
-loci_bad = set(config["bad_loci"])
-loci_bad.update(loci_all - loci_454)
-loci = loci_all - loci_bad
-
+loci_not_in_454 = loci - loci_454
 pair1, pair2 = "R1", "R2"
 hap_numbers = ["1", "2"]
 
+ruleorder: combine_454_and_illumina > include_loci_not_in_454
 include: "rules/haplotype_illumina_data.smk"
 include: "rules/align_454_haplotypes.smk"
 
 rule all:
     input:
-        config["matrix_filename"]
+        "reports/report.html"
 
 rule combine_454_and_illumina:
     input:
@@ -37,20 +35,16 @@ rule combine_454_and_illumina:
     shell:
         "cat {input} > {output}"
 
-rule remove_bad_loci:
+rule include_loci_not_in_454:
     input:
-        expand("haplotypes/{locus}.fna", locus=loci)
+        "intermediates_illumina/haplotypes/{locus}.fna"
     output:
-        "logs/removed_bad_loci.txt"
+        protected("haplotypes/{locus}.fna")
+    params:
+        locus="{locus}"
     run:
-        removed_loci = list()
-        for fn in input:
-            locus = fn.split('/')[1].split('.')[0]
-            if locus in bad_loci:
-                os.remove(fn)
-                removed_loci.append(locus)
-        with open(output[0], 'w') as file:
-            file.write('\n'.join(removed_loci))
+        if params.locus in loci_not_in_454:
+            shutil.copy(input, output)
 
 rule build_matrix:
     input:
@@ -93,12 +87,11 @@ rule build_matrix:
         plotly.offline.plot(plotly.graph_objs.Figure(data=[plotly.graph_objs.Histogram(x=len(individuals_in_loci[indiv_id]), name=indiv_id, opacity=0.75, autobinx=True) for indiv_id in sorted(individuals_in_loci)],
                             layout=plotly.graph_objs.Layout(barmode='overlay', title=('Individuals in Loci'), xaxis=dict(title='Number of Loci'), yaxis=dict(title='Number of Individuals'))),
                             filename=output.histogram, auto_open=True)
-rule report:
+rule report:  # TODO: combine this report and report from snp_pipeline to create master report.
     input:
         matrix=config["matrix_filename"],
         hist=config["hist_filename"],
-        removed_loci_file="logs/removed_bad_loci.txt"
-    output:  # TODO: histogram showing number of individuals per locus
+    output:
         "reports/report.html"
     run:
         from snakemake.utils import report
@@ -106,12 +99,9 @@ rule report:
             matrix = file.readlines()
         num_individuals = len(matrix) - 1
         num_loci = len(loci)
-        with open(input.removed_bad_loci, 'r') as file:
-            removed_loci = file.readlines()
         report("""
         Haplotyping pipeline for the Tiger Salamander Project
         ===================================
 
         {num_individuals} individuals were haplotyped for {num_loci} loci (see Table T1_ and Graph G1_).
-        Loci removed: {removed_loci}
         """, output[0], T1=input.matrix, G1=input.hist)
