@@ -39,7 +39,9 @@ The `snp_pipeline` outputs filtered SNP sites as single-locus fasta files in `sn
 $ scp -r snp_pipeline/snp_subsamples username@server:~/
 ```
 
-In the top-level directory is a Snakefile with a single rule to generate a report as an html file. This report summarizes the results of both pipelines and contains links to histograms for visualizing individuals in loci and SNP sites per locus.
+In the top-level directory is a Snakefile with a single rule to generate a report as an html file. This report summarizes the results of both pipelines and contains links to histograms for visualizing individuals in loci and SNP sites per locus. Example:
+
+![alt text](https://github.com/kelly-sovacool/tiger_salamander_project/blob/master/haplotype_pipeline/reports/loci_histogram.png)
 
 
 ### Notes:
