@@ -87,22 +87,29 @@ rule write_strx_scripts:
             with open('structure/strx_{{subsample}}_k{k}.sh'.format(k=k), 'w') as script_file:
                 script_file.write(script)
 
-rule report:
+rule histogram:
     input:
         snps_raw=expand("snp_sites/{locus}.fna", locus=loci),
         snps_filtered=expand("snp_sites_filtered/{locus}.fna")
     output:
-        hist="reports/histogram.html"
-        report="reports/report.html"
+        "reports/histogram.html"
     run:
-        from snakemake.utils import report
         plotly.offline.plot(plotly.graph_objs.Figure(data=[plotly.graph_objs.Histogram(x=[len(next(Bio.SeqIO.parse(filename, 'fasta')).seq) for filename in input.snps_filtered], name="snps filtered", autobinx=True),
                                                            plotly.graph_objs.Histogram(x=[len(next(Bio.SeqIO.parse(filename, 'fasta')).seq) for filename in input.snps_raw], name="snps unfiltered", autobinx=True)],
                                                      layout=plotly.graph_objs.Layout(barmode='stack'), title=('SNP sites per locus'), xaxis=dict(title='Number of SNPs'), yaxis=dict(title='Number of loci'))),
                                                      filename=output.hist, auto_open=True)
+                                                     
+rule report:
+    input:
+        hist="reports/histogram.html",
+        snps_filtered=expand("snp_sites_filtered/{locus}.fna")
+    output:
+        report="reports/report.html"
+    run:
+        from snakemake.utils import report
         num_loci = len(input.snps_filtered)
         report("""
         SNP pipeline for the Tiger Salamander Project
         ===================================
-        SNPs were called for {num_loci} loci (see Graph G1_).
-        """, output.report, G1=output.hist)
+        SNP sites were called for {num_loci} loci (see Graph G1_).
+        """, output.report, G1=input.hist)
