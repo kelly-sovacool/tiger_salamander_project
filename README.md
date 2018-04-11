@@ -1,5 +1,5 @@
 # Tiger Salamander Project
-SNP calling, haplotype, and subsampling pipeline using [Snakemake](http://snakemake.readthedocs.io/en/stable/index.html) for amplicon sequence data.
+SNP calling, haplotyping, and subsampling pipeline using [Snakemake](http://snakemake.readthedocs.io/en/stable/index.html) for amplicon sequence data.
 Written for the Tiger Salamander project in the Weisrock Lab at the University of Kentucky.
 
 ## Setup
@@ -32,14 +32,14 @@ $ snakemake -j
 The haplotype pipeline will output haplotypes as single-locus fasta files in `haplotype_pipeline/haplotypes`.
 If desired, these can be manually curated with a tool such as Geneious.
 
-Place curated haplotypes in `snp_pipeline/haplotypes_curated` (or copy the files from `haplotype_pipeline/haplotypes`) and change into the `snp_pipeline` directory. Be sure to edit `snp_pipeline/config.yaml` so that it contains your email address and path to Structure on your DLX account. Run it with the same command as above.
+Place curated haplotypes in `snp_pipeline/haplotypes_curated` (alternatively, copy the files from `haplotype_pipeline/haplotypes`). Be sure to edit `snp_pipeline/config.yaml` so that it contains your email address and the absolute path to Structure on your DLX account. Run it with the same `snakemake` command as above from the `snp_pipeline` directory.
 
 The `snp_pipeline` outputs filtered SNP sites as single-locus fasta files in `snp_pipeline/snp_sites_filtered`, subsamples of the SNP data in Structure format and scripts for running Structure on the DLX in `snp_pipeline/snp_subsamples`. The subsamples and scripts can be copied to your DLX account for running Structure with:
 ```
 $ scp -r snp_pipeline/snp_subsamples username@server:~/
 ```
 
-In the top-level directory is a Snakefile with a single rule to generate a report as an html file. This report summarizes the results of both pipelines and contains links to histograms for visualizing individuals in loci and SNP sites per locus. Example:
+In the top-level directory is a Snakefile with a single rule to generate a report as an html file. Run `snakemake` from the top-level directory to generate it. This report summarizes the results of both pipelines and contains links to histograms for visualizing individuals in loci and SNP sites per locus. Example:
 
 ![alt text](https://github.com/kelly-sovacool/tiger_salamander_project/blob/master/haplotype_pipeline/reports/loci_histogram.png)
 
