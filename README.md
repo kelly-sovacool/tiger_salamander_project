@@ -1,6 +1,6 @@
 # Tiger Salamander Project
 SNP calling, haplotyping, and subsampling pipeline using [Snakemake](http://snakemake.readthedocs.io/en/stable/index.html) for amplicon sequence data.
-Written for the Tiger Salamander project in the Weisrock Lab at the University of Kentucky.
+Written for the Tiger Salamander project in the [Weisrock Lab](http://sweb.uky.edu/~dweis2/The_Weisrock_Lab/Front_Page.html) at the University of Kentucky.
 
 ## Setup
 
