@@ -1,4 +1,3 @@
-haplotypes_dir: haplotypes_curated
 snp_subsample:
     output_filename_base: snp_sub_
     num_subsamples: 1

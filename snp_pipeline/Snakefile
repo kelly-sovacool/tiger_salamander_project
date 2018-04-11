@@ -10,7 +10,6 @@ import time
 # TODO: rule "report" for snps per locus histogram
 
 configfile: "config.yaml"
-haplotypes_dir = config['haplotypes_dir']
 ruleorder: snp_subsample_skip_filter > snp_subsample
 
 rule all:
@@ -20,7 +19,7 @@ rule all:
 
 rule snp_sites:
     input:
-        "{haplotypes_dir}/{{locus}}.fna".format(haplotypes_dir=haplotypes_dir)
+        "haplotypes_curated/{{locus}}.fna".format(haplotypes_dir=haplotypes_dir)
     output:
         "snp_sites/{locus}.fna"
     log:
