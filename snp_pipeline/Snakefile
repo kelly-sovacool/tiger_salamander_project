@@ -1,6 +1,5 @@
 """ Pipeline for calling SNPs, subsampling, and preparing scripts for running Structure on the DLX cluster. """
-# TODO: rule for removing bad loci
-# TODO: rule "report" for summarizing matrix
+
 import Bio.SeqIO
 import collections
 import datetime
@@ -8,9 +7,11 @@ import os
 import plotly
 import time
 
-# TODO: report snps per locus histogram
+# TODO: rule "report" for snps per locus histogram
+
 configfile: "config.yaml"
 haplotypes_dir = config['haplotypes_dir']
+ruleorder: snp_subsample_skip_filter > snp_subsample
 
 rule all:
     input:
@@ -33,14 +34,28 @@ rule snp_subsample:
         expand("snp_sites/{locus}.fna", locus=loci)
     output:
         expand("snp_subsamples/{subsample_base}{num}.{{ext}}", subsample_base=config["snp_subsample"]["output_filename_base"], num=range(config["snp_subsample"]["num_subsamples"])),
+        expand("snp_sites_filtered/{locus}.fna", locus=loci),
         "snp_subsample/all-snps-all-loci.{ext}"
     params:
         fn_base = config["snp_subsample"]["output_filename_base"],
         num_subsamples = config["snp_subsample"]["num_subsamples"],
         output_format = config["snp_subsample"]["output_format"]
     shell:
-        "scripts/snp_subsample.py snp_sites/ snp_subsamples/{params.fn_base} --all-snps-all-loci "
-        "--output-format {params.output_format} --num_subsamples {params.num_subsamples}"
+        "scripts/snp_subsample.py snp_sites/ snp_subsamples/{params.fn_base} "
+        "--all-snps-all-loci --output-format {params.output_format} --num_subsamples {params.num_subsamples} "
+        "--output-filtered-fasta-dir snp_sites_filtered/"
+
+rule snp_subsample_skip_filter:
+    input:
+        expand("snp_sites_filtered/{locus}.fna", locus=loci)
+    output:
+        expand("snp_subsamples/{subsample_base}{num}.{{ext}}", subsample_base=config["snp_subsample"]["output_filename_base"], num=range(config["snp_subsample"]["num_subsamples"])),
+        "snp_subsample/all-snps-all-loci.{ext}"
+    shell:
+        "scripts/snp_subsample.py snp_sites/ snp_subsamples/{params.fn_base} "
+        "--all-snps-all-loci --output-format {params.output_format} --num_subsamples {params.num_subsamples} "
+        "--skip-filter"
+
 
 rule write_strx_scripts:
     input:
@@ -71,3 +86,23 @@ rule write_strx_scripts:
             script += 'wait'
             with open('structure/strx_{{subsample}}_k{k}.sh'.format(k=k), 'w') as script_file:
                 script_file.write(script)
+
+rule report:
+    input:
+        snps_raw=expand("snp_sites/{locus}.fna", locus=loci),
+        snps_filtered=expand("snp_sites_filtered/{locus}.fna")
+    output:
+        hist="reports/histogram.html"
+        report="reports/report.html"
+    run:
+        from snakemake.utils import report
+        plotly.offline.plot(plotly.graph_objs.Figure(data=[plotly.graph_objs.Histogram(x=[len(next(Bio.SeqIO.parse(filename, 'fasta')).seq) for filename in input.snps_filtered], name="snps filtered", autobinx=True),
+                                                           plotly.graph_objs.Histogram(x=[len(next(Bio.SeqIO.parse(filename, 'fasta')).seq) for filename in input.snps_raw], name="snps unfiltered", autobinx=True)],
+                                                     layout=plotly.graph_objs.Layout(barmode='stack'), title=('SNP sites per locus'), xaxis=dict(title='Number of SNPs'), yaxis=dict(title='Number of loci'))),
+                                                     filename=output.hist, auto_open=True)
+        num_loci = len(input.snps_filtered)
+        report("""
+        SNP pipeline for the Tiger Salamander Project
+        ===================================
+        SNPs were called for {num_loci} loci (see Graph G1_).
+        """, output.report, G1=output.hist)
