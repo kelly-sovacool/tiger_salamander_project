@@ -9,7 +9,7 @@ import time
 
 # TODO: rule "report" for snps per locus histogram
 
-configfile: "config.yaml"
+configfile: "../config.yaml"
 ruleorder: snp_subsample_skip_filter > snp_subsample
 
 rule all:
