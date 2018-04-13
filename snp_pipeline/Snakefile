@@ -7,7 +7,6 @@ import os
 import plotly
 import time
 
-# TODO: rule "report" for snps per locus histogram
 
 configfile: "../config.yaml"
 reference_file = config["reference"]
@@ -99,7 +98,7 @@ rule histogram:
         snps_filt_hist = plotly.graph_objs.Histogram(x=[len(next(Bio.SeqIO.parse(filename, 'fasta')).seq) for filename in input.snps_filtered], name="snps filtered", autobinx=True)
         snps_raw_hist = plotly.graph_objs.Histogram(x=[len(next(Bio.SeqIO.parse(filename, 'fasta')).seq) for filename in input.snps_raw], name="snps unfiltered", autobinx=True)
         data = [snps_filt_hist, snps_raw_hist]
-        layout = plotly.graph_objs.Layout(barmode='stack', title=('SNP sites per locus'), xaxis=dict(title='Number of SNPs'), yaxis=dict(title='Number of loci'))
+        layout = plotly.graph_objs.Layout(barmode='overlay', title=('SNP sites per locus'), xaxis=dict(title='Number of SNPs'), yaxis=dict(title='Number of loci'))
         plotly.offline.plot(plotly.graph_objs.Figure(data=data, layout=layout), filename=output[0], auto_open=True)
         avg_snps_per_locus = str(sum(len(next(Bio.SeqIO.parse(filename, 'fasta')).seq) for filename in input.snps_filtered) / len(input.snps_filtered))
         with open(log[0], 'w') as logfile:
