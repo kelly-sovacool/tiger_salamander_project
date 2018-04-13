@@ -1,4 +1,4 @@
-reference: reference/ambystoma_reference.fna
+reference: ../reference/ambystoma_reference.fna
 illumina_fastq_dir: data/illumina_fastq
 454_haplotypes_dir: data/454_haplotypes
 trimmomatic_adapter: adapters/TruSeq3-PE.fa
