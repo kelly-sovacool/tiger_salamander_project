@@ -10,6 +10,8 @@ import time
 # TODO: rule "report" for snps per locus histogram
 
 configfile: "../config.yaml"
+reference_file = config["reference"]
+loci = {seq_record.id for seq_record in Bio.SeqIO.parse(reference_file, 'fasta')}
 ruleorder: snp_subsample_skip_filter > snp_subsample
 
 rule all:
@@ -19,7 +21,7 @@ rule all:
 
 rule snp_sites:
     input:
-        "haplotypes_curated/{{locus}}.fna".format(haplotypes_dir=haplotypes_dir)
+        "haplotypes_curated/{locus}.fna"
     output:
         "snp_sites/{locus}.fna"
     log:
@@ -33,9 +35,7 @@ rule snp_subsample:
     input:
         expand("snp_sites/{locus}.fna", locus=loci)
     output:
-        expand("snp_subsamples/{subsample_base}{num}.{{ext}}", subsample_base=config["snp_subsample"]["output_filename_base"], num=range(config["snp_subsample"]["num_subsamples"])),
-        expand("snp_sites_filtered/{locus}.fna", locus=loci),
-        "snp_subsample/all-snps-all-loci.{ext}"
+        expand("snp_sites_filtered/{locus}.fna", locus=loci)
     params:
         fn_base = config["snp_subsample"]["output_filename_base"],
         num_subsamples = config["snp_subsample"]["num_subsamples"],
@@ -96,10 +96,11 @@ rule histogram:
     log:
         "logs/histogram/snps_per_locus.log"
     run:
-        plotly.offline.plot(plotly.graph_objs.Figure(data=[plotly.graph_objs.Histogram(x=[len(next(Bio.SeqIO.parse(filename, 'fasta')).seq) for filename in input.snps_filtered], name="snps filtered", autobinx=True),
-                                                           plotly.graph_objs.Histogram(x=[len(next(Bio.SeqIO.parse(filename, 'fasta')).seq) for filename in input.snps_raw], name="snps unfiltered", autobinx=True)],
-                                                     layout=plotly.graph_objs.Layout(barmode='stack'), title=('SNP sites per locus'), xaxis=dict(title='Number of SNPs'), yaxis=dict(title='Number of loci'))),
-                                                     filename=output.hist, auto_open=True)
-        avg_snps_per_locus = sum(len(next(Bio.SeqIO.parse(filename, 'fasta')).seq) for filename in input.snps_filtered) / len(input.snps_filtered)
+        snps_filt_hist = plotly.graph_objs.Histogram(x=[len(next(Bio.SeqIO.parse(filename, 'fasta')).seq) for filename in input.snps_filtered], name="snps filtered", autobinx=True)
+        snps_raw_hist = plotly.graph_objs.Histogram(x=[len(next(Bio.SeqIO.parse(filename, 'fasta')).seq) for filename in input.snps_raw], name="snps unfiltered", autobinx=True)
+        data = [snps_filt_hist, snps_raw_hist]
+        layout = plotly.graph_objs.Layout(barmode='stack', title=('SNP sites per locus'), xaxis=dict(title='Number of SNPs'), yaxis=dict(title='Number of loci'))
+        plotly.offline.plot(plotly.graph_objs.Figure(data=data, layout=layout), filename=output[0], auto_open=True)
+        avg_snps_per_locus = str(sum(len(next(Bio.SeqIO.parse(filename, 'fasta')).seq) for filename in input.snps_filtered) / len(input.snps_filtered))
         with open(log[0], 'w') as logfile:
             logfile.write(avg_snps_per_locus)

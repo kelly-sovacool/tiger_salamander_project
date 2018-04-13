@@ -28,6 +28,9 @@ import random
 
 
 def main(args):
+    base, fn = os.path.split(args['<output-filename-base>'])
+    if not os.path.isdir(base):
+        os.mkdir(base)
     all_individual_ids = set()
     for fasta_filename in os.listdir(args['<snp-sites-dir>']):  # build set of individual ids
         with open(args['<snp-sites-dir>'] + fasta_filename, 'r') as infile:
@@ -45,7 +48,7 @@ def main(args):
             locus_id = fasta_filename.split('.')[0]
             locus = Locus(locus_id, Bio.SeqIO.parse(infile, 'fasta'), all_individual_ids, bad_individual_ids)
             if not args['--skip-filter']:
-                locus.filter(float(args['--abundance-filter']), float(args['--missing-cutoff']), ignore_indels=args['--ignore-indels'])
+                locus.filter(float(args['--abundance-filter']), float(args['--missing-cutoff']))
                 if args['--output-filtered-fasta-dir']:
                     with open(args['--output-filtered-fasta-dir'] + fasta_filename, 'w') as filtered_fasta:
                         for seq_id, sequence in locus.individuals.items():
@@ -92,9 +95,9 @@ class Loci(list):
         else:
             super().__init__()
 
-    def filter(self, abundance_cutoff=0.05, missing_cutoff=0.5, ignore_indels=False):
+    def filter(self, abundance_cutoff=0.05, missing_cutoff=0.5):
         for locus in self:
-            locus.filter(abundance_cutoff, missing_cutoff, ignore_indels=ignore_indels)
+            locus.filter(abundance_cutoff, missing_cutoff)
 
     def new_random_poly_sites(self):
         for locus in self:
@@ -131,13 +134,13 @@ class Locus:
     def __str__(self):
         return self.id
 
-    def filter(self, abundance_cutoff, missing_cutoff, ignore_indels=False):
+    def filter(self, abundance_cutoff, missing_cutoff):
         original_count_sites = len(self.polymorphic_sites)
         removed_sites = 0
         i = 0
         while i < (original_count_sites - removed_sites):
             pmsite = self.polymorphic_sites[i]
-            if (ignore_indels and pmsite.indel_or_missing_exists) or pmsite.has_low_abundance(len(self.individuals), abundance_cutoff) or pmsite.number_individuals_missing_data >= missing_cutoff:
+            if pmsite.has_low_abundance(len(self.individuals), abundance_cutoff) or pmsite.number_individuals_missing_data >= missing_cutoff:
                 self.polymorphic_sites.pop(i)
                 for id, sequence in self.individuals.items():
                     self.individuals[id] = sequence[:i] + sequence[i+1:]  # update sequence for individuals
