@@ -5,10 +5,11 @@ import collections
 import datetime
 import os
 import plotly
+import pprint
 import time
 import shutil
 
-configfile: "config.yaml"
+configfile: "../config.yaml"
 reference_file = config["reference"]
 reference_sequences = {seq_record.id: seq_record for seq_record in Bio.SeqIO.parse(reference_file, 'fasta')}
 
@@ -45,7 +46,7 @@ rule include_loci_not_in_454:
         locus="{locus}"
     run:
         if params.locus in loci_not_in_454:
-            shutil.copy(input, output)
+            shutil.copy(input[0], output[0])
 
 rule build_matrix:
     input:
@@ -59,17 +60,17 @@ rule build_matrix:
         individuals_to_seq_runs = collections.defaultdict(set)
         for working_dir, subdirs, files in os.walk(os.path.expanduser(config['illumina_fastq_dir'])):
             for filename in files:
-                if filename[:4] != "Icon":
+                if filename[0] != '.' and filename[:4] != "Icon" :
                     indiv_id = filename.split('_')[0]
                     base, subdir = os.path.split(working_dir)
                     individuals_to_seq_runs[indiv_id].add(subdir)
         for filename in os.listdir(config["454_haplotypes_dir"]):
             with open(os.path.join(config["454_haplotypes_dir"], filename), 'r') as infile:
                 for seq_record in Bio.SeqIO.parse(infile, 'fasta'):
-                    individuals_to_seq_runs[seq_record.id].add("454")
+                    individuals_to_seq_runs[seq_record.id.split('_')[0]].add("Tigrinum_454_2013")
+        pprint.pprint(individuals_to_seq_runs)
         matrix = "individual_id\tsequencing_runs"
         input = sorted(input)
-        loci = [filename.split('/')[-1].split('.fna')[0] for filename in input]
         individuals_to_loci = collections.defaultdict(set)
         for locus_filename in input:
             locus_id = locus_filename.split('/')[-1].split('.fna')[0]
@@ -80,7 +81,9 @@ rule build_matrix:
                         indiv_id = line[1:].split('_')[0]
                         individuals_to_loci[indiv_id].add(locus_id)
         for indiv_id in sorted(individuals_to_loci):
-            matrix += '\n' + indiv_id + '\t' + ', '.join(sorted(individuals_to_seq_runs[indiv_id]))
+            newline = '\n' + indiv_id + '\t' + ', '.join(sorted(individuals_to_seq_runs[indiv_id]))
+            #print(individuals_to_seq_runs[indiv_id], '\tnewline:',newline)
+            matrix += newline
             for locus_id in loci:
                 matrix += '\t1' if locus_id in individuals_to_loci[indiv_id] else '\t0'
         with open(output.matrix, 'w') as file:

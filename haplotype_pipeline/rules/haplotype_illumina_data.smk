@@ -21,7 +21,7 @@ def get_sample_ids(input_dir, r1, r2):
     extension_regex = re.compile('\..*')
     for working_dir, subdir, files in os.walk(os.path.expanduser(input_dir)):
         for filename in files:
-            if filename[0] != '.' and filename[:4] != "Icon":  # don't work on hidden files
+            if filename[0] != '.' and filename[:4] != "Icon" :  # don't work on hidden files
                 sample = re.search(sample_regex, filename).group(0)
                 if re.search(leading_D_regex, sample):
                     sample = sample[1:]  # remove leading D
