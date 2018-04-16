@@ -35,8 +35,9 @@ def main(args):
         os.mkdir(base)
     all_individual_ids = set()
     for fasta_filename in os.listdir(args['<snp-sites-dir>']):  # build set of individual ids
-        with open(args['<snp-sites-dir>'] + fasta_filename, 'r') as infile:
-            all_individual_ids.update(record.id for record in Bio.SeqIO.parse(infile, 'fasta'))
+        if fasta_filename.endswith('.fna'):
+            with open(args['<snp-sites-dir>'] + fasta_filename, 'r') as infile:
+                all_individual_ids.update(record.id for record in Bio.SeqIO.parse(infile, 'fasta'))
     bad_individual_ids = set()
     for id in all_individual_ids:  # throw out individuals that aren't haplotyped (usually they're not real individuals)
         id_no_number = id.split('_')[0]
@@ -75,7 +76,6 @@ def main(args):
                     outfile.write(line)
 
     if args['--all-snps-all-loci']:
-        print('all-snps-all-loci fn:', os.path.split(args['<output-filename-base>'])[0] + 'all-snps-all-loci' + output_file_extension)
         with open(os.path.join(os.path.split(args['<output-filename-base>'])[0], 'all-snps-all-loci' + output_file_extension), 'w') as outfile:
             for id in sorted(all_individual_ids):
                 line = id + '\t' if output_file_extension != strx_extension else id.split('_')[0] + '\t'
