@@ -7,7 +7,6 @@ import os
 import plotly
 import time
 
-# TODO: rule "report" for snps per locus histogram
 
 configfile: "../config.yaml"
 wildcards = glob_wildcards("haplotypes_curated/{locus}.fna")
