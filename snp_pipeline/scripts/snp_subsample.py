@@ -23,11 +23,13 @@ import Bio.SeqIO
 import docopt
 import os
 import random
-# TODO: update for Snakemake pipeline
 # TODO: Redesign: clean up main fcn, better OOP design
 
+strx_extension = "_strx.txt"
+fasta_extension = ".fna"
 
 def main(args):
+
     base, fn = os.path.split(args['<output-filename-base>'])
     if not os.path.isdir(base):
         os.mkdir(base)
@@ -42,6 +44,7 @@ def main(args):
             bad_individual_ids.add(id)
     all_individual_ids.difference_update(bad_individual_ids)
 
+    # TODO: save loci as jsonpickles to allow quick reloading
     loci = Loci()  # build loci
     for fasta_filename in sorted(os.listdir(args['<snp-sites-dir>'])):
         with open(args['<snp-sites-dir>'] + fasta_filename, 'r') as infile:
@@ -62,22 +65,23 @@ def main(args):
             loci.new_random_poly_sites()
             with open(args['<output-filename-base>'] + str(number) + output_file_extension, 'w') as outfile:
                 for id in sorted(all_individual_ids):
-                    line = id + '\t' if output_file_extension != '.strx.txt' else id.split('_')[0] + '\t'
+                    line = id + '\t' if output_file_extension != strx_extension else id.split('_')[0] + '\t'
                     for locus in loci:
                         nuc = locus.individuals[id][locus.random_poly_site] if id in locus.individuals else '-'
-                        if output_file_extension == '.strx.txt':
+                        if output_file_extension == strx_extension:
                             nuc = nucleotide_to_structure(nuc)
                         line += nuc + '\t'
                     line += '\n'
                     outfile.write(line)
 
     if args['--all-snps-all-loci']:
-        with open(os.path.split(output_filename_base[0]) + 'all-snps-all-loci' + output_file_extension, 'w') as outfile:
+        print('all-snps-all-loci fn:', os.path.split(args['<output-filename-base>'])[0] + 'all-snps-all-loci' + output_file_extension)
+        with open(os.path.join(os.path.split(args['<output-filename-base>'])[0], 'all-snps-all-loci' + output_file_extension), 'w') as outfile:
             for id in sorted(all_individual_ids):
-                line = id + '\t' if output_file_extension != '.strx.txt' else id.split('_')[0] + '\t'
+                line = id + '\t' if output_file_extension != strx_extension else id.split('_')[0] + '\t'
                 for locus in loci:
                     seq = locus.individuals[id] if id in locus.individuals else '-'*len(locus.polymorphic_sites)
-                    if output_file_extension == '.strx.txt':
+                    if output_file_extension == strx_extension:
                         strx_seq = ''
                         for nuc in seq:
                             strx_seq += nucleotide_to_structure(nuc) + '\t'
@@ -194,9 +198,9 @@ class SNP:
 
 def output_format_extension(format):
     if format == 'strx':
-        extension = '.strx.txt'
+        extension = strx_extension
     elif format == 'fasta':
-        extension = '.fasta'
+        extension = fasta_extension
     else:
         raise ValueError('unrecognized output format {}'.format(format))
     return extension

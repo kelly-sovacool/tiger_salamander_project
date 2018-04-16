@@ -68,7 +68,6 @@ rule build_matrix:
             with open(os.path.join(config["454_haplotypes_dir"], filename), 'r') as infile:
                 for seq_record in Bio.SeqIO.parse(infile, 'fasta'):
                     individuals_to_seq_runs[seq_record.id.split('_')[0]].add("Tigrinum_454_2013")
-        pprint.pprint(individuals_to_seq_runs)
         matrix = "individual_id\tsequencing_runs"
         input = sorted(input)
         individuals_to_loci = collections.defaultdict(set)
