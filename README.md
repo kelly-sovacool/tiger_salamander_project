@@ -2,6 +2,8 @@
 SNP calling, haplotyping, and subsampling pipeline using [Snakemake](http://snakemake.readthedocs.io/en/stable/index.html) for amplicon sequence data.
 Written for the Tiger Salamander project in the [Weisrock Lab](http://sweb.uky.edu/~dweis2/The_Weisrock_Lab/Front_Page.html) at the University of Kentucky.
 
+[![Snakemake](https://img.shields.io/badge/snakemake-≥3.11.0-brightgreen.svg?style=flat-square)](https://snakemake.bitbucket.io) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/kelly-sovacool/tiger_salamander_project/blob/master/LICENSE.txt)
+
 ## Setup
 
 You can download this repository with:
@@ -20,6 +22,8 @@ Conda will create an environment with all the dependencies specified in the envi
 ```
 $ source activate tiger_salamander_project
 ```
+
+Alternatively, if you would prefer to use a different package management tool (e.g. `pip3`) and/or install packages system-wide, you can manually install the dependencies listed in `environment.yaml`.
 
 ## Usage
 
