@@ -5,6 +5,7 @@ import collections
 import datetime
 import os
 import plotly
+import snp_subsample
 import time
 
 
@@ -15,16 +16,31 @@ ruleorder: snp_subsample_skip_filter > snp_subsample
 
 rule all:
     input:
-        expand("snp_sites/{locus}.fna", locus=loci),
+        expand("snp_sites/{subset}/{locus}.fna", subset=config["subsets"], locus=loci),
         expand("structure/strx_{n}_k{k}.sh", n=range(1, config["snp_subsample"]["num_subsamples"] + 1), k=range(config["structure"]["k_min"], config["structure"]["k_max"] + 1)),
         expand("structure/strx_all-snps-all-loci_k{k}.sh", k=range(config["structure"]["k_min"], config["structure"]["k_max"] + 1)),
         "reports/snp_histogram.html"
 
-rule snp_sites:
+rule extract_subsets:
     input:
         "haplotypes_curated/{locus}.fna"
     output:
-        "snp_sites/{locus}.fna"
+        "{subset}/haps_curated/{locus}.fna"
+    params:
+        subset="{subset}",
+    run:
+        # TODO extract individuals in the subset
+        indiv_ids=set(config['subsets'][params.subset])
+        with open(input[0], 'r') as infile:
+            seq_records = [record for record in Bio.SeqIO.parse(infile, 'fasta') if record.id in indiv_ids]
+        with open(output[0], 'w') as outfile:
+            Bio.SeqIO.write(seq_records, outfile, 'fasta')
+
+rule snp_sites:
+    input:
+        "{subset}/haps_curated/{locus}.fna"
+    output:
+        "{subset}/snp_sites/{locus}.fna"
     log:
         "logs/snp_sites/{locus}.log"
     benchmark:
@@ -34,41 +50,41 @@ rule snp_sites:
 
 rule snp_subsample:
     input:
-        expand("snp_sites/{locus}.fna", locus=loci)
+        expand("{{subset}}/snp_sites/{locus}.fna", locus=loci)
     output:
-        expand("snp_sites_filtered/{locus}.fna", locus=loci),
-        expand("snp_subsamples/{filename_base}{subsample}_strx.txt", filename_base=config["snp_subsample"]["output_filename_base"], subsample=range(1, 1 + config["snp_subsample"]["num_subsamples"])),
-        "snp_subsamples/all-snps-all-loci_strx.txt"
+        expand("{{subset}}/snp_sites_filtered/{locus}.fna", locus=loci),
+        expand("{{subset}}/snp_subsamples/{filename_base}{subsample}_strx.txt", filename_base=config["snp_subsample"]["output_filename_base"], subsample=range(1, 1 + config["snp_subsample"]["num_subsamples"])),
+        "{subset}/snp_subsamples/all-snps-all-loci_strx.txt"
     params:
         fn_base = config["snp_subsample"]["output_filename_base"],
         num_subsamples = config["snp_subsample"]["num_subsamples"],
         output_format = config["snp_subsample"]["output_format"]
     shell:
-        "scripts/snp_subsample.py snp_sites/ snp_subsamples/{params.fn_base} "
+        "snp_subsample.py snp_sites/ snp_subsamples/{params.fn_base} "
         "--all-snps-all-loci --output-format {params.output_format} --num_subsamples {params.num_subsamples} "
         "--output-filtered-fasta-dir snp_sites_filtered/"
 
 rule snp_subsample_skip_filter:
     input:
-        expand("snp_sites_filtered/{locus}.fna", locus=loci)
+        expand("{{subset}}/snp_sites_filtered/{locus}.fna", locus=loci)
     output:
-        expand("snp_subsamples/{filename_base}{subsample}_strx.txt", filename_base=config["snp_subsample"]["output_filename_base"], subsample=range(1, 1 + config["snp_subsample"]["num_subsamples"])),
+        expand("{{subset}}/snp_subsamples/{filename_base}{subsample}_strx.txt", filename_base=config["snp_subsample"]["output_filename_base"], subsample=range(1, 1 + config["snp_subsample"]["num_subsamples"])),
         "snp_subsamples/all-snps-all-loci_strx.txt"
     params:
         fn_base = config["snp_subsample"]["output_filename_base"],
         num_subsamples = config["snp_subsample"]["num_subsamples"],
         output_format = config["snp_subsample"]["output_format"]
     shell:
-        "scripts/snp_subsample.py snp_sites/ snp_subsamples/{params.fn_base} "
+        "snp_subsample.py snp_sites/ snp_subsamples/{params.fn_base} "
         "--all-snps-all-loci --output-format {params.output_format} --num_subsamples {params.num_subsamples} "
         "--skip-filter"
 
 
 rule write_subsample_strx_script:
     input:
-        "snp_subsamples/{filename_base}{{subsample}}_strx.txt".format(filename_base=config["snp_subsample"]["output_filename_base"])
+        "{{subset}}/snp_subsamples/{filename_base}{{subsample}}_strx.txt".format(filename_base=config["snp_subsample"]["output_filename_base"])
     output:
-        expand("structure/strx_{{subsample}}_k{k}.sh", k=range(config["structure"]["k_min"], config["structure"]["k_max"] + 1))
+        expand("{{subset}}/structure/strx_{{subsample}}_k{k}.sh", k=range(config["structure"]["k_min"], config["structure"]["k_max"] + 1))
     params:
         subsample = "{subsample}",
         strx_path = config["structure"]["path"],
@@ -97,9 +113,9 @@ rule write_subsample_strx_script:
 
 rule write_all_snps_strx_script:
     input:
-        "snp_subsamples/all-snps-all-loci_strx.txt"
+        "{subset}/snp_subsamples/all-snps-all-loci_strx.txt"
     output:
-        expand("structure/strx_all-snps-all-loci_k{k}.sh", k=range(config["structure"]["k_min"], config["structure"]["k_max"] + 1))
+        expand("{{subset}}/structure/strx_all-snps-all-loci_k{k}.sh", k=range(config["structure"]["k_min"], config["structure"]["k_max"] + 1))
     params:
         strx_path = config["structure"]["path"],
         num_runs = config["structure"]["num_runs"],
@@ -127,8 +143,8 @@ rule write_all_snps_strx_script:
 
 rule histogram:
     input:
-        snps_raw=expand("snp_sites/{locus}.fna", locus=loci),
-        snps_filtered=expand("snp_sites_filtered/{locus}.fna", locus=loci)
+        snps_raw=expand("{{subset}}/snp_sites/{locus}.fna", locus=loci),
+        snps_filtered=expand("{{subset}}/snp_sites_filtered/{locus}.fna", locus=loci)
     output:
         hist="reports/snp_histogram.html",
         log="logs/histogram/snps_per_locus.log"
