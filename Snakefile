@@ -8,13 +8,13 @@ subworkflow haps:
 subworkflow snps:
     workdir: "snp_pipeline"
 
-rule html_to_pdf:  # TODO: convert plotly html files to pdf
+rule html_to_pdf:  # TODO: convert plotly html files to pdf. or use seaborn intead of plotly to create SVGs
     input:
         haps_hist=haps("reports/loci_histogram.html"),
         snps_hist=snps("reports/snp_histogram.html")
     output:
-        haps_pdf=haps("reports/loci_histogram.pdf"),
-        snps_pdf=snps("reports/snp_histogram.pdf")
+        haps_pdf="reports/loci_histogram.pdf",
+        snps_pdf="reports/snp_histogram.pdf"
     run:  # TODO: xhtml2pdf requires python 2.7
         for input_fn, output_fn in ((input.haps_hist, output.haps_pdf), (input.snps_hist, output.snps_hist)):
             with open(input_fn, 'r') as input_file:
@@ -27,9 +27,9 @@ rule html_to_pdf:  # TODO: convert plotly html files to pdf
 
 rule report:
     input:
-        haps_pdf=haps("reports/loci_histogram.pdf"),
+        haps_pdf="reports/loci_histogram.pdf",
         haps_mtx=haps("reports/matrix.tsv"),
-        snps_pdf=snps("reports/snp_histogram.pdf"),
+        snps_pdf="reports/snp_histogram.pdf",
         snps_log=snps("logs/histogram/snps_per_locus.log")
     output:
         report="reports/report.html"
