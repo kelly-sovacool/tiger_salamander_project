@@ -12,6 +12,7 @@ dependencies:
   - docutils=0.14
   - freebayes=1.1.0
   - graphviz=2.38.0
+  - htseq=0.11.0
   - numpy=1.14.2
   - openjdk=8.0.121
   - plotly=2.5.1
