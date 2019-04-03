@@ -1,4 +1,4 @@
 *.html linguist-vendored=true
-*.smk linguist-language=Snakemake
-Snakefile linguist-language=Snakemake
+*.smk linguist-language=Python
+Snakefile linguist-language=Python
 *.ipynb linguist-vendored=true
