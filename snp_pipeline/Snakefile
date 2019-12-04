@@ -6,9 +6,14 @@ import datetime
 import os
 import plotly
 import time
+import json
+import numpy as np
+import pandas as pd
 
+subworkflow haps:
+    workdir: "../haplotype_pipeline"
 
-configfile: "../config.yaml"
+configfile: "../config/config.yml"
 wildcards = glob_wildcards("haplotypes_curated/{locus}.fna")
 loci = wildcards.locus
 ruleorder: snp_subsample_skip_filter > snp_subsample
@@ -18,11 +23,63 @@ rule all:
         expand("snp_sites/{locus}.fna", locus=loci),
         expand("structure/strx_{n}_k{k}.sh", n=range(1, config["snp_subsample"]["num_subsamples"] + 1), k=range(config["structure"]["k_min"], config["structure"]["k_max"] + 1)),
         expand("structure/strx_all-snps-all-loci_k{k}.sh", k=range(config["structure"]["k_min"], config["structure"]["k_max"] + 1)),
-        "reports/snp_histogram.html"
+        "results/snp_histogram.html"
+
+rule set_indivs_to_drop:
+    input:
+        csv=haps("results/read_counts.csv")
+    output:
+        json_loci="results/indivs_to_drop_from_loci.json",
+        json_indivs="results/indivs_to_drop_all.json"
+    params:
+        read_count_threshold=config['read_count_threshold'],
+        loci_missing_threshold=config['loci_missing_threshold']
+    run:
+        read_counts = pd.read_csv("haplotype_pipeline/results/read_counts.csv", index_col=0)
+        num_loci = len(read_counts.index)
+
+        indivs_to_drop_from_loci = collections.defaultdict(list)  # indiv: set{locus1, locus2...}
+        for locus in read_counts.index:
+            for indiv_id in read_counts.columns:
+                count = read_counts.at[locus, indiv_id]
+                if count < read_count_threshold:
+                    indivs_to_drop_from_loci[indiv_id].append(locus)
+
+        indivs_to_drop_all = [indiv for indiv in indivs_to_drop_from_loci
+                              if len(indivs_to_drop_from_loci[indiv]) >= loci_missing_threshold * num_loci]
+        for indiv in indivs_to_drop_all:
+            indivs_to_drop_from_loci.pop(indiv)
+
+        with open(output.json_loci, "w") as out_file:
+            json.dump(indivs_to_drop_from_loci, out_file)
+        with open(output.json_indivs, "w") as out_file:
+            json.dump(indivs_to_drop_all, out_file)
+
+rule filter_haps:
+    input:
+        fna="haplotypes_curated/{locus}.fna",
+        json_loci=rules.set_indivs_to_drop.output.json_loci,
+        json_indivs=rules.set_indivs_to_drop.output.json_indivs
+    output:
+        "haplotypes_filtered/{locus}.fna"
+    log:
+        "logs/filter_haps/{locus}.log"
+    benchmark:
+        "benchmarks/filter_haps/{locus}.txt"
+    run:
+        with open(input.json_indivs) as json_file:
+            indivs_to_drop_all = set(json.load(json_file))
+        with open(input.json_loci) as json_file:
+            indivs_to_drop_from_loci = {key: set(value) for key, value in json.load(json_file).items()}
+        fasta_file = Bio.SeqIO.parse(input.fna, 'fasta')
+        locus = wildcards.locus
+        filtered_seqs = [seq for seq in fasta_file if ((seq.id.split('_')[0] not in indivs_to_drop_all) and
+                                                      (locus not in indivs_to_drop_from_loci[seq.id.split('_')[0]]))]
+        Bio.SeqIO.write(filtered_seqs, f"snp_pipeline/haplotypes_filtered/{locus}.fna", "fasta")
 
 rule snp_sites:
     input:
-        "haplotypes_curated/{locus}.fna"
+        "haplotypes_filtered/{locus}.fna"
     output:
         "snp_sites/{locus}.fna"
     log:
@@ -130,7 +187,7 @@ rule histogram:
         snps_raw=expand("snp_sites/{locus}.fna", locus=loci),
         snps_filtered=expand("snp_sites_filtered/{locus}.fna", locus=loci)
     output:
-        hist="reports/snp_histogram.html",
+        hist="results/snp_histogram.html",
         log="logs/histogram/snps_per_locus.log"
     run:
         snps_filt_hist = plotly.graph_objs.Histogram(x=[len(next(Bio.SeqIO.parse(filename, 'fasta')).seq) for filename in input.snps_filtered], name="snps filtered", autobinx=True, opacity=0.5)
