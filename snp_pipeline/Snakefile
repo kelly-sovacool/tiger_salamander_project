@@ -35,18 +35,18 @@ rule set_indivs_to_drop:
         read_count_threshold=config['read_count_threshold'],
         loci_missing_threshold=config['loci_missing_threshold']
     run:
-        read_counts = pd.read_csv("haplotype_pipeline/results/read_counts.csv", index_col=0)
+        read_counts = pd.read_csv(input.csv, index_col=0)
         num_loci = len(read_counts.index)
 
         indivs_to_drop_from_loci = collections.defaultdict(list)  # indiv: set{locus1, locus2...}
         for locus in read_counts.index:
             for indiv_id in read_counts.columns:
                 count = read_counts.at[locus, indiv_id]
-                if count < read_count_threshold:
+                if count < params.read_count_threshold:
                     indivs_to_drop_from_loci[indiv_id].append(locus)
 
         indivs_to_drop_all = [indiv for indiv in indivs_to_drop_from_loci
-                              if len(indivs_to_drop_from_loci[indiv]) >= loci_missing_threshold * num_loci]
+                              if len(indivs_to_drop_from_loci[indiv]) >= params.loci_missing_threshold * num_loci]
         for indiv in indivs_to_drop_all:
             indivs_to_drop_from_loci.pop(indiv)
 
