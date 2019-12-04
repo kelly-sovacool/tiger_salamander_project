@@ -16,3 +16,5 @@ structure:
     k_min: 2
     k_max: 8
     email: kellysovacool@uky.edu
+read_count_threshold: 30
+loci_missing_threshold: 0.5

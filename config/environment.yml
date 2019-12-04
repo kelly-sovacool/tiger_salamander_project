@@ -1,0 +1,29 @@
+channels:
+  - conda-forge
+  - bioconda
+  - r
+  - defaults
+  - trung
+dependencies:
+  - bcftools
+  - biopython
+  - bwa
+  - docopt
+  - docutils
+  - freebayes
+  - graphviz
+  - htseq
+  - numpy
+  - openjdk
+  - plotly
+  - python
+  - pyvcf
+  - pyyaml
+  - seaborn
+  - samtools
+  - snakemake
+  - snp-sites
+  - trimmomatic
+  - vcftools
+  - whatshap
+  - xhtml2pdf

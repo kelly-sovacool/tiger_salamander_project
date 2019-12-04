@@ -15,15 +15,15 @@ I recommend using the [Conda](https://conda.io/docs/) package manager. If you do
 
 After installing Conda, change into the directory containing the repository. Then, create a Conda environment with:
 ```
-$ conda env create --name tiger_salamander_project --file environment.yaml
+$ conda env create --name tiger_salamander_project --file config/environment.yml
 ```
 
-Conda will create an environment with all the dependencies specified in the environment.yaml file. To activate the environment, run:
+Conda will create an environment with all the dependencies specified in the environment file. To activate the environment, run:
 ```
 $ source activate tiger_salamander_project
 ```
 
-Alternatively, if you would prefer to use a different package management tool (e.g. `pip3`) and/or install packages system-wide, you can manually install the dependencies listed in `environment.yaml`.
+Alternatively, if you would prefer to use a different package management tool (e.g. `pip3`) and/or install packages system-wide, you can manually install the dependencies listed in `config/environment.yml`.
 
 ## Usage
 
