@@ -34,6 +34,10 @@ rule set_indivs_to_drop:
     params:
         read_count_threshold=config['read_count_threshold'],
         loci_missing_threshold=config['loci_missing_threshold']
+    log:
+        "logs/set_indivs_to_drop.log"
+    benchmark:
+        "benchmarks/set_indivs_to_drop.txt"
     run:
         read_counts = pd.read_csv(input.csv, index_col=0)
         num_loci = len(read_counts.index)
@@ -61,7 +65,7 @@ rule filter_haps:
         json_loci=rules.set_indivs_to_drop.output.json_loci,
         json_indivs=rules.set_indivs_to_drop.output.json_indivs
     output:
-        "haplotypes_filtered/{locus}.fna"
+        fna="haplotypes_filtered/{locus}.fna"
     log:
         "logs/filter_haps/{locus}.log"
     benchmark:
@@ -74,14 +78,15 @@ rule filter_haps:
         fasta_file = Bio.SeqIO.parse(input.fna, 'fasta')
         locus = wildcards.locus
         filtered_seqs = [seq for seq in fasta_file if ((seq.id.split('_')[0] not in indivs_to_drop_all) and
-                                                      (locus not in indivs_to_drop_from_loci[seq.id.split('_')[0]]))]
-        Bio.SeqIO.write(filtered_seqs, f"snp_pipeline/haplotypes_filtered/{locus}.fna", "fasta")
+                                                      ((seq.id.split('_')[0] not in indivs_to_drop_from_loci) or
+                                                      (locus not in indivs_to_drop_from_loci[seq.id.split('_')[0]])))]
+        Bio.SeqIO.write(filtered_seqs, output.fna, "fasta")
 
 rule snp_sites:
     input:
-        "haplotypes_filtered/{locus}.fna"
+        fna=rules.filter_haps.output.fna
     output:
-        "snp_sites/{locus}.fna"
+        fna="snp_sites/{locus}.fna"
     log:
         "logs/snp_sites/{locus}.log"
     benchmark:
@@ -101,7 +106,7 @@ rule snp_subsample:
         num_subsamples = config["snp_subsample"]["num_subsamples"],
         output_format = config["snp_subsample"]["output_format"]
     shell:
-        "scripts/snp_subsample.py snp_sites/ snp_subsamples/{params.fn_base} "
+        "python scripts/snp_subsample.py snp_sites/ snp_subsamples/{params.fn_base} "
         "--all-snps-all-loci --output-format {params.output_format} --num_subsamples {params.num_subsamples} "
         "--output-filtered-fasta-dir snp_sites_filtered/"
 
@@ -116,7 +121,7 @@ rule snp_subsample_skip_filter:
         num_subsamples = config["snp_subsample"]["num_subsamples"],
         output_format = config["snp_subsample"]["output_format"]
     shell:
-        "scripts/snp_subsample.py snp_sites/ snp_subsamples/{params.fn_base} "
+        "python scripts/snp_subsample.py snp_sites/ snp_subsamples/{params.fn_base} "
         "--all-snps-all-loci --output-format {params.output_format} --num_subsamples {params.num_subsamples} "
         "--skip-filter"
 
@@ -194,7 +199,7 @@ rule histogram:
         snps_raw_hist = plotly.graph_objs.Histogram(x=[len(next(Bio.SeqIO.parse(filename, 'fasta')).seq) for filename in input.snps_raw], name="snps unfiltered", autobinx=True, opacity=0.5)
         data = [snps_filt_hist, snps_raw_hist]
         layout = plotly.graph_objs.Layout(barmode='overlay', title=('SNP sites per locus'), xaxis=dict(title='Number of SNPs'), yaxis=dict(title='Number of loci'))
-        plotly.offline.plot(plotly.graph_objs.Figure(data=data, layout=layout), filename=output.hist, auto_open=True)
+        plotly.offline.plot(plotly.graph_objs.Figure(data=data, layout=layout), filename=output.hist, auto_open=False)
         avg_snps_per_locus = str(sum(len(next(Bio.SeqIO.parse(filename, 'fasta')).seq) for filename in input.snps_filtered) / len(input.snps_filtered))
         with open(output.log, 'w') as logfile:
             logfile.write(avg_snps_per_locus)
