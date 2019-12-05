@@ -33,13 +33,13 @@ The project directory structure is as follows:
 .
 ├── haplotype_pipeline
 │   ├── adapters
-│   ├── reports
+│   ├── results
 │   └── rules
 ├── legacy_scripts
 ├── reference
 └── snp_pipeline
     ├── haplotypes_curated
-    ├── reports
+    ├── results
     └── scripts
 ```
 
@@ -63,12 +63,6 @@ The `snp_pipeline` outputs filtered SNP sites as single-locus fasta files in `sn
 $ scp -r snp_pipeline/snp_subsamples username@server:~/
 ```
 
-### Report
-
-In the top-level directory is a Snakefile with a single rule to generate a report as an html file. Run `snakemake` from the top-level directory to generate it. This report summarizes the results of both pipelines and contains links to histograms for visualizing individuals in loci and SNP sites per locus. Examples:
-
-![alt text](https://github.com/kelly-sovacool/tiger_salamander_project/blob/master/haplotype_pipeline/reports/loci_histogram.png)
-![alt text](https://github.com/kelly-sovacool/tiger_salamander_project/blob/master/snp_pipeline/reports/snp_histogram.png)
 
 ### Notes:
  * This pipeline was written for a SNP-only analysis. The `filter_variants` rule in `rules/haplotype_illumina_data.smk` will filter out indels. If you wish to keep indels, you can remove the `--remove-indels` flag in that rule.
