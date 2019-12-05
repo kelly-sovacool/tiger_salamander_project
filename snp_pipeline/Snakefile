@@ -29,6 +29,7 @@ rule set_indivs_to_drop:
     input:
         csv=haps("results/read_counts.csv")
     output:
+        csv="results/read_counts_filtered.csv",
         json_loci="results/indivs_to_drop_from_loci.json",
         json_indivs="results/indivs_to_drop_all.json"
     params:
@@ -40,6 +41,7 @@ rule set_indivs_to_drop:
         "benchmarks/set_indivs_to_drop.txt"
     run:
         read_counts = pd.read_csv(input.csv, index_col=0)
+        read_counts_filtered = read_counts.copy()
         num_loci = len(read_counts.index)
 
         indivs_to_drop_from_loci = collections.defaultdict(list)  # indiv: set{locus1, locus2...}
@@ -48,12 +50,15 @@ rule set_indivs_to_drop:
                 count = read_counts.at[locus, indiv_id]
                 if count < params.read_count_threshold:
                     indivs_to_drop_from_loci[indiv_id].append(locus)
+                    read_counts_filtered.at[locus, indiv_id] = 0
 
         indivs_to_drop_all = [indiv for indiv in indivs_to_drop_from_loci
                               if len(indivs_to_drop_from_loci[indiv]) >= params.loci_missing_threshold * num_loci]
         for indiv in indivs_to_drop_all:
             indivs_to_drop_from_loci.pop(indiv)
+        read_counts_filtered = read_counts_filtered.drop(list(indivs_to_drop_all), axis=1)
 
+        read_counts_filtered.to_csv(output.csv)
         with open(output.json_loci, "w") as out_file:
             json.dump(indivs_to_drop_from_loci, out_file)
         with open(output.json_indivs, "w") as out_file:
