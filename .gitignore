@@ -8,12 +8,7 @@ intermediates*
 logs/
 benchmarks/
 illumina_data/
-snp_sites/
-snp_sites_filtered/
-snp_subsamples/
-structure/
 data/
 haplotypes/
-haplotypes_curated/
 .ipynb_checkpoints/
 .Rhistory
