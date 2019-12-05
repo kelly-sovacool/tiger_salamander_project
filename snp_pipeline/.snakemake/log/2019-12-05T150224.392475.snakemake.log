@@ -1,0 +1,29 @@
+Building DAG of jobs...
+Executing subworkflow haps.
+Building DAG of jobs...
+Nothing to be done.
+Complete log: /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/.snakemake/log/2019-12-05T150225.038495.snakemake.log
+Executing main workflow.
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	92	filter_haps
+	1	histogram
+	92	snp_sites
+	1	snp_subsample
+	186
+
+[Thu Dec  5 15:02:25 2019]
+rule filter_haps:
+    input: haplotypes_curated/E21A3.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E21A3.fna
+    log: logs/filter_haps/E21A3.log
+    jobid: 122
+    benchmark: benchmarks/filter_haps/E21A3.txt
+    wildcards: locus=E21A3
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/.snakemake/log/2019-12-05T150225.038495.snakemake.log

@@ -1,0 +1,11 @@
+Building DAG of jobs...
+Executing subworkflow haps.
+Building DAG of jobs...
+Nothing to be done.
+Complete log: /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/.snakemake/log/2019-12-05T152610.801790.snakemake.log
+Executing main workflow.
+Nothing to be done.
+Complete log: /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/.snakemake/log/2019-12-05T152610.801790.snakemake.log
+Executing main workflow.
+Nothing to be done.
+Complete log: /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/.snakemake/log/2019-12-05T152610.801790.snakemake.log

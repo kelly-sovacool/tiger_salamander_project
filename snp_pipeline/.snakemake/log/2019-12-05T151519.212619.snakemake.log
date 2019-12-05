@@ -1,0 +1,57 @@
+Building DAG of jobs...
+Executing subworkflow haps.
+Building DAG of jobs...
+Nothing to be done.
+Complete log: /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/.snakemake/log/2019-12-05T151522.032171.snakemake.log
+Executing main workflow.
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	snp_subsample_skip_filter
+	1	write_all_snps_strx_script
+	1	write_subsample_strx_script
+	4
+
+[Thu Dec  5 15:15:22 2019]
+rule snp_subsample_skip_filter:
+    input: snp_sites_filtered/E24A5.fna, snp_sites_filtered/E18C10.fna, snp_sites_filtered/E7A5.fna, snp_sites_filtered/E13C7.fna, snp_sites_filtered/E24A6.fna, snp_sites_filtered/E16G9.fna, snp_sites_filtered/E8G11.fna, snp_sites_filtered/E14E3.fna, snp_sites_filtered/E8G8.fna, snp_sites_filtered/E8E1.fna, snp_sites_filtered/E14E2.fna, snp_sites_filtered/E23G1.fna, snp_sites_filtered/E14E10.fna, snp_sites_filtered/E9C4.fna, snp_sites_filtered/G1L7.fna, snp_sites_filtered/E13C1.fna, snp_sites_filtered/E12E3.fna, snp_sites_filtered/E14G10.fna, snp_sites_filtered/E16A12.fna, snp_sites_filtered/E8A10.fna, snp_sites_filtered/E14G11.fna, snp_sites_filtered/E22A7.fna, snp_sites_filtered/E6E11.fna, snp_sites_filtered/E23G7.fna, snp_sites_filtered/E16A9.fna, snp_sites_filtered/E10C6.fna, snp_sites_filtered/E15E2.fna, snp_sites_filtered/E12C4.fna, snp_sites_filtered/E21A3.fna, snp_sites_filtered/WNT1.fna, snp_sites_filtered/E14A8.fna, snp_sites_filtered/E13E6.fna, snp_sites_filtered/E12C6.fna, snp_sites_filtered/E12C11.fna, snp_sites_filtered/E10C5.fna, snp_sites_filtered/E24A12.fna, snp_sites_filtered/E24C10.fna, snp_sites_filtered/E12C7.fna, snp_sites_filtered/E16C7.fna, snp_sites_filtered/E18C8.fna, snp_sites_filtered/E12C3.fna, snp_sites_filtered/E6C8.fna, snp_sites_filtered/E20G5.fna, snp_sites_filtered/E12C2.fna, snp_sites_filtered/E13E2.fna, snp_sites_filtered/E10C11.fna, snp_sites_filtered/E24E9.fna, snp_sites_filtered/E24G3.fna, snp_sites_filtered/E12G12.fna, snp_sites_filtered/E20G6.fna, snp_sites_filtered/E12A9.fna, snp_sites_filtered/E9E4.fna, snp_sites_filtered/E11G6.fna, snp_sites_filtered/E18C7.fna, snp_sites_filtered/E14A2.fna, snp_sites_filtered/E12A4.fna, snp_sites_filtered/E15A11.fna, snp_sites_filtered/E19E7.fna, snp_sites_filtered/E10A7.fna, snp_sites_filtered/E7C12.fna, snp_sites_filtered/E14A1.fna, snp_sites_filtered/E17G3.fna, snp_sites_filtered/MGF.fna, snp_sites_filtered/E5E6.fna, snp_sites_filtered/E20E5.fna, snp_sites_filtered/E19E12.fna, snp_sites_filtered/E15G5.fna, snp_sites_filtered/E12A3.fna, snp_sites_filtered/E15E12.fna, snp_sites_filtered/E23C6.fna, snp_sites_filtered/E7G10.fna, snp_sites_filtered/E6C2.fna, snp_sites_filtered/E14A6.fna, snp_sites_filtered/E26G9.fna, snp_sites_filtered/E18C3.fna, snp_sites_filtered/E17C12.fna, snp_sites_filtered/ctg325.fna, snp_sites_filtered/E13A7.fna, snp_sites_filtered/E20A8.fna, snp_sites_filtered/E17A2.fna, snp_sites_filtered/E20A9.fna, snp_sites_filtered/E20C1.fna, snp_sites_filtered/E13A6.fna, snp_sites_filtered/E15A2.fna, snp_sites_filtered/E19C7.fna, snp_sites_filtered/E6E7.fna, snp_sites_filtered/E12G5.fna, snp_sites_filtered/E20C2.fna, snp_sites_filtered/E9A7.fna, snp_sites_filtered/E12G2.fna, snp_sites_filtered/E10E9.fna, snp_sites_filtered/E13A3.fna
+    output: snp_subsamples/snp_sub_1_strx.txt, snp_subsamples/all-snps-all-loci_strx.txt
+    jobid: 188
+
+[Thu Dec  5 15:15:29 2019]
+Finished job 188.
+1 of 4 steps (25%) done
+
+[Thu Dec  5 15:15:29 2019]
+rule write_all_snps_strx_script:
+    input: snp_subsamples/all-snps-all-loci_strx.txt
+    output: structure/strx_all-snps-all-loci_k2.sh, structure/strx_all-snps-all-loci_k3.sh, structure/strx_all-snps-all-loci_k4.sh, structure/strx_all-snps-all-loci_k5.sh, structure/strx_all-snps-all-loci_k6.sh, structure/strx_all-snps-all-loci_k7.sh, structure/strx_all-snps-all-loci_k8.sh
+    jobid: 94
+
+[Thu Dec  5 15:15:32 2019]
+Finished job 94.
+2 of 4 steps (50%) done
+
+[Thu Dec  5 15:15:32 2019]
+rule write_subsample_strx_script:
+    input: snp_subsamples/snp_sub_1_strx.txt
+    output: structure/strx_1_k2.sh, structure/strx_1_k3.sh, structure/strx_1_k4.sh, structure/strx_1_k5.sh, structure/strx_1_k6.sh, structure/strx_1_k7.sh, structure/strx_1_k8.sh
+    jobid: 93
+    wildcards: subsample=1
+
+[Thu Dec  5 15:15:34 2019]
+Finished job 93.
+3 of 4 steps (75%) done
+
+[Thu Dec  5 15:15:34 2019]
+localrule all:
+    input: snp_sites/E24A5.fna, snp_sites/E18C10.fna, snp_sites/E7A5.fna, snp_sites/E13C7.fna, snp_sites/E24A6.fna, snp_sites/E16G9.fna, snp_sites/E8G11.fna, snp_sites/E14E3.fna, snp_sites/E8G8.fna, snp_sites/E8E1.fna, snp_sites/E14E2.fna, snp_sites/E23G1.fna, snp_sites/E14E10.fna, snp_sites/E9C4.fna, snp_sites/G1L7.fna, snp_sites/E13C1.fna, snp_sites/E12E3.fna, snp_sites/E14G10.fna, snp_sites/E16A12.fna, snp_sites/E8A10.fna, snp_sites/E14G11.fna, snp_sites/E22A7.fna, snp_sites/E6E11.fna, snp_sites/E23G7.fna, snp_sites/E16A9.fna, snp_sites/E10C6.fna, snp_sites/E15E2.fna, snp_sites/E12C4.fna, snp_sites/E21A3.fna, snp_sites/WNT1.fna, snp_sites/E14A8.fna, snp_sites/E13E6.fna, snp_sites/E12C6.fna, snp_sites/E12C11.fna, snp_sites/E10C5.fna, snp_sites/E24A12.fna, snp_sites/E24C10.fna, snp_sites/E12C7.fna, snp_sites/E16C7.fna, snp_sites/E18C8.fna, snp_sites/E12C3.fna, snp_sites/E6C8.fna, snp_sites/E20G5.fna, snp_sites/E12C2.fna, snp_sites/E13E2.fna, snp_sites/E10C11.fna, snp_sites/E24E9.fna, snp_sites/E24G3.fna, snp_sites/E12G12.fna, snp_sites/E20G6.fna, snp_sites/E12A9.fna, snp_sites/E9E4.fna, snp_sites/E11G6.fna, snp_sites/E18C7.fna, snp_sites/E14A2.fna, snp_sites/E12A4.fna, snp_sites/E15A11.fna, snp_sites/E19E7.fna, snp_sites/E10A7.fna, snp_sites/E7C12.fna, snp_sites/E14A1.fna, snp_sites/E17G3.fna, snp_sites/MGF.fna, snp_sites/E5E6.fna, snp_sites/E20E5.fna, snp_sites/E19E12.fna, snp_sites/E15G5.fna, snp_sites/E12A3.fna, snp_sites/E15E12.fna, snp_sites/E23C6.fna, snp_sites/E7G10.fna, snp_sites/E6C2.fna, snp_sites/E14A6.fna, snp_sites/E26G9.fna, snp_sites/E18C3.fna, snp_sites/E17C12.fna, snp_sites/ctg325.fna, snp_sites/E13A7.fna, snp_sites/E20A8.fna, snp_sites/E17A2.fna, snp_sites/E20A9.fna, snp_sites/E20C1.fna, snp_sites/E13A6.fna, snp_sites/E15A2.fna, snp_sites/E19C7.fna, snp_sites/E6E7.fna, snp_sites/E12G5.fna, snp_sites/E20C2.fna, snp_sites/E9A7.fna, snp_sites/E12G2.fna, snp_sites/E10E9.fna, snp_sites/E13A3.fna, structure/strx_1_k2.sh, structure/strx_1_k3.sh, structure/strx_1_k4.sh, structure/strx_1_k5.sh, structure/strx_1_k6.sh, structure/strx_1_k7.sh, structure/strx_1_k8.sh, structure/strx_all-snps-all-loci_k2.sh, structure/strx_all-snps-all-loci_k3.sh, structure/strx_all-snps-all-loci_k4.sh, structure/strx_all-snps-all-loci_k5.sh, structure/strx_all-snps-all-loci_k6.sh, structure/strx_all-snps-all-loci_k7.sh, structure/strx_all-snps-all-loci_k8.sh, results/snp_histogram.html
+    jobid: 0
+
+[Thu Dec  5 15:15:34 2019]
+Finished job 0.
+4 of 4 steps (100%) done
+Complete log: /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/.snakemake/log/2019-12-05T151522.032171.snakemake.log

@@ -1,0 +1,2408 @@
+Building DAG of jobs...
+Executing subworkflow haps.
+Building DAG of jobs...
+Nothing to be done.
+Complete log: /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/.snakemake/log/2019-12-05T154240.673838.snakemake.log
+Executing main workflow.
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	89	filter_haps
+	1	histogram
+	92	snp_sites
+	1	snp_subsample
+	183
+
+[Thu Dec  5 15:42:40 2019]
+rule filter_haps:
+    input: haplotypes_curated/E15G5.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E15G5.fna
+    log: logs/filter_haps/E15G5.log
+    jobid: 161
+    benchmark: benchmarks/filter_haps/E15G5.txt
+    wildcards: locus=E15G5
+
+[Thu Dec  5 15:42:44 2019]
+Finished job 161.
+1 of 183 steps (0.55%) done
+
+[Thu Dec  5 15:42:44 2019]
+rule filter_haps:
+    input: haplotypes_curated/E13E6.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E13E6.fna
+    log: logs/filter_haps/E13E6.log
+    jobid: 126
+    benchmark: benchmarks/filter_haps/E13E6.txt
+    wildcards: locus=E13E6
+
+[Thu Dec  5 15:42:46 2019]
+Finished job 126.
+2 of 183 steps (1%) done
+
+[Thu Dec  5 15:42:46 2019]
+rule filter_haps:
+    input: haplotypes_curated/E13E2.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E13E2.fna
+    log: logs/filter_haps/E13E2.log
+    jobid: 139
+    benchmark: benchmarks/filter_haps/E13E2.txt
+    wildcards: locus=E13E2
+
+[Thu Dec  5 15:42:49 2019]
+Finished job 139.
+3 of 183 steps (2%) done
+
+[Thu Dec  5 15:42:49 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E21A3.fna
+    output: snp_sites/E21A3.fna
+    log: logs/snp_sites/E21A3.log
+    jobid: 30
+    benchmark: benchmarks/snp_sites/E21A3.txt
+    wildcards: locus=E21A3
+
+[Thu Dec  5 15:42:49 2019]
+Finished job 30.
+4 of 183 steps (2%) done
+
+[Thu Dec  5 15:42:49 2019]
+rule filter_haps:
+    input: haplotypes_curated/E17C12.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E17C12.fna
+    log: logs/filter_haps/E17C12.log
+    jobid: 170
+    benchmark: benchmarks/filter_haps/E17C12.txt
+    wildcards: locus=E17C12
+
+[Thu Dec  5 15:42:52 2019]
+Finished job 170.
+5 of 183 steps (3%) done
+
+[Thu Dec  5 15:42:52 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12C2.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12C2.fna
+    log: logs/filter_haps/E12C2.log
+    jobid: 138
+    benchmark: benchmarks/filter_haps/E12C2.txt
+    wildcards: locus=E12C2
+
+[Thu Dec  5 15:42:56 2019]
+Finished job 138.
+6 of 183 steps (3%) done
+
+[Thu Dec  5 15:42:56 2019]
+rule filter_haps:
+    input: haplotypes_curated/E20C2.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E20C2.fna
+    log: logs/filter_haps/E20C2.log
+    jobid: 182
+    benchmark: benchmarks/filter_haps/E20C2.txt
+    wildcards: locus=E20C2
+
+[Thu Dec  5 15:43:01 2019]
+Finished job 182.
+7 of 183 steps (4%) done
+
+[Thu Dec  5 15:43:01 2019]
+rule filter_haps:
+    input: haplotypes_curated/E24A6.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E24A6.fna
+    log: logs/filter_haps/E24A6.log
+    jobid: 99
+    benchmark: benchmarks/filter_haps/E24A6.txt
+    wildcards: locus=E24A6
+
+[Thu Dec  5 15:43:06 2019]
+Finished job 99.
+8 of 183 steps (4%) done
+
+[Thu Dec  5 15:43:06 2019]
+rule filter_haps:
+    input: haplotypes_curated/E14A6.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E14A6.fna
+    log: logs/filter_haps/E14A6.log
+    jobid: 167
+    benchmark: benchmarks/filter_haps/E14A6.txt
+    wildcards: locus=E14A6
+
+[Thu Dec  5 15:43:12 2019]
+Finished job 167.
+9 of 183 steps (5%) done
+
+[Thu Dec  5 15:43:12 2019]
+rule filter_haps:
+    input: haplotypes_curated/E16A12.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E16A12.fna
+    log: logs/filter_haps/E16A12.log
+    jobid: 113
+    benchmark: benchmarks/filter_haps/E16A12.txt
+    wildcards: locus=E16A12
+
+[Thu Dec  5 15:43:15 2019]
+Finished job 113.
+10 of 183 steps (5%) done
+
+[Thu Dec  5 15:43:15 2019]
+rule filter_haps:
+    input: haplotypes_curated/E24A12.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E24A12.fna
+    log: logs/filter_haps/E24A12.log
+    jobid: 130
+    benchmark: benchmarks/filter_haps/E24A12.txt
+    wildcards: locus=E24A12
+
+[Thu Dec  5 15:43:17 2019]
+Finished job 130.
+11 of 183 steps (6%) done
+
+[Thu Dec  5 15:43:17 2019]
+rule filter_haps:
+    input: haplotypes_curated/E16C7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E16C7.fna
+    log: logs/filter_haps/E16C7.log
+    jobid: 133
+    benchmark: benchmarks/filter_haps/E16C7.txt
+    wildcards: locus=E16C7
+
+[Thu Dec  5 15:43:20 2019]
+Finished job 133.
+12 of 183 steps (7%) done
+
+[Thu Dec  5 15:43:20 2019]
+rule filter_haps:
+    input: haplotypes_curated/E24E9.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E24E9.fna
+    log: logs/filter_haps/E24E9.log
+    jobid: 141
+    benchmark: benchmarks/filter_haps/E24E9.txt
+    wildcards: locus=E24E9
+
+[Thu Dec  5 15:43:23 2019]
+Finished job 141.
+13 of 183 steps (7%) done
+
+[Thu Dec  5 15:43:23 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12C4.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12C4.fna
+    log: logs/filter_haps/E12C4.log
+    jobid: 122
+    benchmark: benchmarks/filter_haps/E12C4.txt
+    wildcards: locus=E12C4
+
+[Thu Dec  5 15:43:26 2019]
+Finished job 122.
+14 of 183 steps (8%) done
+
+[Thu Dec  5 15:43:26 2019]
+rule filter_haps:
+    input: haplotypes_curated/E24G3.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E24G3.fna
+    log: logs/filter_haps/E24G3.log
+    jobid: 142
+    benchmark: benchmarks/filter_haps/E24G3.txt
+    wildcards: locus=E24G3
+
+[Thu Dec  5 15:43:29 2019]
+Finished job 142.
+15 of 183 steps (8%) done
+
+[Thu Dec  5 15:43:29 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E15A11.fna
+    output: snp_sites/E15A11.fna
+    log: logs/snp_sites/E15A11.log
+    jobid: 58
+    benchmark: benchmarks/snp_sites/E15A11.txt
+    wildcards: locus=E15A11
+
+[Thu Dec  5 15:43:29 2019]
+Finished job 58.
+16 of 183 steps (9%) done
+
+[Thu Dec  5 15:43:29 2019]
+rule filter_haps:
+    input: haplotypes_curated/E24C10.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E24C10.fna
+    log: logs/filter_haps/E24C10.log
+    jobid: 131
+    benchmark: benchmarks/filter_haps/E24C10.txt
+    wildcards: locus=E24C10
+
+[Thu Dec  5 15:43:31 2019]
+Finished job 131.
+17 of 183 steps (9%) done
+
+[Thu Dec  5 15:43:31 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E15A2.fna
+    output: snp_sites/E15A2.fna
+    log: logs/snp_sites/E15A2.log
+    jobid: 85
+    benchmark: benchmarks/snp_sites/E15A2.txt
+    wildcards: locus=E15A2
+
+[Thu Dec  5 15:43:31 2019]
+Finished job 85.
+18 of 183 steps (10%) done
+
+[Thu Dec  5 15:43:31 2019]
+rule filter_haps:
+    input: haplotypes_curated/E14G10.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E14G10.fna
+    log: logs/filter_haps/E14G10.log
+    jobid: 112
+    benchmark: benchmarks/filter_haps/E14G10.txt
+    wildcards: locus=E14G10
+
+[Thu Dec  5 15:43:34 2019]
+Finished job 112.
+19 of 183 steps (10%) done
+
+[Thu Dec  5 15:43:34 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12G12.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12G12.fna
+    log: logs/filter_haps/E12G12.log
+    jobid: 143
+    benchmark: benchmarks/filter_haps/E12G12.txt
+    wildcards: locus=E12G12
+
+[Thu Dec  5 15:43:36 2019]
+Finished job 143.
+20 of 183 steps (11%) done
+
+[Thu Dec  5 15:43:36 2019]
+rule filter_haps:
+    input: haplotypes_curated/E14A1.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E14A1.fna
+    log: logs/filter_haps/E14A1.log
+    jobid: 155
+    benchmark: benchmarks/filter_haps/E14A1.txt
+    wildcards: locus=E14A1
+
+[Thu Dec  5 15:43:39 2019]
+Finished job 155.
+21 of 183 steps (11%) done
+
+[Thu Dec  5 15:43:39 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12G5.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12G5.fna
+    log: logs/filter_haps/E12G5.log
+    jobid: 181
+    benchmark: benchmarks/filter_haps/E12G5.txt
+    wildcards: locus=E12G5
+
+[Thu Dec  5 15:43:42 2019]
+Finished job 181.
+22 of 183 steps (12%) done
+
+[Thu Dec  5 15:43:42 2019]
+rule filter_haps:
+    input: haplotypes_curated/E22A7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E22A7.fna
+    log: logs/filter_haps/E22A7.log
+    jobid: 116
+    benchmark: benchmarks/filter_haps/E22A7.txt
+    wildcards: locus=E22A7
+
+[Thu Dec  5 15:43:44 2019]
+Finished job 116.
+23 of 183 steps (13%) done
+
+[Thu Dec  5 15:43:44 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12C3.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12C3.fna
+    log: logs/filter_haps/E12C3.log
+    jobid: 135
+    benchmark: benchmarks/filter_haps/E12C3.txt
+    wildcards: locus=E12C3
+
+[Thu Dec  5 15:43:47 2019]
+Finished job 135.
+24 of 183 steps (13%) done
+
+[Thu Dec  5 15:43:47 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E15G5.fna
+    output: snp_sites/E15G5.fna
+    log: logs/snp_sites/E15G5.log
+    jobid: 68
+    benchmark: benchmarks/snp_sites/E15G5.txt
+    wildcards: locus=E15G5
+
+[Thu Dec  5 15:43:47 2019]
+Finished job 68.
+25 of 183 steps (14%) done
+
+[Thu Dec  5 15:43:47 2019]
+rule filter_haps:
+    input: haplotypes_curated/E15E12.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E15E12.fna
+    log: logs/filter_haps/E15E12.log
+    jobid: 163
+    benchmark: benchmarks/filter_haps/E15E12.txt
+    wildcards: locus=E15E12
+
+[Thu Dec  5 15:43:51 2019]
+Finished job 163.
+26 of 183 steps (14%) done
+
+[Thu Dec  5 15:43:51 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E13E2.fna
+    output: snp_sites/E13E2.fna
+    log: logs/snp_sites/E13E2.log
+    jobid: 46
+    benchmark: benchmarks/snp_sites/E13E2.txt
+    wildcards: locus=E13E2
+
+[Thu Dec  5 15:43:51 2019]
+Finished job 46.
+27 of 183 steps (15%) done
+
+[Thu Dec  5 15:43:51 2019]
+rule filter_haps:
+    input: haplotypes_curated/E20E5.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E20E5.fna
+    log: logs/filter_haps/E20E5.log
+    jobid: 159
+    benchmark: benchmarks/filter_haps/E20E5.txt
+    wildcards: locus=E20E5
+
+[Thu Dec  5 15:43:54 2019]
+Finished job 159.
+28 of 183 steps (15%) done
+
+[Thu Dec  5 15:43:54 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E20C2.fna
+    output: snp_sites/E20C2.fna
+    log: logs/snp_sites/E20C2.log
+    jobid: 89
+    benchmark: benchmarks/snp_sites/E20C2.txt
+    wildcards: locus=E20C2
+
+[Thu Dec  5 15:43:54 2019]
+Finished job 89.
+29 of 183 steps (16%) done
+
+[Thu Dec  5 15:43:54 2019]
+rule filter_haps:
+    input: haplotypes_curated/E24A5.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E24A5.fna
+    log: logs/filter_haps/E24A5.log
+    jobid: 95
+    benchmark: benchmarks/filter_haps/E24A5.txt
+    wildcards: locus=E24A5
+
+[Thu Dec  5 15:43:57 2019]
+Finished job 95.
+30 of 183 steps (16%) done
+
+[Thu Dec  5 15:43:57 2019]
+rule filter_haps:
+    input: haplotypes_curated/E20G5.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E20G5.fna
+    log: logs/filter_haps/E20G5.log
+    jobid: 137
+    benchmark: benchmarks/filter_haps/E20G5.txt
+    wildcards: locus=E20G5
+
+[Thu Dec  5 15:44:00 2019]
+Finished job 137.
+31 of 183 steps (17%) done
+
+[Thu Dec  5 15:44:00 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12C2.fna
+    output: snp_sites/E12C2.fna
+    log: logs/snp_sites/E12C2.log
+    jobid: 45
+    benchmark: benchmarks/snp_sites/E12C2.txt
+    wildcards: locus=E12C2
+
+[Thu Dec  5 15:44:00 2019]
+Finished job 45.
+32 of 183 steps (17%) done
+
+[Thu Dec  5 15:44:00 2019]
+rule filter_haps:
+    input: haplotypes_curated/WNT1.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/WNT1.fna
+    log: logs/filter_haps/WNT1.log
+    jobid: 124
+    benchmark: benchmarks/filter_haps/WNT1.txt
+    wildcards: locus=WNT1
+
+[Thu Dec  5 15:44:03 2019]
+Finished job 124.
+33 of 183 steps (18%) done
+
+[Thu Dec  5 15:44:03 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E17C12.fna
+    output: snp_sites/E17C12.fna
+    log: logs/snp_sites/E17C12.log
+    jobid: 77
+    benchmark: benchmarks/snp_sites/E17C12.txt
+    wildcards: locus=E17C12
+
+[Thu Dec  5 15:44:03 2019]
+Finished job 77.
+34 of 183 steps (19%) done
+
+[Thu Dec  5 15:44:03 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E16C7.fna
+    output: snp_sites/E16C7.fna
+    log: logs/snp_sites/E16C7.log
+    jobid: 40
+    benchmark: benchmarks/snp_sites/E16C7.txt
+    wildcards: locus=E16C7
+
+[Thu Dec  5 15:44:03 2019]
+Finished job 40.
+35 of 183 steps (19%) done
+
+[Thu Dec  5 15:44:03 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E24A12.fna
+    output: snp_sites/E24A12.fna
+    log: logs/snp_sites/E24A12.log
+    jobid: 37
+    benchmark: benchmarks/snp_sites/E24A12.txt
+    wildcards: locus=E24A12
+
+[Thu Dec  5 15:44:04 2019]
+Finished job 37.
+36 of 183 steps (20%) done
+
+[Thu Dec  5 15:44:04 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E14A6.fna
+    output: snp_sites/E14A6.fna
+    log: logs/snp_sites/E14A6.log
+    jobid: 74
+    benchmark: benchmarks/snp_sites/E14A6.txt
+    wildcards: locus=E14A6
+
+[Thu Dec  5 15:44:04 2019]
+Finished job 74.
+37 of 183 steps (20%) done
+
+[Thu Dec  5 15:44:04 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E16A12.fna
+    output: snp_sites/E16A12.fna
+    log: logs/snp_sites/E16A12.log
+    jobid: 20
+    benchmark: benchmarks/snp_sites/E16A12.txt
+    wildcards: locus=E16A12
+
+[Thu Dec  5 15:44:04 2019]
+Finished job 20.
+38 of 183 steps (21%) done
+
+[Thu Dec  5 15:44:04 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E24E9.fna
+    output: snp_sites/E24E9.fna
+    log: logs/snp_sites/E24E9.log
+    jobid: 48
+    benchmark: benchmarks/snp_sites/E24E9.txt
+    wildcards: locus=E24E9
+
+[Thu Dec  5 15:44:04 2019]
+Finished job 48.
+39 of 183 steps (21%) done
+
+[Thu Dec  5 15:44:04 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E24G3.fna
+    output: snp_sites/E24G3.fna
+    log: logs/snp_sites/E24G3.log
+    jobid: 49
+    benchmark: benchmarks/snp_sites/E24G3.txt
+    wildcards: locus=E24G3
+
+[Thu Dec  5 15:44:04 2019]
+Finished job 49.
+40 of 183 steps (22%) done
+
+[Thu Dec  5 15:44:04 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12C6.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12C6.fna
+    log: logs/filter_haps/E12C6.log
+    jobid: 127
+    benchmark: benchmarks/filter_haps/E12C6.txt
+    wildcards: locus=E12C6
+
+[Thu Dec  5 15:44:07 2019]
+Finished job 127.
+41 of 183 steps (22%) done
+
+[Thu Dec  5 15:44:07 2019]
+rule filter_haps:
+    input: haplotypes_curated/E14A8.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E14A8.fna
+    log: logs/filter_haps/E14A8.log
+    jobid: 125
+    benchmark: benchmarks/filter_haps/E14A8.txt
+    wildcards: locus=E14A8
+
+[Thu Dec  5 15:44:10 2019]
+Finished job 125.
+42 of 183 steps (23%) done
+
+[Thu Dec  5 15:44:10 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E14G10.fna
+    output: snp_sites/E14G10.fna
+    log: logs/snp_sites/E14G10.log
+    jobid: 19
+    benchmark: benchmarks/snp_sites/E14G10.txt
+    wildcards: locus=E14G10
+
+[Thu Dec  5 15:44:10 2019]
+Finished job 19.
+43 of 183 steps (23%) done
+
+[Thu Dec  5 15:44:10 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12E3.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12E3.fna
+    log: logs/filter_haps/E12E3.log
+    jobid: 111
+    benchmark: benchmarks/filter_haps/E12E3.txt
+    wildcards: locus=E12E3
+
+[Thu Dec  5 15:44:12 2019]
+Finished job 111.
+44 of 183 steps (24%) done
+
+[Thu Dec  5 15:44:12 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E14A1.fna
+    output: snp_sites/E14A1.fna
+    log: logs/snp_sites/E14A1.log
+    jobid: 62
+    benchmark: benchmarks/snp_sites/E14A1.txt
+    wildcards: locus=E14A1
+
+[Thu Dec  5 15:44:12 2019]
+Finished job 62.
+45 of 183 steps (25%) done
+
+[Thu Dec  5 15:44:12 2019]
+rule filter_haps:
+    input: haplotypes_curated/E13A6.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E13A6.fna
+    log: logs/filter_haps/E13A6.log
+    jobid: 177
+    benchmark: benchmarks/filter_haps/E13A6.txt
+    wildcards: locus=E13A6
+
+[Thu Dec  5 15:44:15 2019]
+Finished job 177.
+46 of 183 steps (25%) done
+
+[Thu Dec  5 15:44:15 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E24A6.fna
+    output: snp_sites/E24A6.fna
+    log: logs/snp_sites/E24A6.log
+    jobid: 6
+    benchmark: benchmarks/snp_sites/E24A6.txt
+    wildcards: locus=E24A6
+
+[Thu Dec  5 15:44:15 2019]
+Finished job 6.
+47 of 183 steps (26%) done
+
+[Thu Dec  5 15:44:15 2019]
+rule filter_haps:
+    input: haplotypes_curated/E13C7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E13C7.fna
+    log: logs/filter_haps/E13C7.log
+    jobid: 98
+    benchmark: benchmarks/filter_haps/E13C7.txt
+    wildcards: locus=E13C7
+
+[Thu Dec  5 15:44:18 2019]
+Finished job 98.
+48 of 183 steps (26%) done
+
+[Thu Dec  5 15:44:18 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E22A7.fna
+    output: snp_sites/E22A7.fna
+    log: logs/snp_sites/E22A7.log
+    jobid: 23
+    benchmark: benchmarks/snp_sites/E22A7.txt
+    wildcards: locus=E22A7
+
+[Thu Dec  5 15:44:19 2019]
+Finished job 23.
+49 of 183 steps (27%) done
+
+[Thu Dec  5 15:44:19 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12C4.fna
+    output: snp_sites/E12C4.fna
+    log: logs/snp_sites/E12C4.log
+    jobid: 29
+    benchmark: benchmarks/snp_sites/E12C4.txt
+    wildcards: locus=E12C4
+
+[Thu Dec  5 15:44:19 2019]
+Finished job 29.
+50 of 183 steps (27%) done
+
+[Thu Dec  5 15:44:19 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E24C10.fna
+    output: snp_sites/E24C10.fna
+    log: logs/snp_sites/E24C10.log
+    jobid: 38
+    benchmark: benchmarks/snp_sites/E24C10.txt
+    wildcards: locus=E24C10
+
+[Thu Dec  5 15:44:19 2019]
+Finished job 38.
+51 of 183 steps (28%) done
+
+[Thu Dec  5 15:44:19 2019]
+rule filter_haps:
+    input: haplotypes_curated/E10C5.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E10C5.fna
+    log: logs/filter_haps/E10C5.log
+    jobid: 129
+    benchmark: benchmarks/filter_haps/E10C5.txt
+    wildcards: locus=E10C5
+
+[Thu Dec  5 15:44:21 2019]
+Finished job 129.
+52 of 183 steps (28%) done
+
+[Thu Dec  5 15:44:21 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12G5.fna
+    output: snp_sites/E12G5.fna
+    log: logs/snp_sites/E12G5.log
+    jobid: 88
+    benchmark: benchmarks/snp_sites/E12G5.txt
+    wildcards: locus=E12G5
+
+[Thu Dec  5 15:44:21 2019]
+Finished job 88.
+53 of 183 steps (29%) done
+
+[Thu Dec  5 15:44:21 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12G12.fna
+    output: snp_sites/E12G12.fna
+    log: logs/snp_sites/E12G12.log
+    jobid: 50
+    benchmark: benchmarks/snp_sites/E12G12.txt
+    wildcards: locus=E12G12
+
+[Thu Dec  5 15:44:21 2019]
+Finished job 50.
+54 of 183 steps (30%) done
+
+[Thu Dec  5 15:44:21 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E20E5.fna
+    output: snp_sites/E20E5.fna
+    log: logs/snp_sites/E20E5.log
+    jobid: 66
+    benchmark: benchmarks/snp_sites/E20E5.txt
+    wildcards: locus=E20E5
+
+[Thu Dec  5 15:44:21 2019]
+Finished job 66.
+55 of 183 steps (30%) done
+
+[Thu Dec  5 15:44:21 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E15E12.fna
+    output: snp_sites/E15E12.fna
+    log: logs/snp_sites/E15E12.log
+    jobid: 70
+    benchmark: benchmarks/snp_sites/E15E12.txt
+    wildcards: locus=E15E12
+
+[Thu Dec  5 15:44:22 2019]
+Finished job 70.
+56 of 183 steps (31%) done
+
+[Thu Dec  5 15:44:22 2019]
+rule filter_haps:
+    input: haplotypes_curated/E16A9.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E16A9.fna
+    log: logs/filter_haps/E16A9.log
+    jobid: 119
+    benchmark: benchmarks/filter_haps/E16A9.txt
+    wildcards: locus=E16A9
+
+[Thu Dec  5 15:44:24 2019]
+Finished job 119.
+57 of 183 steps (31%) done
+
+[Thu Dec  5 15:44:24 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12C3.fna
+    output: snp_sites/E12C3.fna
+    log: logs/snp_sites/E12C3.log
+    jobid: 42
+    benchmark: benchmarks/snp_sites/E12C3.txt
+    wildcards: locus=E12C3
+
+[Thu Dec  5 15:44:24 2019]
+Finished job 42.
+58 of 183 steps (32%) done
+
+[Thu Dec  5 15:44:24 2019]
+rule filter_haps:
+    input: haplotypes_curated/E14G11.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E14G11.fna
+    log: logs/filter_haps/E14G11.log
+    jobid: 115
+    benchmark: benchmarks/filter_haps/E14G11.txt
+    wildcards: locus=E14G11
+
+[Thu Dec  5 15:44:27 2019]
+Finished job 115.
+59 of 183 steps (32%) done
+
+[Thu Dec  5 15:44:27 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E20G5.fna
+    output: snp_sites/E20G5.fna
+    log: logs/snp_sites/E20G5.log
+    jobid: 44
+    benchmark: benchmarks/snp_sites/E20G5.txt
+    wildcards: locus=E20G5
+
+[Thu Dec  5 15:44:27 2019]
+Finished job 44.
+60 of 183 steps (33%) done
+
+[Thu Dec  5 15:44:27 2019]
+rule filter_haps:
+    input: haplotypes_curated/E18C10.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E18C10.fna
+    log: logs/filter_haps/E18C10.log
+    jobid: 96
+    benchmark: benchmarks/filter_haps/E18C10.txt
+    wildcards: locus=E18C10
+
+[Thu Dec  5 15:44:30 2019]
+Finished job 96.
+61 of 183 steps (33%) done
+
+[Thu Dec  5 15:44:30 2019]
+rule filter_haps:
+    input: haplotypes_curated/E6E11.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E6E11.fna
+    log: logs/filter_haps/E6E11.log
+    jobid: 117
+    benchmark: benchmarks/filter_haps/E6E11.txt
+    wildcards: locus=E6E11
+
+[Thu Dec  5 15:44:32 2019]
+Finished job 117.
+62 of 183 steps (34%) done
+
+[Thu Dec  5 15:44:32 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12C6.fna
+    output: snp_sites/E12C6.fna
+    log: logs/snp_sites/E12C6.log
+    jobid: 34
+    benchmark: benchmarks/snp_sites/E12C6.txt
+    wildcards: locus=E12C6
+
+[Thu Dec  5 15:44:32 2019]
+Finished job 34.
+63 of 183 steps (34%) done
+
+[Thu Dec  5 15:44:32 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E24A5.fna
+    output: snp_sites/E24A5.fna
+    log: logs/snp_sites/E24A5.log
+    jobid: 2
+    benchmark: benchmarks/snp_sites/E24A5.txt
+    wildcards: locus=E24A5
+
+[Thu Dec  5 15:44:32 2019]
+Finished job 2.
+64 of 183 steps (35%) done
+
+[Thu Dec  5 15:44:32 2019]
+rule filter_haps:
+    input: haplotypes_curated/E13A3.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E13A3.fna
+    log: logs/filter_haps/E13A3.log
+    jobid: 186
+    benchmark: benchmarks/filter_haps/E13A3.txt
+    wildcards: locus=E13A3
+
+[Thu Dec  5 15:44:35 2019]
+Finished job 186.
+65 of 183 steps (36%) done
+
+[Thu Dec  5 15:44:35 2019]
+rule filter_haps:
+    input: haplotypes_curated/E10C6.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E10C6.fna
+    log: logs/filter_haps/E10C6.log
+    jobid: 120
+    benchmark: benchmarks/filter_haps/E10C6.txt
+    wildcards: locus=E10C6
+
+[Thu Dec  5 15:44:37 2019]
+Finished job 120.
+66 of 183 steps (36%) done
+
+[Thu Dec  5 15:44:37 2019]
+rule snp_sites:
+    input: haplotypes_filtered/WNT1.fna
+    output: snp_sites/WNT1.fna
+    log: logs/snp_sites/WNT1.log
+    jobid: 31
+    benchmark: benchmarks/snp_sites/WNT1.txt
+    wildcards: locus=WNT1
+
+[Thu Dec  5 15:44:37 2019]
+Finished job 31.
+67 of 183 steps (37%) done
+
+[Thu Dec  5 15:44:37 2019]
+rule filter_haps:
+    input: haplotypes_curated/E20G6.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E20G6.fna
+    log: logs/filter_haps/E20G6.log
+    jobid: 144
+    benchmark: benchmarks/filter_haps/E20G6.txt
+    wildcards: locus=E20G6
+
+[Thu Dec  5 15:44:40 2019]
+Finished job 144.
+68 of 183 steps (37%) done
+
+[Thu Dec  5 15:44:40 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12E3.fna
+    output: snp_sites/E12E3.fna
+    log: logs/snp_sites/E12E3.log
+    jobid: 18
+    benchmark: benchmarks/snp_sites/E12E3.txt
+    wildcards: locus=E12E3
+
+[Thu Dec  5 15:44:40 2019]
+Finished job 18.
+69 of 183 steps (38%) done
+
+[Thu Dec  5 15:44:40 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E14A8.fna
+    output: snp_sites/E14A8.fna
+    log: logs/snp_sites/E14A8.log
+    jobid: 32
+    benchmark: benchmarks/snp_sites/E14A8.txt
+    wildcards: locus=E14A8
+
+[Thu Dec  5 15:44:40 2019]
+Finished job 32.
+70 of 183 steps (38%) done
+
+[Thu Dec  5 15:44:40 2019]
+rule filter_haps:
+    input: haplotypes_curated/E6E7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E6E7.fna
+    log: logs/filter_haps/E6E7.log
+    jobid: 180
+    benchmark: benchmarks/filter_haps/E6E7.txt
+    wildcards: locus=E6E7
+
+[Thu Dec  5 15:44:43 2019]
+Finished job 180.
+71 of 183 steps (39%) done
+
+[Thu Dec  5 15:44:43 2019]
+rule filter_haps:
+    input: haplotypes_curated/E7A5.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E7A5.fna
+    log: logs/filter_haps/E7A5.log
+    jobid: 97
+    benchmark: benchmarks/filter_haps/E7A5.txt
+    wildcards: locus=E7A5
+
+[Thu Dec  5 15:44:45 2019]
+Finished job 97.
+72 of 183 steps (39%) done
+
+[Thu Dec  5 15:44:45 2019]
+rule filter_haps:
+    input: haplotypes_curated/E20A8.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E20A8.fna
+    log: logs/filter_haps/E20A8.log
+    jobid: 173
+    benchmark: benchmarks/filter_haps/E20A8.txt
+    wildcards: locus=E20A8
+
+[Thu Dec  5 15:44:47 2019]
+Finished job 173.
+73 of 183 steps (40%) done
+
+[Thu Dec  5 15:44:47 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E13A6.fna
+    output: snp_sites/E13A6.fna
+    log: logs/snp_sites/E13A6.log
+    jobid: 84
+    benchmark: benchmarks/snp_sites/E13A6.txt
+    wildcards: locus=E13A6
+
+[Thu Dec  5 15:44:47 2019]
+Finished job 84.
+74 of 183 steps (40%) done
+
+[Thu Dec  5 15:44:47 2019]
+rule filter_haps:
+    input: haplotypes_curated/E19E12.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E19E12.fna
+    log: logs/filter_haps/E19E12.log
+    jobid: 160
+    benchmark: benchmarks/filter_haps/E19E12.txt
+    wildcards: locus=E19E12
+
+[Thu Dec  5 15:44:50 2019]
+Finished job 160.
+75 of 183 steps (41%) done
+
+[Thu Dec  5 15:44:50 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E10C5.fna
+    output: snp_sites/E10C5.fna
+    log: logs/snp_sites/E10C5.log
+    jobid: 36
+    benchmark: benchmarks/snp_sites/E10C5.txt
+    wildcards: locus=E10C5
+
+[Thu Dec  5 15:44:50 2019]
+Finished job 36.
+76 of 183 steps (42%) done
+
+[Thu Dec  5 15:44:50 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12G2.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12G2.fna
+    log: logs/filter_haps/E12G2.log
+    jobid: 184
+    benchmark: benchmarks/filter_haps/E12G2.txt
+    wildcards: locus=E12G2
+
+[Thu Dec  5 15:44:52 2019]
+Finished job 184.
+77 of 183 steps (42%) done
+
+[Thu Dec  5 15:44:52 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E16A9.fna
+    output: snp_sites/E16A9.fna
+    log: logs/snp_sites/E16A9.log
+    jobid: 26
+    benchmark: benchmarks/snp_sites/E16A9.txt
+    wildcards: locus=E16A9
+
+[Thu Dec  5 15:44:52 2019]
+Finished job 26.
+78 of 183 steps (43%) done
+
+[Thu Dec  5 15:44:52 2019]
+rule filter_haps:
+    input: haplotypes_curated/E9A7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E9A7.fna
+    log: logs/filter_haps/E9A7.log
+    jobid: 183
+    benchmark: benchmarks/filter_haps/E9A7.txt
+    wildcards: locus=E9A7
+
+[Thu Dec  5 15:44:55 2019]
+Finished job 183.
+79 of 183 steps (43%) done
+
+[Thu Dec  5 15:44:55 2019]
+rule filter_haps:
+    input: haplotypes_curated/E18C7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E18C7.fna
+    log: logs/filter_haps/E18C7.log
+    jobid: 148
+    benchmark: benchmarks/filter_haps/E18C7.txt
+    wildcards: locus=E18C7
+
+[Thu Dec  5 15:44:57 2019]
+Finished job 148.
+80 of 183 steps (44%) done
+
+[Thu Dec  5 15:44:57 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E14G11.fna
+    output: snp_sites/E14G11.fna
+    log: logs/snp_sites/E14G11.log
+    jobid: 22
+    benchmark: benchmarks/snp_sites/E14G11.txt
+    wildcards: locus=E14G11
+
+[Thu Dec  5 15:44:57 2019]
+Finished job 22.
+81 of 183 steps (44%) done
+
+[Thu Dec  5 15:44:57 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E13E6.fna
+    output: snp_sites/E13E6.fna
+    log: logs/snp_sites/E13E6.log
+    jobid: 33
+    benchmark: benchmarks/snp_sites/E13E6.txt
+    wildcards: locus=E13E6
+
+[Thu Dec  5 15:44:57 2019]
+Finished job 33.
+82 of 183 steps (45%) done
+
+[Thu Dec  5 15:44:57 2019]
+rule filter_haps:
+    input: haplotypes_curated/E6C8.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E6C8.fna
+    log: logs/filter_haps/E6C8.log
+    jobid: 136
+    benchmark: benchmarks/filter_haps/E6C8.txt
+    wildcards: locus=E6C8
+
+[Thu Dec  5 15:45:00 2019]
+Finished job 136.
+83 of 183 steps (45%) done
+
+[Thu Dec  5 15:45:00 2019]
+rule filter_haps:
+    input: haplotypes_curated/E14A2.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E14A2.fna
+    log: logs/filter_haps/E14A2.log
+    jobid: 149
+    benchmark: benchmarks/filter_haps/E14A2.txt
+    wildcards: locus=E14A2
+
+[Thu Dec  5 15:45:03 2019]
+Finished job 149.
+84 of 183 steps (46%) done
+
+[Thu Dec  5 15:45:03 2019]
+rule filter_haps:
+    input: haplotypes_curated/E17A2.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E17A2.fna
+    log: logs/filter_haps/E17A2.log
+    jobid: 174
+    benchmark: benchmarks/filter_haps/E17A2.txt
+    wildcards: locus=E17A2
+
+[Thu Dec  5 15:45:05 2019]
+Finished job 174.
+85 of 183 steps (46%) done
+
+[Thu Dec  5 15:45:05 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E13A3.fna
+    output: snp_sites/E13A3.fna
+    log: logs/snp_sites/E13A3.log
+    jobid: 93
+    benchmark: benchmarks/snp_sites/E13A3.txt
+    wildcards: locus=E13A3
+
+[Thu Dec  5 15:45:05 2019]
+Finished job 93.
+86 of 183 steps (47%) done
+
+[Thu Dec  5 15:45:05 2019]
+rule filter_haps:
+    input: haplotypes_curated/E10C11.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E10C11.fna
+    log: logs/filter_haps/E10C11.log
+    jobid: 140
+    benchmark: benchmarks/filter_haps/E10C11.txt
+    wildcards: locus=E10C11
+
+[Thu Dec  5 15:45:08 2019]
+Finished job 140.
+87 of 183 steps (48%) done
+
+[Thu Dec  5 15:45:08 2019]
+rule filter_haps:
+    input: haplotypes_curated/E7G10.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E7G10.fna
+    log: logs/filter_haps/E7G10.log
+    jobid: 165
+    benchmark: benchmarks/filter_haps/E7G10.txt
+    wildcards: locus=E7G10
+
+[Thu Dec  5 15:45:10 2019]
+Finished job 165.
+88 of 183 steps (48%) done
+
+[Thu Dec  5 15:45:10 2019]
+rule filter_haps:
+    input: haplotypes_curated/E20C1.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E20C1.fna
+    log: logs/filter_haps/E20C1.log
+    jobid: 176
+    benchmark: benchmarks/filter_haps/E20C1.txt
+    wildcards: locus=E20C1
+
+[Thu Dec  5 15:45:12 2019]
+Finished job 176.
+89 of 183 steps (49%) done
+
+[Thu Dec  5 15:45:12 2019]
+rule filter_haps:
+    input: haplotypes_curated/E13C1.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E13C1.fna
+    log: logs/filter_haps/E13C1.log
+    jobid: 110
+    benchmark: benchmarks/filter_haps/E13C1.txt
+    wildcards: locus=E13C1
+
+[Thu Dec  5 15:45:15 2019]
+Finished job 110.
+90 of 183 steps (49%) done
+
+[Thu Dec  5 15:45:15 2019]
+rule filter_haps:
+    input: haplotypes_curated/E11G6.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E11G6.fna
+    log: logs/filter_haps/E11G6.log
+    jobid: 147
+    benchmark: benchmarks/filter_haps/E11G6.txt
+    wildcards: locus=E11G6
+
+[Thu Dec  5 15:45:17 2019]
+Finished job 147.
+91 of 183 steps (50%) done
+
+[Thu Dec  5 15:45:17 2019]
+rule filter_haps:
+    input: haplotypes_curated/E17G3.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E17G3.fna
+    log: logs/filter_haps/E17G3.log
+    jobid: 156
+    benchmark: benchmarks/filter_haps/E17G3.txt
+    wildcards: locus=E17G3
+
+[Thu Dec  5 15:45:20 2019]
+Finished job 156.
+92 of 183 steps (50%) done
+
+[Thu Dec  5 15:45:20 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12A9.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12A9.fna
+    log: logs/filter_haps/E12A9.log
+    jobid: 145
+    benchmark: benchmarks/filter_haps/E12A9.txt
+    wildcards: locus=E12A9
+
+[Thu Dec  5 15:45:22 2019]
+Finished job 145.
+93 of 183 steps (51%) done
+
+[Thu Dec  5 15:45:22 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E13C7.fna
+    output: snp_sites/E13C7.fna
+    log: logs/snp_sites/E13C7.log
+    jobid: 5
+    benchmark: benchmarks/snp_sites/E13C7.txt
+    wildcards: locus=E13C7
+
+[Thu Dec  5 15:45:22 2019]
+Finished job 5.
+94 of 183 steps (51%) done
+
+[Thu Dec  5 15:45:22 2019]
+rule filter_haps:
+    input: haplotypes_curated/E14E2.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E14E2.fna
+    log: logs/filter_haps/E14E2.log
+    jobid: 105
+    benchmark: benchmarks/filter_haps/E14E2.txt
+    wildcards: locus=E14E2
+
+[Thu Dec  5 15:45:25 2019]
+Finished job 105.
+95 of 183 steps (52%) done
+
+[Thu Dec  5 15:45:25 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E6E7.fna
+    output: snp_sites/E6E7.fna
+    log: logs/snp_sites/E6E7.log
+    jobid: 87
+    benchmark: benchmarks/snp_sites/E6E7.txt
+    wildcards: locus=E6E7
+
+[Thu Dec  5 15:45:25 2019]
+Finished job 87.
+96 of 183 steps (52%) done
+
+[Thu Dec  5 15:45:25 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E6E11.fna
+    output: snp_sites/E6E11.fna
+    log: logs/snp_sites/E6E11.log
+    jobid: 24
+    benchmark: benchmarks/snp_sites/E6E11.txt
+    wildcards: locus=E6E11
+
+[Thu Dec  5 15:45:25 2019]
+Finished job 24.
+97 of 183 steps (53%) done
+
+[Thu Dec  5 15:45:25 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E7A5.fna
+    output: snp_sites/E7A5.fna
+    log: logs/snp_sites/E7A5.log
+    jobid: 4
+    benchmark: benchmarks/snp_sites/E7A5.txt
+    wildcards: locus=E7A5
+
+[Thu Dec  5 15:45:25 2019]
+Finished job 4.
+98 of 183 steps (54%) done
+
+[Thu Dec  5 15:45:25 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E20G6.fna
+    output: snp_sites/E20G6.fna
+    log: logs/snp_sites/E20G6.log
+    jobid: 51
+    benchmark: benchmarks/snp_sites/E20G6.txt
+    wildcards: locus=E20G6
+
+[Thu Dec  5 15:45:25 2019]
+Finished job 51.
+99 of 183 steps (54%) done
+
+[Thu Dec  5 15:45:25 2019]
+rule filter_haps:
+    input: haplotypes_curated/G1L7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/G1L7.fna
+    log: logs/filter_haps/G1L7.log
+    jobid: 109
+    benchmark: benchmarks/filter_haps/G1L7.txt
+    wildcards: locus=G1L7
+
+[Thu Dec  5 15:45:28 2019]
+Finished job 109.
+100 of 183 steps (55%) done
+
+[Thu Dec  5 15:45:28 2019]
+rule filter_haps:
+    input: haplotypes_curated/E19E7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E19E7.fna
+    log: logs/filter_haps/E19E7.log
+    jobid: 152
+    benchmark: benchmarks/filter_haps/E19E7.txt
+    wildcards: locus=E19E7
+
+[Thu Dec  5 15:45:30 2019]
+Finished job 152.
+101 of 183 steps (55%) done
+
+[Thu Dec  5 15:45:30 2019]
+rule filter_haps:
+    input: haplotypes_curated/E9C4.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E9C4.fna
+    log: logs/filter_haps/E9C4.log
+    jobid: 108
+    benchmark: benchmarks/filter_haps/E9C4.txt
+    wildcards: locus=E9C4
+
+[Thu Dec  5 15:45:32 2019]
+Finished job 108.
+102 of 183 steps (56%) done
+
+[Thu Dec  5 15:45:32 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12A3.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12A3.fna
+    log: logs/filter_haps/E12A3.log
+    jobid: 162
+    benchmark: benchmarks/filter_haps/E12A3.txt
+    wildcards: locus=E12A3
+
+[Thu Dec  5 15:45:35 2019]
+Finished job 162.
+103 of 183 steps (56%) done
+
+[Thu Dec  5 15:45:35 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E20A8.fna
+    output: snp_sites/E20A8.fna
+    log: logs/snp_sites/E20A8.log
+    jobid: 80
+    benchmark: benchmarks/snp_sites/E20A8.txt
+    wildcards: locus=E20A8
+
+[Thu Dec  5 15:45:35 2019]
+Finished job 80.
+104 of 183 steps (57%) done
+
+[Thu Dec  5 15:45:35 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12C11.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12C11.fna
+    log: logs/filter_haps/E12C11.log
+    jobid: 128
+    benchmark: benchmarks/filter_haps/E12C11.txt
+    wildcards: locus=E12C11
+
+[Thu Dec  5 15:45:37 2019]
+Finished job 128.
+105 of 183 steps (57%) done
+
+[Thu Dec  5 15:45:37 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E18C10.fna
+    output: snp_sites/E18C10.fna
+    log: logs/snp_sites/E18C10.log
+    jobid: 3
+    benchmark: benchmarks/snp_sites/E18C10.txt
+    wildcards: locus=E18C10
+
+[Thu Dec  5 15:45:37 2019]
+Finished job 3.
+106 of 183 steps (58%) done
+
+[Thu Dec  5 15:45:37 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E19E12.fna
+    output: snp_sites/E19E12.fna
+    log: logs/snp_sites/E19E12.log
+    jobid: 67
+    benchmark: benchmarks/snp_sites/E19E12.txt
+    wildcards: locus=E19E12
+
+[Thu Dec  5 15:45:37 2019]
+Finished job 67.
+107 of 183 steps (58%) done
+
+[Thu Dec  5 15:45:37 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E10C6.fna
+    output: snp_sites/E10C6.fna
+    log: logs/snp_sites/E10C6.log
+    jobid: 27
+    benchmark: benchmarks/snp_sites/E10C6.txt
+    wildcards: locus=E10C6
+
+[Thu Dec  5 15:45:37 2019]
+Finished job 27.
+108 of 183 steps (59%) done
+
+[Thu Dec  5 15:45:37 2019]
+rule filter_haps:
+    input: haplotypes_curated/E19C7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E19C7.fna
+    log: logs/filter_haps/E19C7.log
+    jobid: 179
+    benchmark: benchmarks/filter_haps/E19C7.txt
+    wildcards: locus=E19C7
+
+[Thu Dec  5 15:45:40 2019]
+Finished job 179.
+109 of 183 steps (60%) done
+
+[Thu Dec  5 15:45:40 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12A4.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12A4.fna
+    log: logs/filter_haps/E12A4.log
+    jobid: 150
+    benchmark: benchmarks/filter_haps/E12A4.txt
+    wildcards: locus=E12A4
+
+[Thu Dec  5 15:45:43 2019]
+Finished job 150.
+110 of 183 steps (60%) done
+
+[Thu Dec  5 15:45:43 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E18C7.fna
+    output: snp_sites/E18C7.fna
+    log: logs/snp_sites/E18C7.log
+    jobid: 55
+    benchmark: benchmarks/snp_sites/E18C7.txt
+    wildcards: locus=E18C7
+
+[Thu Dec  5 15:45:43 2019]
+Finished job 55.
+111 of 183 steps (61%) done
+
+[Thu Dec  5 15:45:43 2019]
+rule filter_haps:
+    input: haplotypes_curated/E8E1.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E8E1.fna
+    log: logs/filter_haps/E8E1.log
+    jobid: 104
+    benchmark: benchmarks/filter_haps/E8E1.txt
+    wildcards: locus=E8E1
+
+[Thu Dec  5 15:45:45 2019]
+Finished job 104.
+112 of 183 steps (61%) done
+
+[Thu Dec  5 15:45:45 2019]
+rule filter_haps:
+    input: haplotypes_curated/E18C3.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E18C3.fna
+    log: logs/filter_haps/E18C3.log
+    jobid: 169
+    benchmark: benchmarks/filter_haps/E18C3.txt
+    wildcards: locus=E18C3
+
+[Thu Dec  5 15:45:48 2019]
+Finished job 169.
+113 of 183 steps (62%) done
+
+[Thu Dec  5 15:45:48 2019]
+rule filter_haps:
+    input: haplotypes_curated/E8G8.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E8G8.fna
+    log: logs/filter_haps/E8G8.log
+    jobid: 103
+    benchmark: benchmarks/filter_haps/E8G8.txt
+    wildcards: locus=E8G8
+
+[Thu Dec  5 15:45:50 2019]
+Finished job 103.
+114 of 183 steps (62%) done
+
+[Thu Dec  5 15:45:50 2019]
+rule filter_haps:
+    input: haplotypes_curated/E23C6.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E23C6.fna
+    log: logs/filter_haps/E23C6.log
+    jobid: 164
+    benchmark: benchmarks/filter_haps/E23C6.txt
+    wildcards: locus=E23C6
+
+[Thu Dec  5 15:45:53 2019]
+Finished job 164.
+115 of 183 steps (63%) done
+
+[Thu Dec  5 15:45:53 2019]
+rule filter_haps:
+    input: haplotypes_curated/MGF.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/MGF.fna
+    log: logs/filter_haps/MGF.log
+    jobid: 157
+    benchmark: benchmarks/filter_haps/MGF.txt
+    wildcards: locus=MGF
+
+[Thu Dec  5 15:45:55 2019]
+Finished job 157.
+116 of 183 steps (63%) done
+
+[Thu Dec  5 15:45:55 2019]
+rule filter_haps:
+    input: haplotypes_curated/E15E2.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E15E2.fna
+    log: logs/filter_haps/E15E2.log
+    jobid: 121
+    benchmark: benchmarks/filter_haps/E15E2.txt
+    wildcards: locus=E15E2
+
+[Thu Dec  5 15:45:57 2019]
+Finished job 121.
+117 of 183 steps (64%) done
+
+[Thu Dec  5 15:45:57 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E9A7.fna
+    output: snp_sites/E9A7.fna
+    log: logs/snp_sites/E9A7.log
+    jobid: 90
+    benchmark: benchmarks/snp_sites/E9A7.txt
+    wildcards: locus=E9A7
+
+[Thu Dec  5 15:45:57 2019]
+Finished job 90.
+118 of 183 steps (64%) done
+
+[Thu Dec  5 15:45:57 2019]
+rule filter_haps:
+    input: haplotypes_curated/E14E10.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E14E10.fna
+    log: logs/filter_haps/E14E10.log
+    jobid: 107
+    benchmark: benchmarks/filter_haps/E14E10.txt
+    wildcards: locus=E14E10
+
+[Thu Dec  5 15:46:00 2019]
+Finished job 107.
+119 of 183 steps (65%) done
+
+[Thu Dec  5 15:46:00 2019]
+rule filter_haps:
+    input: haplotypes_curated/E20A9.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E20A9.fna
+    log: logs/filter_haps/E20A9.log
+    jobid: 175
+    benchmark: benchmarks/filter_haps/E20A9.txt
+    wildcards: locus=E20A9
+
+[Thu Dec  5 15:46:02 2019]
+Finished job 175.
+120 of 183 steps (66%) done
+
+[Thu Dec  5 15:46:02 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E14A2.fna
+    output: snp_sites/E14A2.fna
+    log: logs/snp_sites/E14A2.log
+    jobid: 56
+    benchmark: benchmarks/snp_sites/E14A2.txt
+    wildcards: locus=E14A2
+
+[Thu Dec  5 15:46:02 2019]
+Finished job 56.
+121 of 183 steps (66%) done
+
+[Thu Dec  5 15:46:02 2019]
+rule filter_haps:
+    input: haplotypes_curated/E23G1.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E23G1.fna
+    log: logs/filter_haps/E23G1.log
+    jobid: 106
+    benchmark: benchmarks/filter_haps/E23G1.txt
+    wildcards: locus=E23G1
+
+[Thu Dec  5 15:46:04 2019]
+Finished job 106.
+122 of 183 steps (67%) done
+
+[Thu Dec  5 15:46:04 2019]
+rule filter_haps:
+    input: haplotypes_curated/E23G7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E23G7.fna
+    log: logs/filter_haps/E23G7.log
+    jobid: 118
+    benchmark: benchmarks/filter_haps/E23G7.txt
+    wildcards: locus=E23G7
+
+[Thu Dec  5 15:46:08 2019]
+Finished job 118.
+123 of 183 steps (67%) done
+
+[Thu Dec  5 15:46:08 2019]
+rule filter_haps:
+    input: haplotypes_curated/E10A7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E10A7.fna
+    log: logs/filter_haps/E10A7.log
+    jobid: 153
+    benchmark: benchmarks/filter_haps/E10A7.txt
+    wildcards: locus=E10A7
+
+[Thu Dec  5 15:46:13 2019]
+Finished job 153.
+124 of 183 steps (68%) done
+
+[Thu Dec  5 15:46:13 2019]
+rule filter_haps:
+    input: haplotypes_curated/E7C12.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E7C12.fna
+    log: logs/filter_haps/E7C12.log
+    jobid: 154
+    benchmark: benchmarks/filter_haps/E7C12.txt
+    wildcards: locus=E7C12
+
+[Thu Dec  5 15:46:16 2019]
+Finished job 154.
+125 of 183 steps (68%) done
+
+[Thu Dec  5 15:46:16 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E13C1.fna
+    output: snp_sites/E13C1.fna
+    log: logs/snp_sites/E13C1.log
+    jobid: 17
+    benchmark: benchmarks/snp_sites/E13C1.txt
+    wildcards: locus=E13C1
+
+[Thu Dec  5 15:46:16 2019]
+Finished job 17.
+126 of 183 steps (69%) done
+
+[Thu Dec  5 15:46:16 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E11G6.fna
+    output: snp_sites/E11G6.fna
+    log: logs/snp_sites/E11G6.log
+    jobid: 54
+    benchmark: benchmarks/snp_sites/E11G6.txt
+    wildcards: locus=E11G6
+
+[Thu Dec  5 15:46:16 2019]
+Finished job 54.
+127 of 183 steps (69%) done
+
+[Thu Dec  5 15:46:16 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E14E2.fna
+    output: snp_sites/E14E2.fna
+    log: logs/snp_sites/E14E2.log
+    jobid: 12
+    benchmark: benchmarks/snp_sites/E14E2.txt
+    wildcards: locus=E14E2
+
+[Thu Dec  5 15:46:16 2019]
+Finished job 12.
+128 of 183 steps (70%) done
+
+[Thu Dec  5 15:46:16 2019]
+rule filter_haps:
+    input: haplotypes_curated/ctg325.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/ctg325.fna
+    log: logs/filter_haps/ctg325.log
+    jobid: 171
+    benchmark: benchmarks/filter_haps/ctg325.txt
+    wildcards: locus=ctg325
+
+[Thu Dec  5 15:46:20 2019]
+Finished job 171.
+129 of 183 steps (70%) done
+
+[Thu Dec  5 15:46:20 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E10C11.fna
+    output: snp_sites/E10C11.fna
+    log: logs/snp_sites/E10C11.log
+    jobid: 47
+    benchmark: benchmarks/snp_sites/E10C11.txt
+    wildcards: locus=E10C11
+
+[Thu Dec  5 15:46:20 2019]
+Finished job 47.
+130 of 183 steps (71%) done
+
+[Thu Dec  5 15:46:20 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E17A2.fna
+    output: snp_sites/E17A2.fna
+    log: logs/snp_sites/E17A2.log
+    jobid: 81
+    benchmark: benchmarks/snp_sites/E17A2.txt
+    wildcards: locus=E17A2
+
+[Thu Dec  5 15:46:20 2019]
+Finished job 81.
+131 of 183 steps (72%) done
+
+[Thu Dec  5 15:46:20 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E6C8.fna
+    output: snp_sites/E6C8.fna
+    log: logs/snp_sites/E6C8.log
+    jobid: 43
+    benchmark: benchmarks/snp_sites/E6C8.txt
+    wildcards: locus=E6C8
+
+[Thu Dec  5 15:46:20 2019]
+Finished job 43.
+132 of 183 steps (72%) done
+
+[Thu Dec  5 15:46:20 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12A9.fna
+    output: snp_sites/E12A9.fna
+    log: logs/snp_sites/E12A9.log
+    jobid: 52
+    benchmark: benchmarks/snp_sites/E12A9.txt
+    wildcards: locus=E12A9
+
+[Thu Dec  5 15:46:21 2019]
+Finished job 52.
+133 of 183 steps (73%) done
+
+[Thu Dec  5 15:46:21 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E17G3.fna
+    output: snp_sites/E17G3.fna
+    log: logs/snp_sites/E17G3.log
+    jobid: 63
+    benchmark: benchmarks/snp_sites/E17G3.txt
+    wildcards: locus=E17G3
+
+[Thu Dec  5 15:46:21 2019]
+Finished job 63.
+134 of 183 steps (73%) done
+
+[Thu Dec  5 15:46:21 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E7G10.fna
+    output: snp_sites/E7G10.fna
+    log: logs/snp_sites/E7G10.log
+    jobid: 72
+    benchmark: benchmarks/snp_sites/E7G10.txt
+    wildcards: locus=E7G10
+
+[Thu Dec  5 15:46:21 2019]
+Finished job 72.
+135 of 183 steps (74%) done
+
+[Thu Dec  5 15:46:21 2019]
+rule filter_haps:
+    input: haplotypes_curated/E13A7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E13A7.fna
+    log: logs/filter_haps/E13A7.log
+    jobid: 172
+    benchmark: benchmarks/filter_haps/E13A7.txt
+    wildcards: locus=E13A7
+
+[Thu Dec  5 15:46:32 2019]
+Finished job 172.
+136 of 183 steps (74%) done
+
+[Thu Dec  5 15:46:32 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E20C1.fna
+    output: snp_sites/E20C1.fna
+    log: logs/snp_sites/E20C1.log
+    jobid: 83
+    benchmark: benchmarks/snp_sites/E20C1.txt
+    wildcards: locus=E20C1
+
+[Thu Dec  5 15:46:32 2019]
+Finished job 83.
+137 of 183 steps (75%) done
+
+[Thu Dec  5 15:46:32 2019]
+rule filter_haps:
+    input: haplotypes_curated/E14E3.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E14E3.fna
+    log: logs/filter_haps/E14E3.log
+    jobid: 102
+    benchmark: benchmarks/filter_haps/E14E3.txt
+    wildcards: locus=E14E3
+
+[Thu Dec  5 15:46:37 2019]
+Finished job 102.
+138 of 183 steps (75%) done
+
+[Thu Dec  5 15:46:37 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12G2.fna
+    output: snp_sites/E12G2.fna
+    log: logs/snp_sites/E12G2.log
+    jobid: 91
+    benchmark: benchmarks/snp_sites/E12G2.txt
+    wildcards: locus=E12G2
+
+[Thu Dec  5 15:46:37 2019]
+Finished job 91.
+139 of 183 steps (76%) done
+
+[Thu Dec  5 15:46:37 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E9C4.fna
+    output: snp_sites/E9C4.fna
+    log: logs/snp_sites/E9C4.log
+    jobid: 15
+    benchmark: benchmarks/snp_sites/E9C4.txt
+    wildcards: locus=E9C4
+
+[Thu Dec  5 15:46:38 2019]
+Finished job 15.
+140 of 183 steps (77%) done
+
+[Thu Dec  5 15:46:38 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12A3.fna
+    output: snp_sites/E12A3.fna
+    log: logs/snp_sites/E12A3.log
+    jobid: 69
+    benchmark: benchmarks/snp_sites/E12A3.txt
+    wildcards: locus=E12A3
+
+[Thu Dec  5 15:46:38 2019]
+Finished job 69.
+141 of 183 steps (77%) done
+
+[Thu Dec  5 15:46:38 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E19E7.fna
+    output: snp_sites/E19E7.fna
+    log: logs/snp_sites/E19E7.log
+    jobid: 59
+    benchmark: benchmarks/snp_sites/E19E7.txt
+    wildcards: locus=E19E7
+
+[Thu Dec  5 15:46:38 2019]
+Finished job 59.
+142 of 183 steps (78%) done
+
+[Thu Dec  5 15:46:38 2019]
+rule filter_haps:
+    input: haplotypes_curated/E26G9.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E26G9.fna
+    log: logs/filter_haps/E26G9.log
+    jobid: 168
+    benchmark: benchmarks/filter_haps/E26G9.txt
+    wildcards: locus=E26G9
+
+[Thu Dec  5 15:46:41 2019]
+Finished job 168.
+143 of 183 steps (78%) done
+
+[Thu Dec  5 15:46:41 2019]
+rule filter_haps:
+    input: haplotypes_curated/E8G11.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E8G11.fna
+    log: logs/filter_haps/E8G11.log
+    jobid: 101
+    benchmark: benchmarks/filter_haps/E8G11.txt
+    wildcards: locus=E8G11
+
+[Thu Dec  5 15:46:43 2019]
+Finished job 101.
+144 of 183 steps (79%) done
+
+[Thu Dec  5 15:46:43 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12C11.fna
+    output: snp_sites/E12C11.fna
+    log: logs/snp_sites/E12C11.log
+    jobid: 35
+    benchmark: benchmarks/snp_sites/E12C11.txt
+    wildcards: locus=E12C11
+
+[Thu Dec  5 15:46:43 2019]
+Finished job 35.
+145 of 183 steps (79%) done
+
+[Thu Dec  5 15:46:43 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12A4.fna
+    output: snp_sites/E12A4.fna
+    log: logs/snp_sites/E12A4.log
+    jobid: 57
+    benchmark: benchmarks/snp_sites/E12A4.txt
+    wildcards: locus=E12A4
+
+[Thu Dec  5 15:46:43 2019]
+Finished job 57.
+146 of 183 steps (80%) done
+
+[Thu Dec  5 15:46:43 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E19C7.fna
+    output: snp_sites/E19C7.fna
+    log: logs/snp_sites/E19C7.log
+    jobid: 86
+    benchmark: benchmarks/snp_sites/E19C7.txt
+    wildcards: locus=E19C7
+
+[Thu Dec  5 15:46:43 2019]
+Finished job 86.
+147 of 183 steps (80%) done
+
+[Thu Dec  5 15:46:43 2019]
+rule filter_haps:
+    input: haplotypes_curated/E18C8.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E18C8.fna
+    log: logs/filter_haps/E18C8.log
+    jobid: 134
+    benchmark: benchmarks/filter_haps/E18C8.txt
+    wildcards: locus=E18C8
+
+[Thu Dec  5 15:46:46 2019]
+Finished job 134.
+148 of 183 steps (81%) done
+
+[Thu Dec  5 15:46:46 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12C7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12C7.fna
+    log: logs/filter_haps/E12C7.log
+    jobid: 132
+    benchmark: benchmarks/filter_haps/E12C7.txt
+    wildcards: locus=E12C7
+
+[Thu Dec  5 15:46:49 2019]
+Finished job 132.
+149 of 183 steps (81%) done
+
+[Thu Dec  5 15:46:49 2019]
+rule snp_sites:
+    input: haplotypes_filtered/MGF.fna
+    output: snp_sites/MGF.fna
+    log: logs/snp_sites/MGF.log
+    jobid: 64
+    benchmark: benchmarks/snp_sites/MGF.txt
+    wildcards: locus=MGF
+
+[Thu Dec  5 15:46:49 2019]
+Finished job 64.
+150 of 183 steps (82%) done
+
+[Thu Dec  5 15:46:49 2019]
+rule filter_haps:
+    input: haplotypes_curated/E5E6.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E5E6.fna
+    log: logs/filter_haps/E5E6.log
+    jobid: 158
+    benchmark: benchmarks/filter_haps/E5E6.txt
+    wildcards: locus=E5E6
+
+[Thu Dec  5 15:46:52 2019]
+Finished job 158.
+151 of 183 steps (83%) done
+
+[Thu Dec  5 15:46:52 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E8E1.fna
+    output: snp_sites/E8E1.fna
+    log: logs/snp_sites/E8E1.log
+    jobid: 11
+    benchmark: benchmarks/snp_sites/E8E1.txt
+    wildcards: locus=E8E1
+
+[Thu Dec  5 15:46:52 2019]
+Finished job 11.
+152 of 183 steps (83%) done
+
+[Thu Dec  5 15:46:52 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E18C3.fna
+    output: snp_sites/E18C3.fna
+    log: logs/snp_sites/E18C3.log
+    jobid: 76
+    benchmark: benchmarks/snp_sites/E18C3.txt
+    wildcards: locus=E18C3
+
+[Thu Dec  5 15:46:52 2019]
+Finished job 76.
+153 of 183 steps (84%) done
+
+[Thu Dec  5 15:46:52 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E23C6.fna
+    output: snp_sites/E23C6.fna
+    log: logs/snp_sites/E23C6.log
+    jobid: 71
+    benchmark: benchmarks/snp_sites/E23C6.txt
+    wildcards: locus=E23C6
+
+[Thu Dec  5 15:46:52 2019]
+Finished job 71.
+154 of 183 steps (84%) done
+
+[Thu Dec  5 15:46:52 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E8G8.fna
+    output: snp_sites/E8G8.fna
+    log: logs/snp_sites/E8G8.log
+    jobid: 10
+    benchmark: benchmarks/snp_sites/E8G8.txt
+    wildcards: locus=E8G8
+
+[Thu Dec  5 15:46:53 2019]
+Finished job 10.
+155 of 183 steps (85%) done
+
+[Thu Dec  5 15:46:53 2019]
+rule snp_sites:
+    input: haplotypes_filtered/G1L7.fna
+    output: snp_sites/G1L7.fna
+    log: logs/snp_sites/G1L7.log
+    jobid: 16
+    benchmark: benchmarks/snp_sites/G1L7.txt
+    wildcards: locus=G1L7
+
+[Thu Dec  5 15:46:53 2019]
+Finished job 16.
+156 of 183 steps (85%) done
+
+[Thu Dec  5 15:46:53 2019]
+rule filter_haps:
+    input: haplotypes_curated/E16G9.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E16G9.fna
+    log: logs/filter_haps/E16G9.log
+    jobid: 100
+    benchmark: benchmarks/filter_haps/E16G9.txt
+    wildcards: locus=E16G9
+
+[Thu Dec  5 15:46:57 2019]
+Finished job 100.
+157 of 183 steps (86%) done
+
+[Thu Dec  5 15:46:57 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E15E2.fna
+    output: snp_sites/E15E2.fna
+    log: logs/snp_sites/E15E2.log
+    jobid: 28
+    benchmark: benchmarks/snp_sites/E15E2.txt
+    wildcards: locus=E15E2
+
+[Thu Dec  5 15:46:57 2019]
+Finished job 28.
+158 of 183 steps (86%) done
+
+[Thu Dec  5 15:46:57 2019]
+rule filter_haps:
+    input: haplotypes_curated/E10E9.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E10E9.fna
+    log: logs/filter_haps/E10E9.log
+    jobid: 185
+    benchmark: benchmarks/filter_haps/E10E9.txt
+    wildcards: locus=E10E9
+
+[Thu Dec  5 15:47:00 2019]
+Finished job 185.
+159 of 183 steps (87%) done
+
+[Thu Dec  5 15:47:00 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E23G7.fna
+    output: snp_sites/E23G7.fna
+    log: logs/snp_sites/E23G7.log
+    jobid: 25
+    benchmark: benchmarks/snp_sites/E23G7.txt
+    wildcards: locus=E23G7
+
+[Thu Dec  5 15:47:00 2019]
+Finished job 25.
+160 of 183 steps (87%) done
+
+[Thu Dec  5 15:47:00 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E23G1.fna
+    output: snp_sites/E23G1.fna
+    log: logs/snp_sites/E23G1.log
+    jobid: 13
+    benchmark: benchmarks/snp_sites/E23G1.txt
+    wildcards: locus=E23G1
+
+[Thu Dec  5 15:47:00 2019]
+Finished job 13.
+161 of 183 steps (88%) done
+
+[Thu Dec  5 15:47:00 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E14E10.fna
+    output: snp_sites/E14E10.fna
+    log: logs/snp_sites/E14E10.log
+    jobid: 14
+    benchmark: benchmarks/snp_sites/E14E10.txt
+    wildcards: locus=E14E10
+
+[Thu Dec  5 15:47:00 2019]
+Finished job 14.
+162 of 183 steps (89%) done
+
+[Thu Dec  5 15:47:00 2019]
+rule filter_haps:
+    input: haplotypes_curated/E8A10.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E8A10.fna
+    log: logs/filter_haps/E8A10.log
+    jobid: 114
+    benchmark: benchmarks/filter_haps/E8A10.txt
+    wildcards: locus=E8A10
+
+[Thu Dec  5 15:47:03 2019]
+Finished job 114.
+163 of 183 steps (89%) done
+
+[Thu Dec  5 15:47:03 2019]
+rule filter_haps:
+    input: haplotypes_curated/E6C2.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E6C2.fna
+    log: logs/filter_haps/E6C2.log
+    jobid: 166
+    benchmark: benchmarks/filter_haps/E6C2.txt
+    wildcards: locus=E6C2
+
+[Thu Dec  5 15:47:07 2019]
+Finished job 166.
+164 of 183 steps (90%) done
+
+[Thu Dec  5 15:47:07 2019]
+rule snp_sites:
+    input: haplotypes_filtered/ctg325.fna
+    output: snp_sites/ctg325.fna
+    log: logs/snp_sites/ctg325.log
+    jobid: 78
+    benchmark: benchmarks/snp_sites/ctg325.txt
+    wildcards: locus=ctg325
+
+[Thu Dec  5 15:47:07 2019]
+Finished job 78.
+165 of 183 steps (90%) done
+
+[Thu Dec  5 15:47:07 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E20A9.fna
+    output: snp_sites/E20A9.fna
+    log: logs/snp_sites/E20A9.log
+    jobid: 82
+    benchmark: benchmarks/snp_sites/E20A9.txt
+    wildcards: locus=E20A9
+
+[Thu Dec  5 15:47:07 2019]
+Finished job 82.
+166 of 183 steps (91%) done
+
+[Thu Dec  5 15:47:07 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E7C12.fna
+    output: snp_sites/E7C12.fna
+    log: logs/snp_sites/E7C12.log
+    jobid: 61
+    benchmark: benchmarks/snp_sites/E7C12.txt
+    wildcards: locus=E7C12
+
+[Thu Dec  5 15:47:07 2019]
+Finished job 61.
+167 of 183 steps (91%) done
+
+[Thu Dec  5 15:47:07 2019]
+rule filter_haps:
+    input: haplotypes_curated/E9E4.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E9E4.fna
+    log: logs/filter_haps/E9E4.log
+    jobid: 146
+    benchmark: benchmarks/filter_haps/E9E4.txt
+    wildcards: locus=E9E4
+
+[Thu Dec  5 15:47:10 2019]
+Finished job 146.
+168 of 183 steps (92%) done
+
+[Thu Dec  5 15:47:10 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E14E3.fna
+    output: snp_sites/E14E3.fna
+    log: logs/snp_sites/E14E3.log
+    jobid: 9
+    benchmark: benchmarks/snp_sites/E14E3.txt
+    wildcards: locus=E14E3
+
+[Thu Dec  5 15:47:10 2019]
+Finished job 9.
+169 of 183 steps (92%) done
+
+[Thu Dec  5 15:47:10 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E10A7.fna
+    output: snp_sites/E10A7.fna
+    log: logs/snp_sites/E10A7.log
+    jobid: 60
+    benchmark: benchmarks/snp_sites/E10A7.txt
+    wildcards: locus=E10A7
+
+[Thu Dec  5 15:47:10 2019]
+Finished job 60.
+170 of 183 steps (93%) done
+
+[Thu Dec  5 15:47:10 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E13A7.fna
+    output: snp_sites/E13A7.fna
+    log: logs/snp_sites/E13A7.log
+    jobid: 79
+    benchmark: benchmarks/snp_sites/E13A7.txt
+    wildcards: locus=E13A7
+
+[Thu Dec  5 15:47:10 2019]
+Finished job 79.
+171 of 183 steps (93%) done
+
+[Thu Dec  5 15:47:10 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E26G9.fna
+    output: snp_sites/E26G9.fna
+    log: logs/snp_sites/E26G9.log
+    jobid: 75
+    benchmark: benchmarks/snp_sites/E26G9.txt
+    wildcards: locus=E26G9
+
+[Thu Dec  5 15:47:10 2019]
+Finished job 75.
+172 of 183 steps (94%) done
+
+[Thu Dec  5 15:47:10 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E18C8.fna
+    output: snp_sites/E18C8.fna
+    log: logs/snp_sites/E18C8.log
+    jobid: 41
+    benchmark: benchmarks/snp_sites/E18C8.txt
+    wildcards: locus=E18C8
+
+[Thu Dec  5 15:47:10 2019]
+Finished job 41.
+173 of 183 steps (95%) done
+
+[Thu Dec  5 15:47:10 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E8G11.fna
+    output: snp_sites/E8G11.fna
+    log: logs/snp_sites/E8G11.log
+    jobid: 8
+    benchmark: benchmarks/snp_sites/E8G11.txt
+    wildcards: locus=E8G11
+
+[Thu Dec  5 15:47:10 2019]
+Finished job 8.
+174 of 183 steps (95%) done
+
+[Thu Dec  5 15:47:10 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12C7.fna
+    output: snp_sites/E12C7.fna
+    log: logs/snp_sites/E12C7.log
+    jobid: 39
+    benchmark: benchmarks/snp_sites/E12C7.txt
+    wildcards: locus=E12C7
+
+[Thu Dec  5 15:47:10 2019]
+Finished job 39.
+175 of 183 steps (96%) done
+
+[Thu Dec  5 15:47:10 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E16G9.fna
+    output: snp_sites/E16G9.fna
+    log: logs/snp_sites/E16G9.log
+    jobid: 7
+    benchmark: benchmarks/snp_sites/E16G9.txt
+    wildcards: locus=E16G9
+
+[Thu Dec  5 15:47:10 2019]
+Finished job 7.
+176 of 183 steps (96%) done
+
+[Thu Dec  5 15:47:10 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E5E6.fna
+    output: snp_sites/E5E6.fna
+    log: logs/snp_sites/E5E6.log
+    jobid: 65
+    benchmark: benchmarks/snp_sites/E5E6.txt
+    wildcards: locus=E5E6
+
+[Thu Dec  5 15:47:10 2019]
+Finished job 65.
+177 of 183 steps (97%) done
+
+[Thu Dec  5 15:47:10 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E10E9.fna
+    output: snp_sites/E10E9.fna
+    log: logs/snp_sites/E10E9.log
+    jobid: 92
+    benchmark: benchmarks/snp_sites/E10E9.txt
+    wildcards: locus=E10E9
+
+[Thu Dec  5 15:47:10 2019]
+Finished job 92.
+178 of 183 steps (97%) done
+
+[Thu Dec  5 15:47:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E6C2.fna
+    output: snp_sites/E6C2.fna
+    log: logs/snp_sites/E6C2.log
+    jobid: 73
+    benchmark: benchmarks/snp_sites/E6C2.txt
+    wildcards: locus=E6C2
+
+[Thu Dec  5 15:47:11 2019]
+Finished job 73.
+179 of 183 steps (98%) done
+
+[Thu Dec  5 15:47:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E9E4.fna
+    output: snp_sites/E9E4.fna
+    log: logs/snp_sites/E9E4.log
+    jobid: 53
+    benchmark: benchmarks/snp_sites/E9E4.txt
+    wildcards: locus=E9E4
+
+[Thu Dec  5 15:47:11 2019]
+Finished job 53.
+180 of 183 steps (98%) done
+
+[Thu Dec  5 15:47:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E8A10.fna
+    output: snp_sites/E8A10.fna
+    log: logs/snp_sites/E8A10.log
+    jobid: 21
+    benchmark: benchmarks/snp_sites/E8A10.txt
+    wildcards: locus=E8A10
+
+[Thu Dec  5 15:47:11 2019]
+Finished job 21.
+181 of 183 steps (99%) done
+
+[Thu Dec  5 15:47:11 2019]
+rule snp_subsample:
+    input: snp_sites/E24A5.fna, snp_sites/E18C10.fna, snp_sites/E7A5.fna, snp_sites/E13C7.fna, snp_sites/E24A6.fna, snp_sites/E16G9.fna, snp_sites/E8G11.fna, snp_sites/E14E3.fna, snp_sites/E8G8.fna, snp_sites/E8E1.fna, snp_sites/E14E2.fna, snp_sites/E23G1.fna, snp_sites/E14E10.fna, snp_sites/E9C4.fna, snp_sites/G1L7.fna, snp_sites/E13C1.fna, snp_sites/E12E3.fna, snp_sites/E14G10.fna, snp_sites/E16A12.fna, snp_sites/E8A10.fna, snp_sites/E14G11.fna, snp_sites/E22A7.fna, snp_sites/E6E11.fna, snp_sites/E23G7.fna, snp_sites/E16A9.fna, snp_sites/E10C6.fna, snp_sites/E15E2.fna, snp_sites/E12C4.fna, snp_sites/E21A3.fna, snp_sites/WNT1.fna, snp_sites/E14A8.fna, snp_sites/E13E6.fna, snp_sites/E12C6.fna, snp_sites/E12C11.fna, snp_sites/E10C5.fna, snp_sites/E24A12.fna, snp_sites/E24C10.fna, snp_sites/E12C7.fna, snp_sites/E16C7.fna, snp_sites/E18C8.fna, snp_sites/E12C3.fna, snp_sites/E6C8.fna, snp_sites/E20G5.fna, snp_sites/E12C2.fna, snp_sites/E13E2.fna, snp_sites/E10C11.fna, snp_sites/E24E9.fna, snp_sites/E24G3.fna, snp_sites/E12G12.fna, snp_sites/E20G6.fna, snp_sites/E12A9.fna, snp_sites/E9E4.fna, snp_sites/E11G6.fna, snp_sites/E18C7.fna, snp_sites/E14A2.fna, snp_sites/E12A4.fna, snp_sites/E15A11.fna, snp_sites/E19E7.fna, snp_sites/E10A7.fna, snp_sites/E7C12.fna, snp_sites/E14A1.fna, snp_sites/E17G3.fna, snp_sites/MGF.fna, snp_sites/E5E6.fna, snp_sites/E20E5.fna, snp_sites/E19E12.fna, snp_sites/E15G5.fna, snp_sites/E12A3.fna, snp_sites/E15E12.fna, snp_sites/E23C6.fna, snp_sites/E7G10.fna, snp_sites/E6C2.fna, snp_sites/E14A6.fna, snp_sites/E26G9.fna, snp_sites/E18C3.fna, snp_sites/E17C12.fna, snp_sites/ctg325.fna, snp_sites/E13A7.fna, snp_sites/E20A8.fna, snp_sites/E17A2.fna, snp_sites/E20A9.fna, snp_sites/E20C1.fna, snp_sites/E13A6.fna, snp_sites/E15A2.fna, snp_sites/E19C7.fna, snp_sites/E6E7.fna, snp_sites/E12G5.fna, snp_sites/E20C2.fna, snp_sites/E9A7.fna, snp_sites/E12G2.fna, snp_sites/E10E9.fna, snp_sites/E13A3.fna
+    output: snp_sites_filtered/E24A5.fna, snp_sites_filtered/E18C10.fna, snp_sites_filtered/E7A5.fna, snp_sites_filtered/E13C7.fna, snp_sites_filtered/E24A6.fna, snp_sites_filtered/E16G9.fna, snp_sites_filtered/E8G11.fna, snp_sites_filtered/E14E3.fna, snp_sites_filtered/E8G8.fna, snp_sites_filtered/E8E1.fna, snp_sites_filtered/E14E2.fna, snp_sites_filtered/E23G1.fna, snp_sites_filtered/E14E10.fna, snp_sites_filtered/E9C4.fna, snp_sites_filtered/G1L7.fna, snp_sites_filtered/E13C1.fna, snp_sites_filtered/E12E3.fna, snp_sites_filtered/E14G10.fna, snp_sites_filtered/E16A12.fna, snp_sites_filtered/E8A10.fna, snp_sites_filtered/E14G11.fna, snp_sites_filtered/E22A7.fna, snp_sites_filtered/E6E11.fna, snp_sites_filtered/E23G7.fna, snp_sites_filtered/E16A9.fna, snp_sites_filtered/E10C6.fna, snp_sites_filtered/E15E2.fna, snp_sites_filtered/E12C4.fna, snp_sites_filtered/E21A3.fna, snp_sites_filtered/WNT1.fna, snp_sites_filtered/E14A8.fna, snp_sites_filtered/E13E6.fna, snp_sites_filtered/E12C6.fna, snp_sites_filtered/E12C11.fna, snp_sites_filtered/E10C5.fna, snp_sites_filtered/E24A12.fna, snp_sites_filtered/E24C10.fna, snp_sites_filtered/E12C7.fna, snp_sites_filtered/E16C7.fna, snp_sites_filtered/E18C8.fna, snp_sites_filtered/E12C3.fna, snp_sites_filtered/E6C8.fna, snp_sites_filtered/E20G5.fna, snp_sites_filtered/E12C2.fna, snp_sites_filtered/E13E2.fna, snp_sites_filtered/E10C11.fna, snp_sites_filtered/E24E9.fna, snp_sites_filtered/E24G3.fna, snp_sites_filtered/E12G12.fna, snp_sites_filtered/E20G6.fna, snp_sites_filtered/E12A9.fna, snp_sites_filtered/E9E4.fna, snp_sites_filtered/E11G6.fna, snp_sites_filtered/E18C7.fna, snp_sites_filtered/E14A2.fna, snp_sites_filtered/E12A4.fna, snp_sites_filtered/E15A11.fna, snp_sites_filtered/E19E7.fna, snp_sites_filtered/E10A7.fna, snp_sites_filtered/E7C12.fna, snp_sites_filtered/E14A1.fna, snp_sites_filtered/E17G3.fna, snp_sites_filtered/MGF.fna, snp_sites_filtered/E5E6.fna, snp_sites_filtered/E20E5.fna, snp_sites_filtered/E19E12.fna, snp_sites_filtered/E15G5.fna, snp_sites_filtered/E12A3.fna, snp_sites_filtered/E15E12.fna, snp_sites_filtered/E23C6.fna, snp_sites_filtered/E7G10.fna, snp_sites_filtered/E6C2.fna, snp_sites_filtered/E14A6.fna, snp_sites_filtered/E26G9.fna, snp_sites_filtered/E18C3.fna, snp_sites_filtered/E17C12.fna, snp_sites_filtered/ctg325.fna, snp_sites_filtered/E13A7.fna, snp_sites_filtered/E20A8.fna, snp_sites_filtered/E17A2.fna, snp_sites_filtered/E20A9.fna, snp_sites_filtered/E20C1.fna, snp_sites_filtered/E13A6.fna, snp_sites_filtered/E15A2.fna, snp_sites_filtered/E19C7.fna, snp_sites_filtered/E6E7.fna, snp_sites_filtered/E12G5.fna, snp_sites_filtered/E20C2.fna, snp_sites_filtered/E9A7.fna, snp_sites_filtered/E12G2.fna, snp_sites_filtered/E10E9.fna, snp_sites_filtered/E13A3.fna, snp_subsamples/snp_sub_1_strx.txt, snp_subsamples/all-snps-all-loci_strx.txt
+    jobid: 94
+
+[Thu Dec  5 15:47:24 2019]
+Finished job 94.
+182 of 183 steps (99%) done
+
+[Thu Dec  5 15:47:24 2019]
+rule histogram:
+    input: snp_sites/E24A5.fna, snp_sites/E18C10.fna, snp_sites/E7A5.fna, snp_sites/E13C7.fna, snp_sites/E24A6.fna, snp_sites/E16G9.fna, snp_sites/E8G11.fna, snp_sites/E14E3.fna, snp_sites/E8G8.fna, snp_sites/E8E1.fna, snp_sites/E14E2.fna, snp_sites/E23G1.fna, snp_sites/E14E10.fna, snp_sites/E9C4.fna, snp_sites/G1L7.fna, snp_sites/E13C1.fna, snp_sites/E12E3.fna, snp_sites/E14G10.fna, snp_sites/E16A12.fna, snp_sites/E8A10.fna, snp_sites/E14G11.fna, snp_sites/E22A7.fna, snp_sites/E6E11.fna, snp_sites/E23G7.fna, snp_sites/E16A9.fna, snp_sites/E10C6.fna, snp_sites/E15E2.fna, snp_sites/E12C4.fna, snp_sites/E21A3.fna, snp_sites/WNT1.fna, snp_sites/E14A8.fna, snp_sites/E13E6.fna, snp_sites/E12C6.fna, snp_sites/E12C11.fna, snp_sites/E10C5.fna, snp_sites/E24A12.fna, snp_sites/E24C10.fna, snp_sites/E12C7.fna, snp_sites/E16C7.fna, snp_sites/E18C8.fna, snp_sites/E12C3.fna, snp_sites/E6C8.fna, snp_sites/E20G5.fna, snp_sites/E12C2.fna, snp_sites/E13E2.fna, snp_sites/E10C11.fna, snp_sites/E24E9.fna, snp_sites/E24G3.fna, snp_sites/E12G12.fna, snp_sites/E20G6.fna, snp_sites/E12A9.fna, snp_sites/E9E4.fna, snp_sites/E11G6.fna, snp_sites/E18C7.fna, snp_sites/E14A2.fna, snp_sites/E12A4.fna, snp_sites/E15A11.fna, snp_sites/E19E7.fna, snp_sites/E10A7.fna, snp_sites/E7C12.fna, snp_sites/E14A1.fna, snp_sites/E17G3.fna, snp_sites/MGF.fna, snp_sites/E5E6.fna, snp_sites/E20E5.fna, snp_sites/E19E12.fna, snp_sites/E15G5.fna, snp_sites/E12A3.fna, snp_sites/E15E12.fna, snp_sites/E23C6.fna, snp_sites/E7G10.fna, snp_sites/E6C2.fna, snp_sites/E14A6.fna, snp_sites/E26G9.fna, snp_sites/E18C3.fna, snp_sites/E17C12.fna, snp_sites/ctg325.fna, snp_sites/E13A7.fna, snp_sites/E20A8.fna, snp_sites/E17A2.fna, snp_sites/E20A9.fna, snp_sites/E20C1.fna, snp_sites/E13A6.fna, snp_sites/E15A2.fna, snp_sites/E19C7.fna, snp_sites/E6E7.fna, snp_sites/E12G5.fna, snp_sites/E20C2.fna, snp_sites/E9A7.fna, snp_sites/E12G2.fna, snp_sites/E10E9.fna, snp_sites/E13A3.fna, snp_sites_filtered/E24A5.fna, snp_sites_filtered/E18C10.fna, snp_sites_filtered/E7A5.fna, snp_sites_filtered/E13C7.fna, snp_sites_filtered/E24A6.fna, snp_sites_filtered/E16G9.fna, snp_sites_filtered/E8G11.fna, snp_sites_filtered/E14E3.fna, snp_sites_filtered/E8G8.fna, snp_sites_filtered/E8E1.fna, snp_sites_filtered/E14E2.fna, snp_sites_filtered/E23G1.fna, snp_sites_filtered/E14E10.fna, snp_sites_filtered/E9C4.fna, snp_sites_filtered/G1L7.fna, snp_sites_filtered/E13C1.fna, snp_sites_filtered/E12E3.fna, snp_sites_filtered/E14G10.fna, snp_sites_filtered/E16A12.fna, snp_sites_filtered/E8A10.fna, snp_sites_filtered/E14G11.fna, snp_sites_filtered/E22A7.fna, snp_sites_filtered/E6E11.fna, snp_sites_filtered/E23G7.fna, snp_sites_filtered/E16A9.fna, snp_sites_filtered/E10C6.fna, snp_sites_filtered/E15E2.fna, snp_sites_filtered/E12C4.fna, snp_sites_filtered/E21A3.fna, snp_sites_filtered/WNT1.fna, snp_sites_filtered/E14A8.fna, snp_sites_filtered/E13E6.fna, snp_sites_filtered/E12C6.fna, snp_sites_filtered/E12C11.fna, snp_sites_filtered/E10C5.fna, snp_sites_filtered/E24A12.fna, snp_sites_filtered/E24C10.fna, snp_sites_filtered/E12C7.fna, snp_sites_filtered/E16C7.fna, snp_sites_filtered/E18C8.fna, snp_sites_filtered/E12C3.fna, snp_sites_filtered/E6C8.fna, snp_sites_filtered/E20G5.fna, snp_sites_filtered/E12C2.fna, snp_sites_filtered/E13E2.fna, snp_sites_filtered/E10C11.fna, snp_sites_filtered/E24E9.fna, snp_sites_filtered/E24G3.fna, snp_sites_filtered/E12G12.fna, snp_sites_filtered/E20G6.fna, snp_sites_filtered/E12A9.fna, snp_sites_filtered/E9E4.fna, snp_sites_filtered/E11G6.fna, snp_sites_filtered/E18C7.fna, snp_sites_filtered/E14A2.fna, snp_sites_filtered/E12A4.fna, snp_sites_filtered/E15A11.fna, snp_sites_filtered/E19E7.fna, snp_sites_filtered/E10A7.fna, snp_sites_filtered/E7C12.fna, snp_sites_filtered/E14A1.fna, snp_sites_filtered/E17G3.fna, snp_sites_filtered/MGF.fna, snp_sites_filtered/E5E6.fna, snp_sites_filtered/E20E5.fna, snp_sites_filtered/E19E12.fna, snp_sites_filtered/E15G5.fna, snp_sites_filtered/E12A3.fna, snp_sites_filtered/E15E12.fna, snp_sites_filtered/E23C6.fna, snp_sites_filtered/E7G10.fna, snp_sites_filtered/E6C2.fna, snp_sites_filtered/E14A6.fna, snp_sites_filtered/E26G9.fna, snp_sites_filtered/E18C3.fna, snp_sites_filtered/E17C12.fna, snp_sites_filtered/ctg325.fna, snp_sites_filtered/E13A7.fna, snp_sites_filtered/E20A8.fna, snp_sites_filtered/E17A2.fna, snp_sites_filtered/E20A9.fna, snp_sites_filtered/E20C1.fna, snp_sites_filtered/E13A6.fna, snp_sites_filtered/E15A2.fna, snp_sites_filtered/E19C7.fna, snp_sites_filtered/E6E7.fna, snp_sites_filtered/E12G5.fna, snp_sites_filtered/E20C2.fna, snp_sites_filtered/E9A7.fna, snp_sites_filtered/E12G2.fna, snp_sites_filtered/E10E9.fna, snp_sites_filtered/E13A3.fna
+    output: results/snp_histogram.html, logs/histogram/snps_per_locus.log
+    jobid: 0
+
+[Thu Dec  5 15:47:31 2019]
+Finished job 0.
+183 of 183 steps (100%) done
+Complete log: /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/.snakemake/log/2019-12-05T154240.673838.snakemake.log
+Executing main workflow.
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	targets
+	1
+
+[Thu Dec  5 15:47:31 2019]
+localrule targets:
+    input: /Users/kelly/projects/tiger_salamander_project/snp_pipeline/results/read_counts_filtered.csv, /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/results/loci_histogram.html, /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/results/matrix.tsv, /Users/kelly/projects/tiger_salamander_project/snp_pipeline/results/snp_histogram.html, /Users/kelly/projects/tiger_salamander_project/snp_pipeline/logs/histogram/snps_per_locus.log
+    jobid: 0
+
+[Thu Dec  5 15:47:31 2019]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/.snakemake/log/2019-12-05T154240.673838.snakemake.log

@@ -1,0 +1,82 @@
+Building DAG of jobs...
+Executing subworkflow haps.
+Building DAG of jobs...
+Nothing to be done.
+Complete log: /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/.snakemake/log/2019-12-05T153958.632815.snakemake.log
+Executing main workflow.
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	92	filter_haps
+	1	histogram
+	1	set_indivs_to_drop
+	92	snp_sites
+	1	snp_subsample
+	187
+
+[Thu Dec  5 15:39:58 2019]
+rule set_indivs_to_drop:
+    input: /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/results/read_counts.csv
+    output: results/read_counts_filtered.csv, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    log: logs/set_indivs_to_drop.log
+    jobid: 0
+    benchmark: benchmarks/set_indivs_to_drop.txt
+
+[Thu Dec  5 15:40:02 2019]
+Finished job 0.
+1 of 187 steps (0.53%) done
+
+[Thu Dec  5 15:40:02 2019]
+rule filter_haps:
+    input: haplotypes_curated/E21A3.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E21A3.fna
+    log: logs/filter_haps/E21A3.log
+    jobid: 123
+    benchmark: benchmarks/filter_haps/E21A3.txt
+    wildcards: locus=E21A3
+
+[Thu Dec  5 15:40:04 2019]
+Finished job 123.
+2 of 187 steps (1%) done
+
+[Thu Dec  5 15:40:04 2019]
+rule filter_haps:
+    input: haplotypes_curated/E15A11.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E15A11.fna
+    log: logs/filter_haps/E15A11.log
+    jobid: 151
+    benchmark: benchmarks/filter_haps/E15A11.txt
+    wildcards: locus=E15A11
+
+[Thu Dec  5 15:40:07 2019]
+Finished job 151.
+3 of 187 steps (2%) done
+
+[Thu Dec  5 15:40:07 2019]
+rule filter_haps:
+    input: haplotypes_curated/E15A2.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E15A2.fna
+    log: logs/filter_haps/E15A2.log
+    jobid: 178
+    benchmark: benchmarks/filter_haps/E15A2.txt
+    wildcards: locus=E15A2
+
+[Thu Dec  5 15:40:09 2019]
+Finished job 178.
+4 of 187 steps (2%) done
+
+[Thu Dec  5 15:40:09 2019]
+rule filter_haps:
+    input: haplotypes_curated/E15G5.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E15G5.fna
+    log: logs/filter_haps/E15G5.log
+    jobid: 161
+    benchmark: benchmarks/filter_haps/E15G5.txt
+    wildcards: locus=E15G5
+
+Terminating processes on user request, this might take some time.
+Removing output files of failed job filter_haps since they might be corrupted:
+haplotypes_filtered/E15G5.fna
+Complete log: /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/.snakemake/log/2019-12-05T153958.632815.snakemake.log

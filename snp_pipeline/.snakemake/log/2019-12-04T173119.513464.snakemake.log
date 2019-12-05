@@ -1,0 +1,3 @@
+Building DAG of jobs...
+Executing subworkflow haps.
+Error: Snakefile "/Users/kelly/projects/tiger_salamander_project/snp_pipeline/haplotype_pipeline/Snakefile" not found.

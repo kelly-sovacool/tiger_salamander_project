@@ -1,0 +1,1771 @@
+Building DAG of jobs...
+Executing subworkflow haps.
+Building DAG of jobs...
+Nothing to be done.
+Executing main workflow.
+Job counts:
+	count	jobs
+	89	filter_haps
+	1	histogram
+	92	snp_sites
+	1	snp_subsample
+	183
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E15E2.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E15E2.fna
+    log: logs/filter_haps/E15E2.log
+    jobid: 121
+    benchmark: benchmarks/filter_haps/E15E2.txt
+    wildcards: locus=E15E2
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E24A6.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E24A6.fna
+    log: logs/filter_haps/E24A6.log
+    jobid: 99
+    benchmark: benchmarks/filter_haps/E24A6.txt
+    wildcards: locus=E24A6
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12A4.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12A4.fna
+    log: logs/filter_haps/E12A4.log
+    jobid: 150
+    benchmark: benchmarks/filter_haps/E12A4.txt
+    wildcards: locus=E12A4
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E24E9.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E24E9.fna
+    log: logs/filter_haps/E24E9.log
+    jobid: 141
+    benchmark: benchmarks/filter_haps/E24E9.txt
+    wildcards: locus=E24E9
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E17C12.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E17C12.fna
+    log: logs/filter_haps/E17C12.log
+    jobid: 170
+    benchmark: benchmarks/filter_haps/E17C12.txt
+    wildcards: locus=E17C12
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E14G10.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E14G10.fna
+    log: logs/filter_haps/E14G10.log
+    jobid: 112
+    benchmark: benchmarks/filter_haps/E14G10.txt
+    wildcards: locus=E14G10
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E10C6.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E10C6.fna
+    log: logs/filter_haps/E10C6.log
+    jobid: 120
+    benchmark: benchmarks/filter_haps/E10C6.txt
+    wildcards: locus=E10C6
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E9C4.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E9C4.fna
+    log: logs/filter_haps/E9C4.log
+    jobid: 108
+    benchmark: benchmarks/filter_haps/E9C4.txt
+    wildcards: locus=E9C4
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E24G3.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E24G3.fna
+    log: logs/filter_haps/E24G3.log
+    jobid: 142
+    benchmark: benchmarks/filter_haps/E24G3.txt
+    wildcards: locus=E24G3
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E20A8.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E20A8.fna
+    log: logs/filter_haps/E20A8.log
+    jobid: 173
+    benchmark: benchmarks/filter_haps/E20A8.txt
+    wildcards: locus=E20A8
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E16C7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E16C7.fna
+    log: logs/filter_haps/E16C7.log
+    jobid: 133
+    benchmark: benchmarks/filter_haps/E16C7.txt
+    wildcards: locus=E16C7
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E14E3.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E14E3.fna
+    log: logs/filter_haps/E14E3.log
+    jobid: 102
+    benchmark: benchmarks/filter_haps/E14E3.txt
+    wildcards: locus=E14E3
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12C3.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12C3.fna
+    log: logs/filter_haps/E12C3.log
+    jobid: 135
+    benchmark: benchmarks/filter_haps/E12C3.txt
+    wildcards: locus=E12C3
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E20A9.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E20A9.fna
+    log: logs/filter_haps/E20A9.log
+    jobid: 175
+    benchmark: benchmarks/filter_haps/E20A9.txt
+    wildcards: locus=E20A9
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E9E4.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E9E4.fna
+    log: logs/filter_haps/E9E4.log
+    jobid: 146
+    benchmark: benchmarks/filter_haps/E9E4.txt
+    wildcards: locus=E9E4
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E23G7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E23G7.fna
+    log: logs/filter_haps/E23G7.log
+    jobid: 118
+    benchmark: benchmarks/filter_haps/E23G7.txt
+    wildcards: locus=E23G7
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E8E1.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E8E1.fna
+    log: logs/filter_haps/E8E1.log
+    jobid: 104
+    benchmark: benchmarks/filter_haps/E8E1.txt
+    wildcards: locus=E8E1
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E8A10.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E8A10.fna
+    log: logs/filter_haps/E8A10.log
+    jobid: 114
+    benchmark: benchmarks/filter_haps/E8A10.txt
+    wildcards: locus=E8A10
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E8G11.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E8G11.fna
+    log: logs/filter_haps/E8G11.log
+    jobid: 101
+    benchmark: benchmarks/filter_haps/E8G11.txt
+    wildcards: locus=E8G11
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E20G6.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E20G6.fna
+    log: logs/filter_haps/E20G6.log
+    jobid: 144
+    benchmark: benchmarks/filter_haps/E20G6.txt
+    wildcards: locus=E20G6
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E26G9.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E26G9.fna
+    log: logs/filter_haps/E26G9.log
+    jobid: 168
+    benchmark: benchmarks/filter_haps/E26G9.txt
+    wildcards: locus=E26G9
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E7A5.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E7A5.fna
+    log: logs/filter_haps/E7A5.log
+    jobid: 97
+    benchmark: benchmarks/filter_haps/E7A5.txt
+    wildcards: locus=E7A5
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12G5.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12G5.fna
+    log: logs/filter_haps/E12G5.log
+    jobid: 181
+    benchmark: benchmarks/filter_haps/E12G5.txt
+    wildcards: locus=E12G5
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E13C7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E13C7.fna
+    log: logs/filter_haps/E13C7.log
+    jobid: 98
+    benchmark: benchmarks/filter_haps/E13C7.txt
+    wildcards: locus=E13C7
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12A9.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12A9.fna
+    log: logs/filter_haps/E12A9.log
+    jobid: 145
+    benchmark: benchmarks/filter_haps/E12A9.txt
+    wildcards: locus=E12A9
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/WNT1.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/WNT1.fna
+    log: logs/filter_haps/WNT1.log
+    jobid: 124
+    benchmark: benchmarks/filter_haps/WNT1.txt
+    wildcards: locus=WNT1
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E10A7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E10A7.fna
+    log: logs/filter_haps/E10A7.log
+    jobid: 153
+    benchmark: benchmarks/filter_haps/E10A7.txt
+    wildcards: locus=E10A7
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E16A9.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E16A9.fna
+    log: logs/filter_haps/E16A9.log
+    jobid: 119
+    benchmark: benchmarks/filter_haps/E16A9.txt
+    wildcards: locus=E16A9
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12C7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12C7.fna
+    log: logs/filter_haps/E12C7.log
+    jobid: 132
+    benchmark: benchmarks/filter_haps/E12C7.txt
+    wildcards: locus=E12C7
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E14A6.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E14A6.fna
+    log: logs/filter_haps/E14A6.log
+    jobid: 167
+    benchmark: benchmarks/filter_haps/E14A6.txt
+    wildcards: locus=E14A6
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E23C6.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E23C6.fna
+    log: logs/filter_haps/E23C6.log
+    jobid: 164
+    benchmark: benchmarks/filter_haps/E23C6.txt
+    wildcards: locus=E23C6
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E17A2.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E17A2.fna
+    log: logs/filter_haps/E17A2.log
+    jobid: 174
+    benchmark: benchmarks/filter_haps/E17A2.txt
+    wildcards: locus=E17A2
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12E3.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12E3.fna
+    log: logs/filter_haps/E12E3.log
+    jobid: 111
+    benchmark: benchmarks/filter_haps/E12E3.txt
+    wildcards: locus=E12E3
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E8G8.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E8G8.fna
+    log: logs/filter_haps/E8G8.log
+    jobid: 103
+    benchmark: benchmarks/filter_haps/E8G8.txt
+    wildcards: locus=E8G8
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12C2.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12C2.fna
+    log: logs/filter_haps/E12C2.log
+    jobid: 138
+    benchmark: benchmarks/filter_haps/E12C2.txt
+    wildcards: locus=E12C2
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E20E5.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E20E5.fna
+    log: logs/filter_haps/E20E5.log
+    jobid: 159
+    benchmark: benchmarks/filter_haps/E20E5.txt
+    wildcards: locus=E20E5
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E14E2.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E14E2.fna
+    log: logs/filter_haps/E14E2.log
+    jobid: 105
+    benchmark: benchmarks/filter_haps/E14E2.txt
+    wildcards: locus=E14E2
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E9A7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E9A7.fna
+    log: logs/filter_haps/E9A7.log
+    jobid: 183
+    benchmark: benchmarks/filter_haps/E9A7.txt
+    wildcards: locus=E9A7
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E15A2.fna
+    output: snp_sites/E15A2.fna
+    log: logs/snp_sites/E15A2.log
+    jobid: 85
+    benchmark: benchmarks/snp_sites/E15A2.txt
+    wildcards: locus=E15A2
+
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E5E6.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E5E6.fna
+    log: logs/filter_haps/E5E6.log
+    jobid: 158
+    benchmark: benchmarks/filter_haps/E5E6.txt
+    wildcards: locus=E5E6
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12A3.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12A3.fna
+    log: logs/filter_haps/E12A3.log
+    jobid: 162
+    benchmark: benchmarks/filter_haps/E12A3.txt
+    wildcards: locus=E12A3
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E14G11.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E14G11.fna
+    log: logs/filter_haps/E14G11.log
+    jobid: 115
+    benchmark: benchmarks/filter_haps/E14G11.txt
+    wildcards: locus=E14G11
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12G2.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12G2.fna
+    log: logs/filter_haps/E12G2.log
+    jobid: 184
+    benchmark: benchmarks/filter_haps/E12G2.txt
+    wildcards: locus=E12G2
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E21A3.fna
+    output: snp_sites/E21A3.fna
+    log: logs/snp_sites/E21A3.log
+    jobid: 30
+    benchmark: benchmarks/snp_sites/E21A3.txt
+    wildcards: locus=E21A3
+
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E10E9.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E10E9.fna
+    log: logs/filter_haps/E10E9.log
+    jobid: 185
+    benchmark: benchmarks/filter_haps/E10E9.txt
+    wildcards: locus=E10E9
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/ctg325.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/ctg325.fna
+    log: logs/filter_haps/ctg325.log
+    jobid: 171
+    benchmark: benchmarks/filter_haps/ctg325.txt
+    wildcards: locus=ctg325
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E20C1.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E20C1.fna
+    log: logs/filter_haps/E20C1.log
+    jobid: 176
+    benchmark: benchmarks/filter_haps/E20C1.txt
+    wildcards: locus=E20C1
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E17G3.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E17G3.fna
+    log: logs/filter_haps/E17G3.log
+    jobid: 156
+    benchmark: benchmarks/filter_haps/E17G3.txt
+    wildcards: locus=E17G3
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E15A11.fna
+    output: snp_sites/E15A11.fna
+    log: logs/snp_sites/E15A11.log
+    jobid: 58
+    benchmark: benchmarks/snp_sites/E15A11.txt
+    wildcards: locus=E15A11
+
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E14E10.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E14E10.fna
+    log: logs/filter_haps/E14E10.log
+    jobid: 107
+    benchmark: benchmarks/filter_haps/E14E10.txt
+    wildcards: locus=E14E10
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E13E6.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E13E6.fna
+    log: logs/filter_haps/E13E6.log
+    jobid: 126
+    benchmark: benchmarks/filter_haps/E13E6.txt
+    wildcards: locus=E13E6
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E6E11.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E6E11.fna
+    log: logs/filter_haps/E6E11.log
+    jobid: 117
+    benchmark: benchmarks/filter_haps/E6E11.txt
+    wildcards: locus=E6E11
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E6C8.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E6C8.fna
+    log: logs/filter_haps/E6C8.log
+    jobid: 136
+    benchmark: benchmarks/filter_haps/E6C8.txt
+    wildcards: locus=E6C8
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12C6.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12C6.fna
+    log: logs/filter_haps/E12C6.log
+    jobid: 127
+    benchmark: benchmarks/filter_haps/E12C6.txt
+    wildcards: locus=E12C6
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E18C10.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E18C10.fna
+    log: logs/filter_haps/E18C10.log
+    jobid: 96
+    benchmark: benchmarks/filter_haps/E18C10.txt
+    wildcards: locus=E18C10
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E24A5.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E24A5.fna
+    log: logs/filter_haps/E24A5.log
+    jobid: 95
+    benchmark: benchmarks/filter_haps/E24A5.txt
+    wildcards: locus=E24A5
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E16G9.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E16G9.fna
+    log: logs/filter_haps/E16G9.log
+    jobid: 100
+    benchmark: benchmarks/filter_haps/E16G9.txt
+    wildcards: locus=E16G9
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E18C3.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E18C3.fna
+    log: logs/filter_haps/E18C3.log
+    jobid: 169
+    benchmark: benchmarks/filter_haps/E18C3.txt
+    wildcards: locus=E18C3
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E7C12.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E7C12.fna
+    log: logs/filter_haps/E7C12.log
+    jobid: 154
+    benchmark: benchmarks/filter_haps/E7C12.txt
+    wildcards: locus=E7C12
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12C4.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12C4.fna
+    log: logs/filter_haps/E12C4.log
+    jobid: 122
+    benchmark: benchmarks/filter_haps/E12C4.txt
+    wildcards: locus=E12C4
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E16A12.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E16A12.fna
+    log: logs/filter_haps/E16A12.log
+    jobid: 113
+    benchmark: benchmarks/filter_haps/E16A12.txt
+    wildcards: locus=E16A12
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E18C7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E18C7.fna
+    log: logs/filter_haps/E18C7.log
+    jobid: 148
+    benchmark: benchmarks/filter_haps/E18C7.txt
+    wildcards: locus=E18C7
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E10C11.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E10C11.fna
+    log: logs/filter_haps/E10C11.log
+    jobid: 140
+    benchmark: benchmarks/filter_haps/E10C11.txt
+    wildcards: locus=E10C11
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E18C8.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E18C8.fna
+    log: logs/filter_haps/E18C8.log
+    jobid: 134
+    benchmark: benchmarks/filter_haps/E18C8.txt
+    wildcards: locus=E18C8
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/MGF.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/MGF.fna
+    log: logs/filter_haps/MGF.log
+    jobid: 157
+    benchmark: benchmarks/filter_haps/MGF.txt
+    wildcards: locus=MGF
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E14A1.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E14A1.fna
+    log: logs/filter_haps/E14A1.log
+    jobid: 155
+    benchmark: benchmarks/filter_haps/E14A1.txt
+    wildcards: locus=E14A1
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E19E12.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E19E12.fna
+    log: logs/filter_haps/E19E12.log
+    jobid: 160
+    benchmark: benchmarks/filter_haps/E19E12.txt
+    wildcards: locus=E19E12
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E19E7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E19E7.fna
+    log: logs/filter_haps/E19E7.log
+    jobid: 152
+    benchmark: benchmarks/filter_haps/E19E7.txt
+    wildcards: locus=E19E7
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E6E7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E6E7.fna
+    log: logs/filter_haps/E6E7.log
+    jobid: 180
+    benchmark: benchmarks/filter_haps/E6E7.txt
+    wildcards: locus=E6E7
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/G1L7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/G1L7.fna
+    log: logs/filter_haps/G1L7.log
+    jobid: 109
+    benchmark: benchmarks/filter_haps/G1L7.txt
+    wildcards: locus=G1L7
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E6C2.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E6C2.fna
+    log: logs/filter_haps/E6C2.log
+    jobid: 166
+    benchmark: benchmarks/filter_haps/E6C2.txt
+    wildcards: locus=E6C2
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E13A6.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E13A6.fna
+    log: logs/filter_haps/E13A6.log
+    jobid: 177
+    benchmark: benchmarks/filter_haps/E13A6.txt
+    wildcards: locus=E13A6
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E15G5.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E15G5.fna
+    log: logs/filter_haps/E15G5.log
+    jobid: 161
+    benchmark: benchmarks/filter_haps/E15G5.txt
+    wildcards: locus=E15G5
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E20C2.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E20C2.fna
+    log: logs/filter_haps/E20C2.log
+    jobid: 182
+    benchmark: benchmarks/filter_haps/E20C2.txt
+    wildcards: locus=E20C2
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E13A7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E13A7.fna
+    log: logs/filter_haps/E13A7.log
+    jobid: 172
+    benchmark: benchmarks/filter_haps/E13A7.txt
+    wildcards: locus=E13A7
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E19C7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E19C7.fna
+    log: logs/filter_haps/E19C7.log
+    jobid: 179
+    benchmark: benchmarks/filter_haps/E19C7.txt
+    wildcards: locus=E19C7
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E10C5.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E10C5.fna
+    log: logs/filter_haps/E10C5.log
+    jobid: 129
+    benchmark: benchmarks/filter_haps/E10C5.txt
+    wildcards: locus=E10C5
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E13C1.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E13C1.fna
+    log: logs/filter_haps/E13C1.log
+    jobid: 110
+    benchmark: benchmarks/filter_haps/E13C1.txt
+    wildcards: locus=E13C1
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E15E12.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E15E12.fna
+    log: logs/filter_haps/E15E12.log
+    jobid: 163
+    benchmark: benchmarks/filter_haps/E15E12.txt
+    wildcards: locus=E15E12
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12G12.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12G12.fna
+    log: logs/filter_haps/E12G12.log
+    jobid: 143
+    benchmark: benchmarks/filter_haps/E12G12.txt
+    wildcards: locus=E12G12
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E7G10.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E7G10.fna
+    log: logs/filter_haps/E7G10.log
+    jobid: 165
+    benchmark: benchmarks/filter_haps/E7G10.txt
+    wildcards: locus=E7G10
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E22A7.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E22A7.fna
+    log: logs/filter_haps/E22A7.log
+    jobid: 116
+    benchmark: benchmarks/filter_haps/E22A7.txt
+    wildcards: locus=E22A7
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E23G1.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E23G1.fna
+    log: logs/filter_haps/E23G1.log
+    jobid: 106
+    benchmark: benchmarks/filter_haps/E23G1.txt
+    wildcards: locus=E23G1
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E13E2.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E13E2.fna
+    log: logs/filter_haps/E13E2.log
+    jobid: 139
+    benchmark: benchmarks/filter_haps/E13E2.txt
+    wildcards: locus=E13E2
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E13A3.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E13A3.fna
+    log: logs/filter_haps/E13A3.log
+    jobid: 186
+    benchmark: benchmarks/filter_haps/E13A3.txt
+    wildcards: locus=E13A3
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E12C11.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E12C11.fna
+    log: logs/filter_haps/E12C11.log
+    jobid: 128
+    benchmark: benchmarks/filter_haps/E12C11.txt
+    wildcards: locus=E12C11
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E11G6.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E11G6.fna
+    log: logs/filter_haps/E11G6.log
+    jobid: 147
+    benchmark: benchmarks/filter_haps/E11G6.txt
+    wildcards: locus=E11G6
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E14A8.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E14A8.fna
+    log: logs/filter_haps/E14A8.log
+    jobid: 125
+    benchmark: benchmarks/filter_haps/E14A8.txt
+    wildcards: locus=E14A8
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E24C10.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E24C10.fna
+    log: logs/filter_haps/E24C10.log
+    jobid: 131
+    benchmark: benchmarks/filter_haps/E24C10.txt
+    wildcards: locus=E24C10
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E20G5.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E20G5.fna
+    log: logs/filter_haps/E20G5.log
+    jobid: 137
+    benchmark: benchmarks/filter_haps/E20G5.txt
+    wildcards: locus=E20G5
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E24A12.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E24A12.fna
+    log: logs/filter_haps/E24A12.log
+    jobid: 130
+    benchmark: benchmarks/filter_haps/E24A12.txt
+    wildcards: locus=E24A12
+
+[Thu Dec  5 15:42:11 2019]
+rule filter_haps:
+    input: haplotypes_curated/E14A2.fna, results/indivs_to_drop_from_loci.json, results/indivs_to_drop_all.json
+    output: haplotypes_filtered/E14A2.fna
+    log: logs/filter_haps/E14A2.log
+    jobid: 149
+    benchmark: benchmarks/filter_haps/E14A2.txt
+    wildcards: locus=E14A2
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E14G10.fna
+    output: snp_sites/E14G10.fna
+    log: logs/snp_sites/E14G10.log
+    jobid: 19
+    benchmark: benchmarks/snp_sites/E14G10.txt
+    wildcards: locus=E14G10
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E24E9.fna
+    output: snp_sites/E24E9.fna
+    log: logs/snp_sites/E24E9.log
+    jobid: 48
+    benchmark: benchmarks/snp_sites/E24E9.txt
+    wildcards: locus=E24E9
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12A4.fna
+    output: snp_sites/E12A4.fna
+    log: logs/snp_sites/E12A4.log
+    jobid: 57
+    benchmark: benchmarks/snp_sites/E12A4.txt
+    wildcards: locus=E12A4
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E17C12.fna
+    output: snp_sites/E17C12.fna
+    log: logs/snp_sites/E17C12.log
+    jobid: 77
+    benchmark: benchmarks/snp_sites/E17C12.txt
+    wildcards: locus=E17C12
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E24A6.fna
+    output: snp_sites/E24A6.fna
+    log: logs/snp_sites/E24A6.log
+    jobid: 6
+    benchmark: benchmarks/snp_sites/E24A6.txt
+    wildcards: locus=E24A6
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E15E2.fna
+    output: snp_sites/E15E2.fna
+    log: logs/snp_sites/E15E2.log
+    jobid: 28
+    benchmark: benchmarks/snp_sites/E15E2.txt
+    wildcards: locus=E15E2
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E14E3.fna
+    output: snp_sites/E14E3.fna
+    log: logs/snp_sites/E14E3.log
+    jobid: 9
+    benchmark: benchmarks/snp_sites/E14E3.txt
+    wildcards: locus=E14E3
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E20A8.fna
+    output: snp_sites/E20A8.fna
+    log: logs/snp_sites/E20A8.log
+    jobid: 80
+    benchmark: benchmarks/snp_sites/E20A8.txt
+    wildcards: locus=E20A8
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E16C7.fna
+    output: snp_sites/E16C7.fna
+    log: logs/snp_sites/E16C7.log
+    jobid: 40
+    benchmark: benchmarks/snp_sites/E16C7.txt
+    wildcards: locus=E16C7
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12C3.fna
+    output: snp_sites/E12C3.fna
+    log: logs/snp_sites/E12C3.log
+    jobid: 42
+    benchmark: benchmarks/snp_sites/E12C3.txt
+    wildcards: locus=E12C3
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E24G3.fna
+    output: snp_sites/E24G3.fna
+    log: logs/snp_sites/E24G3.log
+    jobid: 49
+    benchmark: benchmarks/snp_sites/E24G3.txt
+    wildcards: locus=E24G3
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E9C4.fna
+    output: snp_sites/E9C4.fna
+    log: logs/snp_sites/E9C4.log
+    jobid: 15
+    benchmark: benchmarks/snp_sites/E9C4.txt
+    wildcards: locus=E9C4
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E10C6.fna
+    output: snp_sites/E10C6.fna
+    log: logs/snp_sites/E10C6.log
+    jobid: 27
+    benchmark: benchmarks/snp_sites/E10C6.txt
+    wildcards: locus=E10C6
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E26G9.fna
+    output: snp_sites/E26G9.fna
+    log: logs/snp_sites/E26G9.log
+    jobid: 75
+    benchmark: benchmarks/snp_sites/E26G9.txt
+    wildcards: locus=E26G9
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E20G6.fna
+    output: snp_sites/E20G6.fna
+    log: logs/snp_sites/E20G6.log
+    jobid: 51
+    benchmark: benchmarks/snp_sites/E20G6.txt
+    wildcards: locus=E20G6
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E8G11.fna
+    output: snp_sites/E8G11.fna
+    log: logs/snp_sites/E8G11.log
+    jobid: 8
+    benchmark: benchmarks/snp_sites/E8G11.txt
+    wildcards: locus=E8G11
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E23G7.fna
+    output: snp_sites/E23G7.fna
+    log: logs/snp_sites/E23G7.log
+    jobid: 25
+    benchmark: benchmarks/snp_sites/E23G7.txt
+    wildcards: locus=E23G7
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E8A10.fna
+    output: snp_sites/E8A10.fna
+    log: logs/snp_sites/E8A10.log
+    jobid: 21
+    benchmark: benchmarks/snp_sites/E8A10.txt
+    wildcards: locus=E8A10
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E8E1.fna
+    output: snp_sites/E8E1.fna
+    log: logs/snp_sites/E8E1.log
+    jobid: 11
+    benchmark: benchmarks/snp_sites/E8E1.txt
+    wildcards: locus=E8E1
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E9E4.fna
+    output: snp_sites/E9E4.fna
+    log: logs/snp_sites/E9E4.log
+    jobid: 53
+    benchmark: benchmarks/snp_sites/E9E4.txt
+    wildcards: locus=E9E4
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E20A9.fna
+    output: snp_sites/E20A9.fna
+    log: logs/snp_sites/E20A9.log
+    jobid: 82
+    benchmark: benchmarks/snp_sites/E20A9.txt
+    wildcards: locus=E20A9
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E10A7.fna
+    output: snp_sites/E10A7.fna
+    log: logs/snp_sites/E10A7.log
+    jobid: 60
+    benchmark: benchmarks/snp_sites/E10A7.txt
+    wildcards: locus=E10A7
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E16A9.fna
+    output: snp_sites/E16A9.fna
+    log: logs/snp_sites/E16A9.log
+    jobid: 26
+    benchmark: benchmarks/snp_sites/E16A9.txt
+    wildcards: locus=E16A9
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/WNT1.fna
+    output: snp_sites/WNT1.fna
+    log: logs/snp_sites/WNT1.log
+    jobid: 31
+    benchmark: benchmarks/snp_sites/WNT1.txt
+    wildcards: locus=WNT1
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12G5.fna
+    output: snp_sites/E12G5.fna
+    log: logs/snp_sites/E12G5.log
+    jobid: 88
+    benchmark: benchmarks/snp_sites/E12G5.txt
+    wildcards: locus=E12G5
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E7A5.fna
+    output: snp_sites/E7A5.fna
+    log: logs/snp_sites/E7A5.log
+    jobid: 4
+    benchmark: benchmarks/snp_sites/E7A5.txt
+    wildcards: locus=E7A5
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E13C7.fna
+    output: snp_sites/E13C7.fna
+    log: logs/snp_sites/E13C7.log
+    jobid: 5
+    benchmark: benchmarks/snp_sites/E13C7.txt
+    wildcards: locus=E13C7
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12A9.fna
+    output: snp_sites/E12A9.fna
+    log: logs/snp_sites/E12A9.log
+    jobid: 52
+    benchmark: benchmarks/snp_sites/E12A9.txt
+    wildcards: locus=E12A9
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12E3.fna
+    output: snp_sites/E12E3.fna
+    log: logs/snp_sites/E12E3.log
+    jobid: 18
+    benchmark: benchmarks/snp_sites/E12E3.txt
+    wildcards: locus=E12E3
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E8G8.fna
+    output: snp_sites/E8G8.fna
+    log: logs/snp_sites/E8G8.log
+    jobid: 10
+    benchmark: benchmarks/snp_sites/E8G8.txt
+    wildcards: locus=E8G8
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E17A2.fna
+    output: snp_sites/E17A2.fna
+    log: logs/snp_sites/E17A2.log
+    jobid: 81
+    benchmark: benchmarks/snp_sites/E17A2.txt
+    wildcards: locus=E17A2
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E14A6.fna
+    output: snp_sites/E14A6.fna
+    log: logs/snp_sites/E14A6.log
+    jobid: 74
+    benchmark: benchmarks/snp_sites/E14A6.txt
+    wildcards: locus=E14A6
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E23C6.fna
+    output: snp_sites/E23C6.fna
+    log: logs/snp_sites/E23C6.log
+    jobid: 71
+    benchmark: benchmarks/snp_sites/E23C6.txt
+    wildcards: locus=E23C6
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12C7.fna
+    output: snp_sites/E12C7.fna
+    log: logs/snp_sites/E12C7.log
+    jobid: 39
+    benchmark: benchmarks/snp_sites/E12C7.txt
+    wildcards: locus=E12C7
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E9A7.fna
+    output: snp_sites/E9A7.fna
+    log: logs/snp_sites/E9A7.log
+    jobid: 90
+    benchmark: benchmarks/snp_sites/E9A7.txt
+    wildcards: locus=E9A7
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E14E2.fna
+    output: snp_sites/E14E2.fna
+    log: logs/snp_sites/E14E2.log
+    jobid: 12
+    benchmark: benchmarks/snp_sites/E14E2.txt
+    wildcards: locus=E14E2
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E20E5.fna
+    output: snp_sites/E20E5.fna
+    log: logs/snp_sites/E20E5.log
+    jobid: 66
+    benchmark: benchmarks/snp_sites/E20E5.txt
+    wildcards: locus=E20E5
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12C2.fna
+    output: snp_sites/E12C2.fna
+    log: logs/snp_sites/E12C2.log
+    jobid: 45
+    benchmark: benchmarks/snp_sites/E12C2.txt
+    wildcards: locus=E12C2
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/ctg325.fna
+    output: snp_sites/ctg325.fna
+    log: logs/snp_sites/ctg325.log
+    jobid: 78
+    benchmark: benchmarks/snp_sites/ctg325.txt
+    wildcards: locus=ctg325
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E10E9.fna
+    output: snp_sites/E10E9.fna
+    log: logs/snp_sites/E10E9.log
+    jobid: 92
+    benchmark: benchmarks/snp_sites/E10E9.txt
+    wildcards: locus=E10E9
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12A3.fna
+    output: snp_sites/E12A3.fna
+    log: logs/snp_sites/E12A3.log
+    jobid: 69
+    benchmark: benchmarks/snp_sites/E12A3.txt
+    wildcards: locus=E12A3
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E14G11.fna
+    output: snp_sites/E14G11.fna
+    log: logs/snp_sites/E14G11.log
+    jobid: 22
+    benchmark: benchmarks/snp_sites/E14G11.txt
+    wildcards: locus=E14G11
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12G2.fna
+    output: snp_sites/E12G2.fna
+    log: logs/snp_sites/E12G2.log
+    jobid: 91
+    benchmark: benchmarks/snp_sites/E12G2.txt
+    wildcards: locus=E12G2
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E5E6.fna
+    output: snp_sites/E5E6.fna
+    log: logs/snp_sites/E5E6.log
+    jobid: 65
+    benchmark: benchmarks/snp_sites/E5E6.txt
+    wildcards: locus=E5E6
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E17G3.fna
+    output: snp_sites/E17G3.fna
+    log: logs/snp_sites/E17G3.log
+    jobid: 63
+    benchmark: benchmarks/snp_sites/E17G3.txt
+    wildcards: locus=E17G3
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E14A8.fna
+    output: snp_sites/E14A8.fna
+    log: logs/snp_sites/E14A8.log
+    jobid: 32
+    benchmark: benchmarks/snp_sites/E14A8.txt
+    wildcards: locus=E14A8
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E20C1.fna
+    output: snp_sites/E20C1.fna
+    log: logs/snp_sites/E20C1.log
+    jobid: 83
+    benchmark: benchmarks/snp_sites/E20C1.txt
+    wildcards: locus=E20C1
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E6E11.fna
+    output: snp_sites/E6E11.fna
+    log: logs/snp_sites/E6E11.log
+    jobid: 24
+    benchmark: benchmarks/snp_sites/E6E11.txt
+    wildcards: locus=E6E11
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E6C8.fna
+    output: snp_sites/E6C8.fna
+    log: logs/snp_sites/E6C8.log
+    jobid: 43
+    benchmark: benchmarks/snp_sites/E6C8.txt
+    wildcards: locus=E6C8
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E13E6.fna
+    output: snp_sites/E13E6.fna
+    log: logs/snp_sites/E13E6.log
+    jobid: 33
+    benchmark: benchmarks/snp_sites/E13E6.txt
+    wildcards: locus=E13E6
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E14E10.fna
+    output: snp_sites/E14E10.fna
+    log: logs/snp_sites/E14E10.log
+    jobid: 14
+    benchmark: benchmarks/snp_sites/E14E10.txt
+    wildcards: locus=E14E10
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E24A5.fna
+    output: snp_sites/E24A5.fna
+    log: logs/snp_sites/E24A5.log
+    jobid: 2
+    benchmark: benchmarks/snp_sites/E24A5.txt
+    wildcards: locus=E24A5
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E18C10.fna
+    output: snp_sites/E18C10.fna
+    log: logs/snp_sites/E18C10.log
+    jobid: 3
+    benchmark: benchmarks/snp_sites/E18C10.txt
+    wildcards: locus=E18C10
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12C6.fna
+    output: snp_sites/E12C6.fna
+    log: logs/snp_sites/E12C6.log
+    jobid: 34
+    benchmark: benchmarks/snp_sites/E12C6.txt
+    wildcards: locus=E12C6
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E7C12.fna
+    output: snp_sites/E7C12.fna
+    log: logs/snp_sites/E7C12.log
+    jobid: 61
+    benchmark: benchmarks/snp_sites/E7C12.txt
+    wildcards: locus=E7C12
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E16A12.fna
+    output: snp_sites/E16A12.fna
+    log: logs/snp_sites/E16A12.log
+    jobid: 20
+    benchmark: benchmarks/snp_sites/E16A12.txt
+    wildcards: locus=E16A12
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12C4.fna
+    output: snp_sites/E12C4.fna
+    log: logs/snp_sites/E12C4.log
+    jobid: 29
+    benchmark: benchmarks/snp_sites/E12C4.txt
+    wildcards: locus=E12C4
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E18C3.fna
+    output: snp_sites/E18C3.fna
+    log: logs/snp_sites/E18C3.log
+    jobid: 76
+    benchmark: benchmarks/snp_sites/E18C3.txt
+    wildcards: locus=E18C3
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E16G9.fna
+    output: snp_sites/E16G9.fna
+    log: logs/snp_sites/E16G9.log
+    jobid: 7
+    benchmark: benchmarks/snp_sites/E16G9.txt
+    wildcards: locus=E16G9
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E6E7.fna
+    output: snp_sites/E6E7.fna
+    log: logs/snp_sites/E6E7.log
+    jobid: 87
+    benchmark: benchmarks/snp_sites/E6E7.txt
+    wildcards: locus=E6E7
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/G1L7.fna
+    output: snp_sites/G1L7.fna
+    log: logs/snp_sites/G1L7.log
+    jobid: 16
+    benchmark: benchmarks/snp_sites/G1L7.txt
+    wildcards: locus=G1L7
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E19E12.fna
+    output: snp_sites/E19E12.fna
+    log: logs/snp_sites/E19E12.log
+    jobid: 67
+    benchmark: benchmarks/snp_sites/E19E12.txt
+    wildcards: locus=E19E12
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E19E7.fna
+    output: snp_sites/E19E7.fna
+    log: logs/snp_sites/E19E7.log
+    jobid: 59
+    benchmark: benchmarks/snp_sites/E19E7.txt
+    wildcards: locus=E19E7
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E14A1.fna
+    output: snp_sites/E14A1.fna
+    log: logs/snp_sites/E14A1.log
+    jobid: 62
+    benchmark: benchmarks/snp_sites/E14A1.txt
+    wildcards: locus=E14A1
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E18C8.fna
+    output: snp_sites/E18C8.fna
+    log: logs/snp_sites/E18C8.log
+    jobid: 41
+    benchmark: benchmarks/snp_sites/E18C8.txt
+    wildcards: locus=E18C8
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/MGF.fna
+    output: snp_sites/MGF.fna
+    log: logs/snp_sites/MGF.log
+    jobid: 64
+    benchmark: benchmarks/snp_sites/MGF.txt
+    wildcards: locus=MGF
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E18C7.fna
+    output: snp_sites/E18C7.fna
+    log: logs/snp_sites/E18C7.log
+    jobid: 55
+    benchmark: benchmarks/snp_sites/E18C7.txt
+    wildcards: locus=E18C7
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E10C11.fna
+    output: snp_sites/E10C11.fna
+    log: logs/snp_sites/E10C11.log
+    jobid: 47
+    benchmark: benchmarks/snp_sites/E10C11.txt
+    wildcards: locus=E10C11
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E13C1.fna
+    output: snp_sites/E13C1.fna
+    log: logs/snp_sites/E13C1.log
+    jobid: 17
+    benchmark: benchmarks/snp_sites/E13C1.txt
+    wildcards: locus=E13C1
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E10C5.fna
+    output: snp_sites/E10C5.fna
+    log: logs/snp_sites/E10C5.log
+    jobid: 36
+    benchmark: benchmarks/snp_sites/E10C5.txt
+    wildcards: locus=E10C5
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E19C7.fna
+    output: snp_sites/E19C7.fna
+    log: logs/snp_sites/E19C7.log
+    jobid: 86
+    benchmark: benchmarks/snp_sites/E19C7.txt
+    wildcards: locus=E19C7
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E15G5.fna
+    output: snp_sites/E15G5.fna
+    log: logs/snp_sites/E15G5.log
+    jobid: 68
+    benchmark: benchmarks/snp_sites/E15G5.txt
+    wildcards: locus=E15G5
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E13A7.fna
+    output: snp_sites/E13A7.fna
+    log: logs/snp_sites/E13A7.log
+    jobid: 79
+    benchmark: benchmarks/snp_sites/E13A7.txt
+    wildcards: locus=E13A7
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E20C2.fna
+    output: snp_sites/E20C2.fna
+    log: logs/snp_sites/E20C2.log
+    jobid: 89
+    benchmark: benchmarks/snp_sites/E20C2.txt
+    wildcards: locus=E20C2
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E6C2.fna
+    output: snp_sites/E6C2.fna
+    log: logs/snp_sites/E6C2.log
+    jobid: 73
+    benchmark: benchmarks/snp_sites/E6C2.txt
+    wildcards: locus=E6C2
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E13A6.fna
+    output: snp_sites/E13A6.fna
+    log: logs/snp_sites/E13A6.log
+    jobid: 84
+    benchmark: benchmarks/snp_sites/E13A6.txt
+    wildcards: locus=E13A6
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E7G10.fna
+    output: snp_sites/E7G10.fna
+    log: logs/snp_sites/E7G10.log
+    jobid: 72
+    benchmark: benchmarks/snp_sites/E7G10.txt
+    wildcards: locus=E7G10
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12G12.fna
+    output: snp_sites/E12G12.fna
+    log: logs/snp_sites/E12G12.log
+    jobid: 50
+    benchmark: benchmarks/snp_sites/E12G12.txt
+    wildcards: locus=E12G12
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E15E12.fna
+    output: snp_sites/E15E12.fna
+    log: logs/snp_sites/E15E12.log
+    jobid: 70
+    benchmark: benchmarks/snp_sites/E15E12.txt
+    wildcards: locus=E15E12
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E12C11.fna
+    output: snp_sites/E12C11.fna
+    log: logs/snp_sites/E12C11.log
+    jobid: 35
+    benchmark: benchmarks/snp_sites/E12C11.txt
+    wildcards: locus=E12C11
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E11G6.fna
+    output: snp_sites/E11G6.fna
+    log: logs/snp_sites/E11G6.log
+    jobid: 54
+    benchmark: benchmarks/snp_sites/E11G6.txt
+    wildcards: locus=E11G6
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E13E2.fna
+    output: snp_sites/E13E2.fna
+    log: logs/snp_sites/E13E2.log
+    jobid: 46
+    benchmark: benchmarks/snp_sites/E13E2.txt
+    wildcards: locus=E13E2
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E13A3.fna
+    output: snp_sites/E13A3.fna
+    log: logs/snp_sites/E13A3.log
+    jobid: 93
+    benchmark: benchmarks/snp_sites/E13A3.txt
+    wildcards: locus=E13A3
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E22A7.fna
+    output: snp_sites/E22A7.fna
+    log: logs/snp_sites/E22A7.log
+    jobid: 23
+    benchmark: benchmarks/snp_sites/E22A7.txt
+    wildcards: locus=E22A7
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E23G1.fna
+    output: snp_sites/E23G1.fna
+    log: logs/snp_sites/E23G1.log
+    jobid: 13
+    benchmark: benchmarks/snp_sites/E23G1.txt
+    wildcards: locus=E23G1
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E14A2.fna
+    output: snp_sites/E14A2.fna
+    log: logs/snp_sites/E14A2.log
+    jobid: 56
+    benchmark: benchmarks/snp_sites/E14A2.txt
+    wildcards: locus=E14A2
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E24C10.fna
+    output: snp_sites/E24C10.fna
+    log: logs/snp_sites/E24C10.log
+    jobid: 38
+    benchmark: benchmarks/snp_sites/E24C10.txt
+    wildcards: locus=E24C10
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E24A12.fna
+    output: snp_sites/E24A12.fna
+    log: logs/snp_sites/E24A12.log
+    jobid: 37
+    benchmark: benchmarks/snp_sites/E24A12.txt
+    wildcards: locus=E24A12
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_sites:
+    input: haplotypes_filtered/E20G5.fna
+    output: snp_sites/E20G5.fna
+    log: logs/snp_sites/E20G5.log
+    jobid: 44
+    benchmark: benchmarks/snp_sites/E20G5.txt
+    wildcards: locus=E20G5
+
+
+[Thu Dec  5 15:42:11 2019]
+rule snp_subsample:
+    input: snp_sites/E24A5.fna, snp_sites/E18C10.fna, snp_sites/E7A5.fna, snp_sites/E13C7.fna, snp_sites/E24A6.fna, snp_sites/E16G9.fna, snp_sites/E8G11.fna, snp_sites/E14E3.fna, snp_sites/E8G8.fna, snp_sites/E8E1.fna, snp_sites/E14E2.fna, snp_sites/E23G1.fna, snp_sites/E14E10.fna, snp_sites/E9C4.fna, snp_sites/G1L7.fna, snp_sites/E13C1.fna, snp_sites/E12E3.fna, snp_sites/E14G10.fna, snp_sites/E16A12.fna, snp_sites/E8A10.fna, snp_sites/E14G11.fna, snp_sites/E22A7.fna, snp_sites/E6E11.fna, snp_sites/E23G7.fna, snp_sites/E16A9.fna, snp_sites/E10C6.fna, snp_sites/E15E2.fna, snp_sites/E12C4.fna, snp_sites/E21A3.fna, snp_sites/WNT1.fna, snp_sites/E14A8.fna, snp_sites/E13E6.fna, snp_sites/E12C6.fna, snp_sites/E12C11.fna, snp_sites/E10C5.fna, snp_sites/E24A12.fna, snp_sites/E24C10.fna, snp_sites/E12C7.fna, snp_sites/E16C7.fna, snp_sites/E18C8.fna, snp_sites/E12C3.fna, snp_sites/E6C8.fna, snp_sites/E20G5.fna, snp_sites/E12C2.fna, snp_sites/E13E2.fna, snp_sites/E10C11.fna, snp_sites/E24E9.fna, snp_sites/E24G3.fna, snp_sites/E12G12.fna, snp_sites/E20G6.fna, snp_sites/E12A9.fna, snp_sites/E9E4.fna, snp_sites/E11G6.fna, snp_sites/E18C7.fna, snp_sites/E14A2.fna, snp_sites/E12A4.fna, snp_sites/E15A11.fna, snp_sites/E19E7.fna, snp_sites/E10A7.fna, snp_sites/E7C12.fna, snp_sites/E14A1.fna, snp_sites/E17G3.fna, snp_sites/MGF.fna, snp_sites/E5E6.fna, snp_sites/E20E5.fna, snp_sites/E19E12.fna, snp_sites/E15G5.fna, snp_sites/E12A3.fna, snp_sites/E15E12.fna, snp_sites/E23C6.fna, snp_sites/E7G10.fna, snp_sites/E6C2.fna, snp_sites/E14A6.fna, snp_sites/E26G9.fna, snp_sites/E18C3.fna, snp_sites/E17C12.fna, snp_sites/ctg325.fna, snp_sites/E13A7.fna, snp_sites/E20A8.fna, snp_sites/E17A2.fna, snp_sites/E20A9.fna, snp_sites/E20C1.fna, snp_sites/E13A6.fna, snp_sites/E15A2.fna, snp_sites/E19C7.fna, snp_sites/E6E7.fna, snp_sites/E12G5.fna, snp_sites/E20C2.fna, snp_sites/E9A7.fna, snp_sites/E12G2.fna, snp_sites/E10E9.fna, snp_sites/E13A3.fna
+    output: snp_sites_filtered/E24A5.fna, snp_sites_filtered/E18C10.fna, snp_sites_filtered/E7A5.fna, snp_sites_filtered/E13C7.fna, snp_sites_filtered/E24A6.fna, snp_sites_filtered/E16G9.fna, snp_sites_filtered/E8G11.fna, snp_sites_filtered/E14E3.fna, snp_sites_filtered/E8G8.fna, snp_sites_filtered/E8E1.fna, snp_sites_filtered/E14E2.fna, snp_sites_filtered/E23G1.fna, snp_sites_filtered/E14E10.fna, snp_sites_filtered/E9C4.fna, snp_sites_filtered/G1L7.fna, snp_sites_filtered/E13C1.fna, snp_sites_filtered/E12E3.fna, snp_sites_filtered/E14G10.fna, snp_sites_filtered/E16A12.fna, snp_sites_filtered/E8A10.fna, snp_sites_filtered/E14G11.fna, snp_sites_filtered/E22A7.fna, snp_sites_filtered/E6E11.fna, snp_sites_filtered/E23G7.fna, snp_sites_filtered/E16A9.fna, snp_sites_filtered/E10C6.fna, snp_sites_filtered/E15E2.fna, snp_sites_filtered/E12C4.fna, snp_sites_filtered/E21A3.fna, snp_sites_filtered/WNT1.fna, snp_sites_filtered/E14A8.fna, snp_sites_filtered/E13E6.fna, snp_sites_filtered/E12C6.fna, snp_sites_filtered/E12C11.fna, snp_sites_filtered/E10C5.fna, snp_sites_filtered/E24A12.fna, snp_sites_filtered/E24C10.fna, snp_sites_filtered/E12C7.fna, snp_sites_filtered/E16C7.fna, snp_sites_filtered/E18C8.fna, snp_sites_filtered/E12C3.fna, snp_sites_filtered/E6C8.fna, snp_sites_filtered/E20G5.fna, snp_sites_filtered/E12C2.fna, snp_sites_filtered/E13E2.fna, snp_sites_filtered/E10C11.fna, snp_sites_filtered/E24E9.fna, snp_sites_filtered/E24G3.fna, snp_sites_filtered/E12G12.fna, snp_sites_filtered/E20G6.fna, snp_sites_filtered/E12A9.fna, snp_sites_filtered/E9E4.fna, snp_sites_filtered/E11G6.fna, snp_sites_filtered/E18C7.fna, snp_sites_filtered/E14A2.fna, snp_sites_filtered/E12A4.fna, snp_sites_filtered/E15A11.fna, snp_sites_filtered/E19E7.fna, snp_sites_filtered/E10A7.fna, snp_sites_filtered/E7C12.fna, snp_sites_filtered/E14A1.fna, snp_sites_filtered/E17G3.fna, snp_sites_filtered/MGF.fna, snp_sites_filtered/E5E6.fna, snp_sites_filtered/E20E5.fna, snp_sites_filtered/E19E12.fna, snp_sites_filtered/E15G5.fna, snp_sites_filtered/E12A3.fna, snp_sites_filtered/E15E12.fna, snp_sites_filtered/E23C6.fna, snp_sites_filtered/E7G10.fna, snp_sites_filtered/E6C2.fna, snp_sites_filtered/E14A6.fna, snp_sites_filtered/E26G9.fna, snp_sites_filtered/E18C3.fna, snp_sites_filtered/E17C12.fna, snp_sites_filtered/ctg325.fna, snp_sites_filtered/E13A7.fna, snp_sites_filtered/E20A8.fna, snp_sites_filtered/E17A2.fna, snp_sites_filtered/E20A9.fna, snp_sites_filtered/E20C1.fna, snp_sites_filtered/E13A6.fna, snp_sites_filtered/E15A2.fna, snp_sites_filtered/E19C7.fna, snp_sites_filtered/E6E7.fna, snp_sites_filtered/E12G5.fna, snp_sites_filtered/E20C2.fna, snp_sites_filtered/E9A7.fna, snp_sites_filtered/E12G2.fna, snp_sites_filtered/E10E9.fna, snp_sites_filtered/E13A3.fna, snp_subsamples/snp_sub_1_strx.txt, snp_subsamples/all-snps-all-loci_strx.txt
+    jobid: 94
+
+
+[Thu Dec  5 15:42:11 2019]
+rule histogram:
+    input: snp_sites/E24A5.fna, snp_sites/E18C10.fna, snp_sites/E7A5.fna, snp_sites/E13C7.fna, snp_sites/E24A6.fna, snp_sites/E16G9.fna, snp_sites/E8G11.fna, snp_sites/E14E3.fna, snp_sites/E8G8.fna, snp_sites/E8E1.fna, snp_sites/E14E2.fna, snp_sites/E23G1.fna, snp_sites/E14E10.fna, snp_sites/E9C4.fna, snp_sites/G1L7.fna, snp_sites/E13C1.fna, snp_sites/E12E3.fna, snp_sites/E14G10.fna, snp_sites/E16A12.fna, snp_sites/E8A10.fna, snp_sites/E14G11.fna, snp_sites/E22A7.fna, snp_sites/E6E11.fna, snp_sites/E23G7.fna, snp_sites/E16A9.fna, snp_sites/E10C6.fna, snp_sites/E15E2.fna, snp_sites/E12C4.fna, snp_sites/E21A3.fna, snp_sites/WNT1.fna, snp_sites/E14A8.fna, snp_sites/E13E6.fna, snp_sites/E12C6.fna, snp_sites/E12C11.fna, snp_sites/E10C5.fna, snp_sites/E24A12.fna, snp_sites/E24C10.fna, snp_sites/E12C7.fna, snp_sites/E16C7.fna, snp_sites/E18C8.fna, snp_sites/E12C3.fna, snp_sites/E6C8.fna, snp_sites/E20G5.fna, snp_sites/E12C2.fna, snp_sites/E13E2.fna, snp_sites/E10C11.fna, snp_sites/E24E9.fna, snp_sites/E24G3.fna, snp_sites/E12G12.fna, snp_sites/E20G6.fna, snp_sites/E12A9.fna, snp_sites/E9E4.fna, snp_sites/E11G6.fna, snp_sites/E18C7.fna, snp_sites/E14A2.fna, snp_sites/E12A4.fna, snp_sites/E15A11.fna, snp_sites/E19E7.fna, snp_sites/E10A7.fna, snp_sites/E7C12.fna, snp_sites/E14A1.fna, snp_sites/E17G3.fna, snp_sites/MGF.fna, snp_sites/E5E6.fna, snp_sites/E20E5.fna, snp_sites/E19E12.fna, snp_sites/E15G5.fna, snp_sites/E12A3.fna, snp_sites/E15E12.fna, snp_sites/E23C6.fna, snp_sites/E7G10.fna, snp_sites/E6C2.fna, snp_sites/E14A6.fna, snp_sites/E26G9.fna, snp_sites/E18C3.fna, snp_sites/E17C12.fna, snp_sites/ctg325.fna, snp_sites/E13A7.fna, snp_sites/E20A8.fna, snp_sites/E17A2.fna, snp_sites/E20A9.fna, snp_sites/E20C1.fna, snp_sites/E13A6.fna, snp_sites/E15A2.fna, snp_sites/E19C7.fna, snp_sites/E6E7.fna, snp_sites/E12G5.fna, snp_sites/E20C2.fna, snp_sites/E9A7.fna, snp_sites/E12G2.fna, snp_sites/E10E9.fna, snp_sites/E13A3.fna, snp_sites_filtered/E24A5.fna, snp_sites_filtered/E18C10.fna, snp_sites_filtered/E7A5.fna, snp_sites_filtered/E13C7.fna, snp_sites_filtered/E24A6.fna, snp_sites_filtered/E16G9.fna, snp_sites_filtered/E8G11.fna, snp_sites_filtered/E14E3.fna, snp_sites_filtered/E8G8.fna, snp_sites_filtered/E8E1.fna, snp_sites_filtered/E14E2.fna, snp_sites_filtered/E23G1.fna, snp_sites_filtered/E14E10.fna, snp_sites_filtered/E9C4.fna, snp_sites_filtered/G1L7.fna, snp_sites_filtered/E13C1.fna, snp_sites_filtered/E12E3.fna, snp_sites_filtered/E14G10.fna, snp_sites_filtered/E16A12.fna, snp_sites_filtered/E8A10.fna, snp_sites_filtered/E14G11.fna, snp_sites_filtered/E22A7.fna, snp_sites_filtered/E6E11.fna, snp_sites_filtered/E23G7.fna, snp_sites_filtered/E16A9.fna, snp_sites_filtered/E10C6.fna, snp_sites_filtered/E15E2.fna, snp_sites_filtered/E12C4.fna, snp_sites_filtered/E21A3.fna, snp_sites_filtered/WNT1.fna, snp_sites_filtered/E14A8.fna, snp_sites_filtered/E13E6.fna, snp_sites_filtered/E12C6.fna, snp_sites_filtered/E12C11.fna, snp_sites_filtered/E10C5.fna, snp_sites_filtered/E24A12.fna, snp_sites_filtered/E24C10.fna, snp_sites_filtered/E12C7.fna, snp_sites_filtered/E16C7.fna, snp_sites_filtered/E18C8.fna, snp_sites_filtered/E12C3.fna, snp_sites_filtered/E6C8.fna, snp_sites_filtered/E20G5.fna, snp_sites_filtered/E12C2.fna, snp_sites_filtered/E13E2.fna, snp_sites_filtered/E10C11.fna, snp_sites_filtered/E24E9.fna, snp_sites_filtered/E24G3.fna, snp_sites_filtered/E12G12.fna, snp_sites_filtered/E20G6.fna, snp_sites_filtered/E12A9.fna, snp_sites_filtered/E9E4.fna, snp_sites_filtered/E11G6.fna, snp_sites_filtered/E18C7.fna, snp_sites_filtered/E14A2.fna, snp_sites_filtered/E12A4.fna, snp_sites_filtered/E15A11.fna, snp_sites_filtered/E19E7.fna, snp_sites_filtered/E10A7.fna, snp_sites_filtered/E7C12.fna, snp_sites_filtered/E14A1.fna, snp_sites_filtered/E17G3.fna, snp_sites_filtered/MGF.fna, snp_sites_filtered/E5E6.fna, snp_sites_filtered/E20E5.fna, snp_sites_filtered/E19E12.fna, snp_sites_filtered/E15G5.fna, snp_sites_filtered/E12A3.fna, snp_sites_filtered/E15E12.fna, snp_sites_filtered/E23C6.fna, snp_sites_filtered/E7G10.fna, snp_sites_filtered/E6C2.fna, snp_sites_filtered/E14A6.fna, snp_sites_filtered/E26G9.fna, snp_sites_filtered/E18C3.fna, snp_sites_filtered/E17C12.fna, snp_sites_filtered/ctg325.fna, snp_sites_filtered/E13A7.fna, snp_sites_filtered/E20A8.fna, snp_sites_filtered/E17A2.fna, snp_sites_filtered/E20A9.fna, snp_sites_filtered/E20C1.fna, snp_sites_filtered/E13A6.fna, snp_sites_filtered/E15A2.fna, snp_sites_filtered/E19C7.fna, snp_sites_filtered/E6E7.fna, snp_sites_filtered/E12G5.fna, snp_sites_filtered/E20C2.fna, snp_sites_filtered/E9A7.fna, snp_sites_filtered/E12G2.fna, snp_sites_filtered/E10E9.fna, snp_sites_filtered/E13A3.fna
+    output: results/snp_histogram.html, logs/histogram/snps_per_locus.log
+    jobid: 1
+
+Job counts:
+	count	jobs
+	89	filter_haps
+	1	histogram
+	92	snp_sites
+	1	snp_subsample
+	183
+This was a dry-run (flag -n). The order of jobs does not reflect the order of execution.
+Executing main workflow.
+Job counts:
+	count	jobs
+	1	targets
+	1
+
+[Thu Dec  5 15:42:11 2019]
+localrule targets:
+    input: /Users/kelly/projects/tiger_salamander_project/snp_pipeline/results/read_counts_filtered.csv, /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/results/loci_histogram.html, /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/results/matrix.tsv, /Users/kelly/projects/tiger_salamander_project/snp_pipeline/results/snp_histogram.html, /Users/kelly/projects/tiger_salamander_project/snp_pipeline/logs/histogram/snps_per_locus.log
+    jobid: 0
+
+Job counts:
+	count	jobs
+	1	targets
+	1
+This was a dry-run (flag -n). The order of jobs does not reflect the order of execution.

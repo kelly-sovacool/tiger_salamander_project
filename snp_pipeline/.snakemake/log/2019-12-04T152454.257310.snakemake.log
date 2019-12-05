@@ -1,0 +1,2 @@
+SyntaxError in line 38 of /Users/kelly/projects/tiger_salamander_project/snp_pipeline/Snakefile:
+No rule keywords allowed after run/shell/script/wrapper/cwl in rule filter_haps. (Snakefile, line 38)

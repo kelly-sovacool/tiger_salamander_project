@@ -1,0 +1,2 @@
+SyntaxError in line 13 of /Users/kelly/projects/tiger_salamander_project/snp_pipeline/Snakefile:
+A subworkflow needs either a path to a Snakefile or to a workdir. (Snakefile, line 13)

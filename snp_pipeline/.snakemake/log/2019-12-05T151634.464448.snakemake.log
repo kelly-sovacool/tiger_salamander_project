@@ -1,0 +1,26 @@
+Building DAG of jobs...
+Executing subworkflow haps.
+Building DAG of jobs...
+Nothing to be done.
+Complete log: /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/.snakemake/log/2019-12-05T151635.218259.snakemake.log
+Executing main workflow.
+Nothing to be done.
+Complete log: /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/.snakemake/log/2019-12-05T151635.218259.snakemake.log
+Executing main workflow.
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	html_to_pdf
+	1
+
+[Thu Dec  5 15:16:35 2019]
+rule html_to_pdf:
+    input: /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/results/loci_histogram.html, /Users/kelly/projects/tiger_salamander_project/snp_pipeline/results/snp_histogram.html
+    output: results/loci_histogram.pdf, results/snp_histogram.pdf
+    jobid: 0
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/.snakemake/log/2019-12-05T151635.218259.snakemake.log

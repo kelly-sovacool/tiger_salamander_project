@@ -1,0 +1,24 @@
+Building DAG of jobs...
+Executing subworkflow haps.
+Building DAG of jobs...
+Nothing to be done.
+Complete log: /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/.snakemake/log/2019-12-05T152501.581005.snakemake.log
+Executing main workflow.
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	build_matrix_filtered
+	1
+
+[Thu Dec  5 15:25:01 2019]
+rule build_matrix_filtered:
+    input: haplotypes_filtered/E24A5.fna, haplotypes_filtered/E18C10.fna, haplotypes_filtered/E7A5.fna, haplotypes_filtered/E13C7.fna, haplotypes_filtered/E24A6.fna, haplotypes_filtered/E16G9.fna, haplotypes_filtered/E8G11.fna, haplotypes_filtered/E14E3.fna, haplotypes_filtered/E8G8.fna, haplotypes_filtered/E8E1.fna, haplotypes_filtered/E14E2.fna, haplotypes_filtered/E23G1.fna, haplotypes_filtered/E14E10.fna, haplotypes_filtered/E9C4.fna, haplotypes_filtered/G1L7.fna, haplotypes_filtered/E13C1.fna, haplotypes_filtered/E12E3.fna, haplotypes_filtered/E14G10.fna, haplotypes_filtered/E16A12.fna, haplotypes_filtered/E8A10.fna, haplotypes_filtered/E14G11.fna, haplotypes_filtered/E22A7.fna, haplotypes_filtered/E6E11.fna, haplotypes_filtered/E23G7.fna, haplotypes_filtered/E16A9.fna, haplotypes_filtered/E10C6.fna, haplotypes_filtered/E15E2.fna, haplotypes_filtered/E12C4.fna, haplotypes_filtered/E21A3.fna, haplotypes_filtered/WNT1.fna, haplotypes_filtered/E14A8.fna, haplotypes_filtered/E13E6.fna, haplotypes_filtered/E12C6.fna, haplotypes_filtered/E12C11.fna, haplotypes_filtered/E10C5.fna, haplotypes_filtered/E24A12.fna, haplotypes_filtered/E24C10.fna, haplotypes_filtered/E12C7.fna, haplotypes_filtered/E16C7.fna, haplotypes_filtered/E18C8.fna, haplotypes_filtered/E12C3.fna, haplotypes_filtered/E6C8.fna, haplotypes_filtered/E20G5.fna, haplotypes_filtered/E12C2.fna, haplotypes_filtered/E13E2.fna, haplotypes_filtered/E10C11.fna, haplotypes_filtered/E24E9.fna, haplotypes_filtered/E24G3.fna, haplotypes_filtered/E12G12.fna, haplotypes_filtered/E20G6.fna, haplotypes_filtered/E12A9.fna, haplotypes_filtered/E9E4.fna, haplotypes_filtered/E11G6.fna, haplotypes_filtered/E18C7.fna, haplotypes_filtered/E14A2.fna, haplotypes_filtered/E12A4.fna, haplotypes_filtered/E15A11.fna, haplotypes_filtered/E19E7.fna, haplotypes_filtered/E10A7.fna, haplotypes_filtered/E7C12.fna, haplotypes_filtered/E14A1.fna, haplotypes_filtered/E17G3.fna, haplotypes_filtered/MGF.fna, haplotypes_filtered/E5E6.fna, haplotypes_filtered/E20E5.fna, haplotypes_filtered/E19E12.fna, haplotypes_filtered/E15G5.fna, haplotypes_filtered/E12A3.fna, haplotypes_filtered/E15E12.fna, haplotypes_filtered/E23C6.fna, haplotypes_filtered/E7G10.fna, haplotypes_filtered/E6C2.fna, haplotypes_filtered/E14A6.fna, haplotypes_filtered/E26G9.fna, haplotypes_filtered/E18C3.fna, haplotypes_filtered/E17C12.fna, haplotypes_filtered/ctg325.fna, haplotypes_filtered/E13A7.fna, haplotypes_filtered/E20A8.fna, haplotypes_filtered/E17A2.fna, haplotypes_filtered/E20A9.fna, haplotypes_filtered/E20C1.fna, haplotypes_filtered/E13A6.fna, haplotypes_filtered/E15A2.fna, haplotypes_filtered/E19C7.fna, haplotypes_filtered/E6E7.fna, haplotypes_filtered/E12G5.fna, haplotypes_filtered/E20C2.fna, haplotypes_filtered/E9A7.fna, haplotypes_filtered/E12G2.fna, haplotypes_filtered/E10E9.fna, haplotypes_filtered/E13A3.fna
+    output: results/matrix.tsv, results/loci_histogram.html
+    jobid: 0
+    benchmark: benchmarks/build_matrix.txt
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /Users/kelly/projects/tiger_salamander_project/haplotype_pipeline/.snakemake/log/2019-12-05T152501.581005.snakemake.log
